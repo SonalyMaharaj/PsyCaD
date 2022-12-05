@@ -11,7 +11,13 @@ namespace WebApplication1.Controllers
     public class AdminController : ApiController
     {
 
-       
+        [Route("api/Admin/Login")]
+        [HttpGet]
+        public IHttpActionResult login(string username, string password)
+        {
+            return null;
+        }
+
 
     }
 }
