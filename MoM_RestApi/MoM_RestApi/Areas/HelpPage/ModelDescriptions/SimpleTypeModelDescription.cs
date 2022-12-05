@@ -1,0 +1,6 @@
+namespace MoM_RestApi.Areas.HelpPage.ModelDescriptions
+{
+    public class SimpleTypeModelDescription : ModelDescription
+    {
+    }
+}
