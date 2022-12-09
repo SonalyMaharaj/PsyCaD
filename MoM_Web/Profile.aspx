@@ -33,7 +33,7 @@
             display: none;
             margin-top: 30px;
             width: 60%;
-            background: green;
+            background: transparent;
         }
           
         label 
@@ -41,6 +41,28 @@
             margin-right: 20px;
         }
 
+        table 
+        {
+          border-collapse: collapse;
+          width: 100%;
+          margin-left: auto;
+          margin-right: auto;
+          color:black;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        td, th 
+        {
+          border: 1px solid #dddddd;
+          text-align: center;
+          padding: 10px;
+        }
+        
+        tbody tr:hover 
+        {
+            cursor:pointer;
+            background-color: #f6660a;
+        }
     </style>
 
 </asp:Content>
@@ -89,52 +111,97 @@
         </div>
 
         <div class="Appointment selectt">
-          table1
+            <div>
+                <table id="tblappointment">
+                    <thead>
+                        <tr>
+                            <th>Date and Time</th>
+                            <th>Professional</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01 May 2022 1pm</td>
+                            <td>Dr Du Toit</td>
+                        </tr>
+                        <tr>
+                            <td>28 January 2022 10am</td>
+                            <td>Dr Bree</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
         <div class="Diary selectt">
-          table2
+            <div>
+                <table id="tbldiary">
+                    <thead>
+                        <tr>
+                            <th>Date and Time</th>
+                            <th>Flag</th>
+                            <th>Attended To</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01 May 2022 1pm</td>
+                            <td>Suicide</td>
+                            <td><input type="checkbox" class="checkstyle" name="attend"/></td>
+                        </tr>
+                        <tr>
+                            <td>28 January 2022 10am</td>
+                            <td>Death</td>
+                            <td><input type="checkbox" class="checkstyle" name="attend"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="Mood selectt">
-          table3
+            <div>
+                <table id="tblmood">
+                    <thead>
+                        <tr>
+                            <th>Date and Time</th>
+                            <th>Mood</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01 May 2022 1pm</td>
+                            <td>Happy</td>
+                        </tr>
+                        <tr>
+                            <td>28 January 2022 10am</td>
+                            <td>Sad</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="Call selectt">
-          table4
+            <div>
+                <table id="tblcall">
+                    <thead>
+                        <tr>
+                            <th>Date and Time</th>
+                            <th>Line</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01 May 2022 1pm</td>
+                            <td>Crisis Line</td>
+                        </tr>
+                        <tr>
+                            <td>28 January 2022 10am</td>
+                            <td>Help Desk</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-
-
-        <div>
-        <table id="tableid">
-            <thead>
-            <tr>
-            <th>Student Number</th>
-            <th>Student Name</th>
-            <th>Student Surname</th>
-            <th>Student Email</th>
-            <th>Student ID Number</th>
-            <th>Remove User</th>
-            </tr>
-            </thead>
-            <tbody onclick="rowClick();">
-            <tr>
-            <td>217031068</td>
-            <td>Sonaly</td>
-            <td>Maharaj</td>
-            <td>sonalymaharaj01@gmail.com</td>
-            <td>9903010181085</td>
-            <th><button type="button" style="background-color:transparent;border-width:1px;border-radius:10px;"><i class="fa fa-trash-o" aria-hidden="true"></i></button></th>
-            </tr>
-            <tr>
-            <td>220070869</td>
-            <td>Solomon</td>
-            <td>Moyo</td>
-            <td>peacefulmoyo7@gmail.com</td>
-            <td>0204156473082</td>
-            <th><i class="fa fa-trash-o" aria-hidden="true"></i></th>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
 
         <script type="text/javascript">
             $(document).ready(function ()

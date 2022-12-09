@@ -146,10 +146,11 @@
         <center><input type="text" placeholder="&#xf0e0; Staff Email" style="font-family:Arial, FontAwesome" name="email" required="required"/></center>
         <center><input type="password" placeholder="&#xf023; Staff Password" style="font-family:Arial, FontAwesome" name="psw" required="required"/></center>
         
+            <br />
         <label>
-            <input type="checkbox" class="checkstyle" name="remember"/> Remember me
+            <input style="margin-left:150px;" type="checkbox" class="checkstyle" name="remember"/> Remember me
         </label>
-            <span class="psw"><a href="https://ulink.uj.ac.za/views/reset/Reset1">Forgot Password?</a></span>
+            <span style="margin-right:150px;" class="psw"><a href="https://ulink.uj.ac.za/views/reset/Reset1">Forgot Password?</a></span>
 
             <br />
             <br />
@@ -158,7 +159,12 @@
 
         </div>
 
-        <center><img src="images/ujlogo.png" alt="Logo" style="width:80px;height:80px;"/></center>
+        <center>
+            <div>
+                <p style="font-size:10px;">Brought to you by PsyCaD</p>
+                <img src="images/ujlogo.png" alt="Logo" style="width:80px;height:80px;"/>
+            </div>
+        </center>
 
     </form>
 </body>

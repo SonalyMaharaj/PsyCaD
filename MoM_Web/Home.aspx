@@ -45,7 +45,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <center><h2 class="mb-4" style="color:#5023af">List of Students</h2></center>
+    <center><h2 class="mb-4" style="color:#5023af">Students</h2></center>
 
     <input class="searchbar" type="text" id="searchbox" onkeyup="performSearch()" placeholder=" Search table...">
     <br/>
