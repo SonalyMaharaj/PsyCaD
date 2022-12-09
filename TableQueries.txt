@@ -1,0 +1,132 @@
+CREATE TABLE [dbo].[Admin] (
+    [AdminId]       INT           IDENTITY (1, 1) NOT NULL,
+    [AdminName]     VARCHAR (100) NOT NULL,
+    [AdminSurname]  VARCHAR (100) NOT NULL,
+    [AdminEmail]    VARCHAR (150) NOT NULL,
+    [AdminPassword] VARCHAR (150) NOT NULL,
+    CONSTRAINT [PK_Admin] PRIMARY KEY CLUSTERED ([AdminId] ASC)
+);
+
+CREATE TABLE [dbo].[BookConsultation] (
+    [BookNumber]     INT          IDENTITY (1, 1) NOT NULL,
+    [BookDate]       DATE         NULL,
+    [BookTime]       VARCHAR (20) NULL,
+    [StudentNumber]  INT          NULL,
+    [PsychologistId] INT          NULL,
+    CONSTRAINT [PK_Book_Consultation] PRIMARY KEY CLUSTERED ([BookNumber] ASC)
+);
+
+CREATE TABLE [dbo].[Diary] (
+    [DiaryId]          INT           IDENTITY (1, 1) NOT NULL,
+    [DiaryDate]        DATE          NULL,
+    [DiaryTitle]       VARCHAR (100) NULL,
+    [DiaryDescription] VARCHAR (MAX) NULL,
+    [FlaggedWords]     VARCHAR (MAX) NULL,
+    [StudentNumber]    INT           NULL,
+    [IsFlagged]        INT           NULL,
+    PRIMARY KEY CLUSTERED ([DiaryId] ASC)
+);
+
+CREATE TABLE [dbo].[Exercise] (
+    [ExerciseId]          INT           IDENTITY (1, 1) NOT NULL,
+    [ExerciseName]        VARCHAR (100) NOT NULL,
+    [ExerciseDescription] VARCHAR (MAX) NOT NULL,
+    [MediaPath]           VARCHAR (MAX) NULL,
+    [IsActive]            CHAR (1)      NULL,
+    PRIMARY KEY CLUSTERED ([ExerciseId] ASC)
+);
+
+CREATE TABLE [dbo].[MeidicineTracker] (
+    [Id]               INT          IDENTITY (1, 1) NOT NULL,
+    [Date]             DATETIME     NOT NULL,
+    [NameOfMedication] VARCHAR (50) NOT NULL,
+    [Category]         VARCHAR (50) NOT NULL,
+    [StudentNumber]    INT          NOT NULL,
+    [NameOfDoctor]     VARCHAR (50) NULL,
+    [IsActive]         INT          NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[Mood] (
+    [MoodId]        INT           IDENTITY (1, 1) NOT NULL,
+    [MoodDate]      DATE          NOT NULL,
+    [MoodTime]      VARCHAR (MAX) NULL,
+    [MoodEmotion]   VARCHAR (MAX) NULL,
+    [StudentNumber] INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([MoodId] ASC)
+);
+
+CREATE TABLE [dbo].[Notification] (
+    [Id]                 INT           IDENTITY (1, 1) NOT NULL,
+    [StudentNumber]      INT           NULL,
+    [PsychologistId]     INT           NULL,
+    [DateOfNotification] DATETIME      NOT NULL,
+    [Description]        VARCHAR (MAX) NOT NULL,
+    [IsActive]           VARCHAR (1)   NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+CREATE TABLE [dbo].[PrescribeExercise] (
+    [ID]                INT  IDENTITY (1, 1) NOT NULL,
+    [PsychologistId]    INT  NOT NULL,
+    [ExerciseId]        INT  NOT NULL,
+    [StudentNumber]     INT  NULL,
+    [DatePrescribed]    DATE NOT NULL,
+    [IsLatestCompleted] INT  NULL,
+    [NumCompletion]     INT  NULL,
+    [IsPrescribed]      INT  NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
+CREATE TABLE [dbo].[Psychologist] (
+    [PsychologistId]       INT           IDENTITY (1, 1) NOT NULL,
+    [PsychologistName]     VARCHAR (100) NOT NULL,
+    [PsychologistSurname]  VARCHAR (100) NOT NULL,
+    [PsychologistEmail]    VARCHAR (150) NOT NULL,
+    [PsychologistPassword] VARCHAR (150) NOT NULL,
+    [NumStudentsLinked]    INT           DEFAULT ((0)) NOT NULL,
+    [IsActive]             CHAR (1)      DEFAULT ((1)) NOT NULL,
+    [AdminId]              INT           NULL,
+    CONSTRAINT [PK_Counsellor] PRIMARY KEY CLUSTERED ([PsychologistId] ASC)
+);
+
+CREATE TABLE [dbo].[SessionNote] (
+    [SessionId]          INT           IDENTITY (1, 1) NOT NULL,
+    [SessionDate]        DATE          NOT NULL,
+    [SessionDescription] VARCHAR (MAX) NOT NULL,
+    [SessionRating]      INT           NULL,
+    [StudentNumber]      INT           NOT NULL,
+    [PsychologistId]     INT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([SessionId] ASC)
+);
+
+CREATE TABLE [dbo].[Student] (
+    [StudentNumber]        INT           IDENTITY (200006, 1) NOT NULL,
+    [StudentName]          VARCHAR (100) NOT NULL,
+    [StudentSurname]       VARCHAR (100) NOT NULL,
+    [StudentEmail]         VARCHAR (150) NULL,
+    [StudentPassword]      VARCHAR (150) NOT NULL,
+    [StudentGender]        CHAR (1)      NULL,
+    [StudentDOB]           DATE          NULL,
+    [StudentQualification] VARCHAR (150) NULL,
+    [Campus]               VARCHAR (150) NULL,
+    CONSTRAINT [PK_Student] PRIMARY KEY CLUSTERED ([StudentNumber] ASC)
+);
+
+CREATE TABLE [dbo].[StudentPsychologistLink] (
+    [LinkID]         INT IDENTITY (1, 1) NOT NULL,
+    [PsychologistId] INT NULL,
+    [StudentNumber]  INT NULL,
+    [IsLinked]       INT DEFAULT ((1)) NULL,
+    PRIMARY KEY CLUSTERED ([LinkID] ASC)
+);
+
+CREATE TABLE [dbo].[UnAvailableDateAndTime] (
+    [ID]             INT          IDENTITY (1, 1) NOT NULL,
+    [PsychologistId] INT          NOT NULL,
+    [Date]           DATE         NULL,
+    [Time]           VARCHAR (20) NULL,
+    [IsAvailable]    INT          NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
