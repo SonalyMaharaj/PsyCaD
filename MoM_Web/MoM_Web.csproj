@@ -86,10 +86,12 @@
     <Content Include="images\logocropped.png" />
     <Content Include="images\ujlogo.png" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\momjs\Home.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\main.js" />
     <Content Include="js\popper.js" />
     <Content Include="Login.aspx" />
+    <Content Include="logout.aspx" />
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\Roslyn45\csc.exe" />
@@ -174,6 +176,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MindOverMatter.Master.cs">
       <DependentUpon>MindOverMatter.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -202,6 +211,7 @@
     <Compile Include="Models\PrescribeExerciseClass.cs" />
     <Compile Include="Models\PreviousBookings.cs" />
     <Compile Include="Models\PsychologistClass.cs" />
+    <Compile Include="Models\Secrecy.cs" />
     <Compile Include="Models\SessionNotes.cs" />
     <Compile Include="Models\SessionNotesClass.cs" />
     <Compile Include="Models\StuAndCounsIDPair.cs" />

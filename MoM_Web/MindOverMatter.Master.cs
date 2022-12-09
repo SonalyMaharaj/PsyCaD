@@ -11,7 +11,24 @@ namespace MoM_Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserType"]==null)  //if no user is logged in
+            {
+                Response.Redirect("Login.aspx");
+                return;
+            }
 
+            if (Session["UserType"].ToString()=="Psychologist") { 
+            
+            }
+
+            else if (Session["UserType"].ToString() == "Admin")
+            {
+
+            }
+            else 
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
     }
 }

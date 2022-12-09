@@ -63,7 +63,7 @@
             <th>Remove User</th>
             </tr>
             </thead>
-            <tbody onclick="rowClick();">
+            <tbody id="tablebody" onclick="rowClick();">
             <tr>
             <td>217031068</td>
             <td>Sonaly</td>
@@ -348,6 +348,7 @@
         // add event listener to search box
         //searchBox.addEventListener('keyup', performSearch);
     </script>
+    <script src="js/momjs/Home.js" ></script>
 
 </asp:Content>
 
