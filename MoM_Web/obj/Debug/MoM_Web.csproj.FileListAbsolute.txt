@@ -57,3 +57,7 @@ C:\Users\User\Desktop\MoM_Web\obj\Debug\MoM_Web.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\MoM_Web\obj\Debug\MoM_Web.csproj.CopyComplete
 C:\Users\User\Desktop\MoM_Web\obj\Debug\MoM_Web.dll
 C:\Users\User\Desktop\MoM_Web\obj\Debug\MoM_Web.pdb
+C:\PsyCaD\PsyCaD\MoM_Web\obj\Debug\MoM_Web.csproj.AssemblyReference.cache
+C:\PsyCaD\PsyCaD\MoM_Web\obj\Debug\MoM_Web.csproj.CoreCompileInputs.cache
+C:\PsyCaD\PsyCaD\MoM_Web\obj\Debug\MoM_Web.dll
+C:\PsyCaD\PsyCaD\MoM_Web\obj\Debug\MoM_Web.pdb
