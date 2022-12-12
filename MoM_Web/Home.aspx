@@ -41,7 +41,7 @@
         }
         
     </style>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -63,8 +63,8 @@
             <th>Remove User</th>
             </tr>
             </thead>
-            <tbody id="tablebody" onclick="rowClick();">
-            <tr>
+            <tbody id="tablebody" runat="server">
+            <!--<tr>
             <td>217031068</td>
             <td>Sonaly</td>
             <td>Maharaj</td>
@@ -295,15 +295,15 @@
             <td>sonalymaharaj01@gmail.com</td>
             <td>9903010181085</td>
             <th><i class="fa fa-trash-o" aria-hidden="true"></i></th>
-            </tr>
+            </tr>-->
             </tbody>
         </table>
     </div>
 
     <script type="text/javascript">            
-        function rowClick()
+        function rowClick(StudentNumber)
         {
-            location.href = "Profile.aspx";
+            location.href = "Profile.aspx?StudentNumber=" + StudentNumber;
         }
     </script>
 

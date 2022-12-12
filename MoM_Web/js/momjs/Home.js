@@ -1,4 +1,15 @@
-﻿console.log("HELLLOO WORLD");
+﻿/*$(document).ready(function () {
 
-function PopulateTable() {
-}
+    $.ajax({
+
+        url: 'https://localhost/api/Student/GetStudents',
+        trype: "GET",
+        success: function (result) {
+            console.log(result);
+        },
+        error: function (error) {
+            console.log(err);
+        }
+    })
+
+})*/
