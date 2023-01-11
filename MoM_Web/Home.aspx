@@ -41,7 +41,7 @@
         }
         
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -51,7 +51,7 @@
     <br/>
     <br />
 
-    <div style="overflow-x:auto">
+    <div style="max-height:400px; overflow-x:auto">
         <table id="tableid">
             <thead>
             <tr>
@@ -63,14 +63,14 @@
             <th>Remove User</th>
             </tr>
             </thead>
-            <tbody id="tablebody" runat="server">
-            <!--<tr>
+            <tbody onclick="rowClick();">
+            <tr>
             <td>217031068</td>
             <td>Sonaly</td>
             <td>Maharaj</td>
             <td>sonalymaharaj01@gmail.com</td>
             <td>9903010181085</td>
-            <th><button type="button" style="background-color:transparent;border-width:1px;border-radius:10px;"><i class="fa fa-trash-o" aria-hidden="true"></i></button></th>
+            <th onclick='event.stopPropagation();return false;'><i onclick="deleteClick();" class="fa fa-trash-o" aria-hidden="true"></i></th>
             </tr>
             <tr>
             <td>220070869</td>
@@ -78,7 +78,7 @@
             <td>Moyo</td>
             <td>peacefulmoyo7@gmail.com</td>
             <td>0204156473082</td>
-            <th><i class="fa fa-trash-o" aria-hidden="true"></i></th>
+            <th onclick='event.stopPropagation();return false;'><i onclick="deleteClick();" class="fa fa-trash-o" aria-hidden="true"></i></th>
             </tr>
             <tr>
             <td>217031068</td>
@@ -86,7 +86,7 @@
             <td>Maharaj</td>
             <td>sonalymaharaj01@gmail.com</td>
             <td>9903010181085</td>
-            <th><i class="fa fa-trash-o" aria-hidden="true"></i></th>
+            <th onclick='event.stopPropagation();return false;'><i onclick="deleteClick();" class="fa fa-trash-o" aria-hidden="true"></i></th>
             </tr>
             <tr>
             <td>217031068</td>
@@ -94,7 +94,7 @@
             <td>Omar</td>
             <td>AyeshaOmar@gmail.com</td>
             <td>981105000000</td>
-            <th><i class="fa fa-trash-o" aria-hidden="true"></i></th>
+            <th onclick='event.stopPropagation();return false;'><i onclick="deleteClick();" class="fa fa-trash-o" aria-hidden="true"></i></th>
             </tr>
             <tr>
             <td>207031068</td>
@@ -295,15 +295,20 @@
             <td>sonalymaharaj01@gmail.com</td>
             <td>9903010181085</td>
             <th><i class="fa fa-trash-o" aria-hidden="true"></i></th>
-            </tr>-->
+            </tr>
             </tbody>
         </table>
     </div>
 
     <script type="text/javascript">            
-        function rowClick(StudentNumber)
+        function rowClick()
         {
-            location.href = "Profile.aspx?StudentNumber=" + StudentNumber;
+            location.href = "Profile.aspx";
+        }
+
+        function deleteClick()
+        {
+            location.href = "Appointments.aspx";
         }
     </script>
 
@@ -348,7 +353,6 @@
         // add event listener to search box
         //searchBox.addEventListener('keyup', performSearch);
     </script>
-    <script src="js/momjs/Home.js" ></script>
 
 </asp:Content>
 
