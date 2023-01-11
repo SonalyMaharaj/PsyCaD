@@ -15,12 +15,12 @@ namespace MindOverMatterRestAPI.Controllers
 
         [Route("api/Login/loginStudent")]
         [HttpGet]
-        public IHttpActionResult loginStudent(string useremail, string password)
+        public IHttpActionResult loginStudent(string username, string password)
         {
 
             //select student from database
             var student = (from a in db.Students
-                           where a.StudentEmail.Equals(useremail)
+                           where a.StudentEmail.Equals(username)
                            && a.StudentPassword.Equals(password)
                            select a).FirstOrDefault();
 
@@ -56,9 +56,7 @@ namespace MindOverMatterRestAPI.Controllers
                 loggeduser = new User { UserId = findAdmin.AdminId, Name = findAdmin.AdminName, surname = findAdmin.AdminSurname, email = findAdmin.AdminEmail, userType = "Admin" };
                 return Ok(loggeduser);
             }
-
-            //user not Found
-            return loginStudent(username, password); //Login student or return false
+            return Ok(false);
         }
 
 

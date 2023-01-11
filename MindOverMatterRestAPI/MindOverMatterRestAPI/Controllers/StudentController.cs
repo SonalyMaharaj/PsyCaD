@@ -44,7 +44,7 @@ namespace MindOverMatterRestAPI.Controllers
 
         }
 
-        [Route("api/Student/getStudent")]
+        [Route("api/Student/GetStudent")]
         [HttpGet]
         public IHttpActionResult GetStudent(int StudentNumber)
         {
