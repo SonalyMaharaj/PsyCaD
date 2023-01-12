@@ -73,22 +73,17 @@
     <center>
         <div class="container">
             <div class="card">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <img src="images/avatar.png" alt="Avatar" style="width:100px;height:70px;padding:5px;">
+                <div class="row"> 
+                    <div class="col-sm-6" id="ProfileLeft" runat="server">
+                       <!--From Code Behind-->
+                  
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-6" id="ProfileRight" runat="server">
                         <h2 style="color:#5023af;"><b>Jane Doe</b></h2>
+                         <p style="font-size:10px">Campus: APK<br />Faculty: Science<br />File Number: xxxxxxxxxx<br />Gender: Female</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <p style="font-size:10px">217031068 <br />ID Number: 9903010181085<br />Email: janedoe@gmail.com<br />Contact Number: 0725669054</p>
-                    </div>
-                    <div class="col-sm-6">
-                        <p style="font-size:10px">Campus: APK<br />Faculty: Science<br />File Number: xxxxxxxxxx<br />Gender: Female</p>
-                    </div>
-                </div>
+              
             </div>
         </div>
     </center>
