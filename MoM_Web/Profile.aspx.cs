@@ -38,6 +38,48 @@ namespace MoM_Web
                 "<p style='font-size:10px'>Campus: ###<br />Faculty: Science<br />File Number: xxxxxxxxxx<br />Gender: ####</p>";
 
             ProfileRight.InnerHtml = resultRight;
+
+
+            //populate student diary entries
+            populateDiaryEntries();
+            //populate student appointments
+            appointmentBody.InnerHtml=populateAppointments();
+            //populate student Moods
+            populateMoods();
+            //populate student call logs
+            populateCallLogs();
+        }
+
+        public void populateDiaryEntries()
+        { 
+
+        }
+
+        public String populateAppointments() 
+        {
+            var appointments = client.getStudentBookings(Convert.ToInt32(Request.QueryString["StudentNumber"])); //request list of appointments for specific psychologist
+            String results = "";
+            foreach (var appoint in appointments) 
+            {
+                var psychologist = client.GetPsychologist(appoint.PsychologistId); //get psychologist who was appointed by the student for this specific appointment
+                results += "<tr>";
+                results += "<td>"+appoint.BookDate+"</td>";
+                results += "<td>"+psychologist.PsychologistName.Substring(0,1)+" "+psychologist.PsychologistSurname+" "+psychologist.PsychologistId+"</td>"; // e.g S MOYO ID: 2001210
+                results += "<tr>";
+            }
+
+           return results;
+
+        }
+
+        public void populateMoods() 
+        {
+            
+        }
+
+        public void populateCallLogs() 
+        {
+            
         }
     }
 }

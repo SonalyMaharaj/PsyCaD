@@ -115,15 +115,8 @@
                             <th>Professional</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>01 May 2022 1pm</td>
-                            <td>Dr Du Toit</td>
-                        </tr>
-                        <tr>
-                            <td>28 January 2022 10am</td>
-                            <td>Dr Bree</td>
-                        </tr>
+                    <tbody id="appointmentBody" runat="server">
+                        <!--Populated from Code Behind-->
                     </tbody>
                 </table>
             </div>
@@ -139,7 +132,7 @@
                             <th>Attended To</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="diaryBody">
                         <tr>
                             <td>01 May 2022 1pm</td>
                             <td>Suicide</td>
@@ -163,7 +156,7 @@
                             <th>Mood</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="moodBody" runat="server">
                         <tr>
                             <td>01 May 2022 1pm</td>
                             <td>Happy</td>
@@ -185,7 +178,7 @@
                             <th>Line</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="callsBody" runat="server">
                         <tr>
                             <td>01 May 2022 1pm</td>
                             <td>Crisis Line</td>

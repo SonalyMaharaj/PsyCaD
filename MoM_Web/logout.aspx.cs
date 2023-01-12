@@ -12,8 +12,8 @@ namespace MoM_Web
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["UserType"] = null;
-            Session["UserName"] = "Undefined User";
-            Session["UserId"] = 00000000;
+            Session["UserName"] = null;
+            Session["UserId"] =null;
 
             Response.Redirect("Login.aspx");
         }
