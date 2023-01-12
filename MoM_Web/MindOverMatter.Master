@@ -39,7 +39,7 @@
                     <a href="Appointments.aspx">Appointments</a>
 	              </li>
                   <li>
-                    <a href="#">Ukuhlela</a>
+                    <a href="https://icsapps.uj.ac.za/hive/Login.aspx" target="_blank" rel="noopener" >Ukuhlela</a>
 	              </li>
 	              <li>
                     <a href="Login.aspx">Logout</a>
