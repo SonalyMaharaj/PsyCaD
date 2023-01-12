@@ -79,8 +79,7 @@
                   
                     </div>
                     <div class="col-sm-6" id="ProfileRight" runat="server">
-                        <h2 style="color:#5023af;"><b>Jane Doe</b></h2>
-                         <p style="font-size:10px">Campus: APK<br />Faculty: Science<br />File Number: xxxxxxxxxx<br />Gender: Female</p>
+                        <!--From code Behind-->
                     </div>
                 </div>
               

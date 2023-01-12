@@ -139,7 +139,7 @@ namespace MoM_Web.ServiceReference
         public List<StudentClass> GetPsychologistStudents(int psychologistId)
         {
             try {
-                    string json = getJson("Psychologist/GetPsychologistStudents?psychologistId=" + psychologistId);
+                    string json = getJson("Psychologist/GetPshychologistStudents?psychologistId=" + psychologistId);
                     if (json == "false")
                     {
                         return null;
