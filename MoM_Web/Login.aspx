@@ -130,8 +130,8 @@
             <div class="container">
             <br /><br /><br /><br />
 
-            <center><input type="text" placeholder="&#xf0e0; Staff Email" style="font-family:Arial, FontAwesome" name="email" required="required"/></center>
-            <center><input type="password" placeholder="&#xf023; Staff Password" style="font-family:Arial, FontAwesome" name="psw" required="required"/></center>
+            <center><input type="text" placeholder="&#xf0e0; Staff Email" style="font-family:Arial, FontAwesome" name="email" required="required" id="username" runat="server"/></center>
+            <center><input type="password" placeholder="&#xf023; Staff Password" style="font-family:Arial, FontAwesome" name="psw" required="required" id="password" runat="server"/></center>
         
             <br />
             <label>
@@ -141,7 +141,7 @@
 
             <br />
             <br />
-        
+            <label id="lblstatus" runat="server" style="color:red" visible="false">Login failed try again</label>
             <center><asp:Button class="buttonstyle" ID="btnLogin" runat="server" Text="SIGN IN" onclick="btnLogin_Clicked"/></center>
 
             </div>
