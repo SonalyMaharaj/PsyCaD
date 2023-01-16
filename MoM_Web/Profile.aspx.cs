@@ -30,10 +30,6 @@ namespace MoM_Web
             ProfileLeft.InnerHtml = resultLeft;
 
             //generate html for the right block of the profile
-
-            /*<h2 style='color:#5023af;'><b>Jane Doe</b></h2>
-                         <p style='font-size:10px'>Campus: APK<br />Faculty: Science<br />File Number: xxxxxxxxxx<br />Gender: Female</p>*/
-
             String resultRight = "<h2 style='color:#5023af;'><b>"+student.StudentName+" "+student.StudentSurname+"</b></h2>" +
                 "<p style='font-size:10px'>Campus: ###<br />Faculty: Science<br />File Number: xxxxxxxxxx<br />Gender: ####</p>";
 
@@ -51,7 +47,24 @@ namespace MoM_Web
         }
 
         public void populateDiaryEntries()
-        { 
+        {
+            /*          <tr>
+                            <td>28 January 2022 10am</td>
+                            <td>Death</td>
+                            <td><input type='checkbox' class='checkstyle' name='attend'/></td>
+                        </tr>*/
+
+            var diaries = client.GetStudentDiaryEntries(Convert.ToInt32(Request.QueryString["StudentNumber"])); //fetch Student's diaries
+            String result = "";
+            foreach (var diary in diaries) {
+                result += "<tr>";
+                result += "<td>28 January 2022 10am</td>";
+                result += "<td>Death</td>";
+                result += "<td><input type='checkbox' class='checkstyle' name='attend'/></td>";
+                result += "</tr>";
+            }
+
+            diaryBody.InnerHtml = result;
 
         }
 
@@ -74,12 +87,26 @@ namespace MoM_Web
 
         public void populateMoods() 
         {
-            
+            /*<tr>
+                            <td>01 May 2022 1pm</td>
+                            <td>Happy</td>
+                        </tr>*/
+
+            var moods = client.GetMoods();
+            String result = "";
+            foreach (var mood in moods)
+            {
+                result += "<tr>";
+                result += "<td>"+mood.MoodDate+"</td>";
+                result += "<td>"+mood.MoodEmotion+"</td>";
+                result += "</tr>";
+            }
+            moodBody.InnerHtml = result;
         }
 
         public void populateCallLogs() 
         {
-            
+            //code for populating call logs
         }
     }
 }

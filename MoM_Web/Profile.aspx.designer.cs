@@ -42,6 +42,15 @@ namespace MoM_Web
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl appointmentBody;
 
         /// <summary>
+        /// diaryBody control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl diaryBody;
+
+        /// <summary>
         /// moodBody control.
         /// </summary>
         /// <remarks>

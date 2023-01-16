@@ -132,17 +132,9 @@
                             <th>Attended To</th>
                         </tr>
                     </thead>
-                    <tbody id="diaryBody">
-                        <tr>
-                            <td>01 May 2022 1pm</td>
-                            <td>Suicide</td>
-                            <td><input type="checkbox" class="checkstyle" name="attend"/></td>
-                        </tr>
-                        <tr>
-                            <td>28 January 2022 10am</td>
-                            <td>Death</td>
-                            <td><input type="checkbox" class="checkstyle" name="attend"/></td>
-                        </tr>
+                    <tbody id="diaryBody" runat="server">
+                       <!--Populated from Code Behind-->
+
                     </tbody>
                 </table>
             </div>
@@ -157,14 +149,7 @@
                         </tr>
                     </thead>
                     <tbody id="moodBody" runat="server">
-                        <tr>
-                            <td>01 May 2022 1pm</td>
-                            <td>Happy</td>
-                        </tr>
-                        <tr>
-                            <td>28 January 2022 10am</td>
-                            <td>Sad</td>
-                        </tr>
+                        <!--Populated from Code Behind-->
                     </tbody>
                 </table>
             </div>
