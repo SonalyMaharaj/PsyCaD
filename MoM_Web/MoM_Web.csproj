@@ -72,6 +72,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Appointments.aspx" />
+    <Content Include="App_Data\Database1.mdf" />
+    <Content Include="App_Data\Database1_log.ldf">
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\MoM_V1_db.mdf" />
     <Content Include="App_Data\MoM_V1_db_log.ldf">
       <DependentUpon>MoM_V1_db.mdf</DependentUpon>

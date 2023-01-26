@@ -30,12 +30,12 @@ namespace MoM_Web
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertStudent(Student instance);
-    partial void UpdateStudent(Student instance);
-    partial void DeleteStudent(Student instance);
     partial void InsertAdmin(Admin instance);
     partial void UpdateAdmin(Admin instance);
     partial void DeleteAdmin(Admin instance);
+    partial void InsertStudent(Student instance);
+    partial void UpdateStudent(Student instance);
+    partial void DeleteStudent(Student instance);
     partial void InsertCall(Call instance);
     partial void UpdateCall(Call instance);
     partial void DeleteCall(Call instance);
@@ -80,19 +80,19 @@ namespace MoM_Web
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Student> Students
-		{
-			get
-			{
-				return this.GetTable<Student>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Admin> Admins
 		{
 			get
 			{
 				return this.GetTable<Admin>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Student> Students
+		{
+			get
+			{
+				return this.GetTable<Student>();
 			}
 		}
 		
@@ -125,6 +125,229 @@ namespace MoM_Web
 			get
 			{
 				return this.GetTable<Psychologist>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Admin")]
+	public partial class Admin : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Admin_Id;
+		
+		private string _Admin_Name;
+		
+		private string _Admin_Surname;
+		
+		private string _Admin_Email;
+		
+		private string _Admin_Password;
+		
+		private System.Nullable<int> _Psychologist_Id;
+		
+		private EntityRef<Psychologist> _Psychologist;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnAdmin_IdChanging(int value);
+    partial void OnAdmin_IdChanged();
+    partial void OnAdmin_NameChanging(string value);
+    partial void OnAdmin_NameChanged();
+    partial void OnAdmin_SurnameChanging(string value);
+    partial void OnAdmin_SurnameChanged();
+    partial void OnAdmin_EmailChanging(string value);
+    partial void OnAdmin_EmailChanged();
+    partial void OnAdmin_PasswordChanging(string value);
+    partial void OnAdmin_PasswordChanged();
+    partial void OnPsychologist_IdChanging(System.Nullable<int> value);
+    partial void OnPsychologist_IdChanged();
+    #endregion
+		
+		public Admin()
+		{
+			this._Psychologist = default(EntityRef<Psychologist>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Admin_Id
+		{
+			get
+			{
+				return this._Admin_Id;
+			}
+			set
+			{
+				if ((this._Admin_Id != value))
+				{
+					this.OnAdmin_IdChanging(value);
+					this.SendPropertyChanging();
+					this._Admin_Id = value;
+					this.SendPropertyChanged("Admin_Id");
+					this.OnAdmin_IdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_Name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Admin_Name
+		{
+			get
+			{
+				return this._Admin_Name;
+			}
+			set
+			{
+				if ((this._Admin_Name != value))
+				{
+					this.OnAdmin_NameChanging(value);
+					this.SendPropertyChanging();
+					this._Admin_Name = value;
+					this.SendPropertyChanged("Admin_Name");
+					this.OnAdmin_NameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_Surname", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string Admin_Surname
+		{
+			get
+			{
+				return this._Admin_Surname;
+			}
+			set
+			{
+				if ((this._Admin_Surname != value))
+				{
+					this.OnAdmin_SurnameChanging(value);
+					this.SendPropertyChanging();
+					this._Admin_Surname = value;
+					this.SendPropertyChanged("Admin_Surname");
+					this.OnAdmin_SurnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_Email", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string Admin_Email
+		{
+			get
+			{
+				return this._Admin_Email;
+			}
+			set
+			{
+				if ((this._Admin_Email != value))
+				{
+					this.OnAdmin_EmailChanging(value);
+					this.SendPropertyChanging();
+					this._Admin_Email = value;
+					this.SendPropertyChanged("Admin_Email");
+					this.OnAdmin_EmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_Password", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string Admin_Password
+		{
+			get
+			{
+				return this._Admin_Password;
+			}
+			set
+			{
+				if ((this._Admin_Password != value))
+				{
+					this.OnAdmin_PasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Admin_Password = value;
+					this.SendPropertyChanged("Admin_Password");
+					this.OnAdmin_PasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Psychologist_Id", DbType="Int")]
+		public System.Nullable<int> Psychologist_Id
+		{
+			get
+			{
+				return this._Psychologist_Id;
+			}
+			set
+			{
+				if ((this._Psychologist_Id != value))
+				{
+					if (this._Psychologist.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPsychologist_IdChanging(value);
+					this.SendPropertyChanging();
+					this._Psychologist_Id = value;
+					this.SendPropertyChanged("Psychologist_Id");
+					this.OnPsychologist_IdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Psychologist_Admin", Storage="_Psychologist", ThisKey="Psychologist_Id", OtherKey="Psychologist_Id", IsForeignKey=true)]
+		public Psychologist Psychologist
+		{
+			get
+			{
+				return this._Psychologist.Entity;
+			}
+			set
+			{
+				Psychologist previousValue = this._Psychologist.Entity;
+				if (((previousValue != value) 
+							|| (this._Psychologist.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Psychologist.Entity = null;
+						previousValue.Admins.Remove(this);
+					}
+					this._Psychologist.Entity = value;
+					if ((value != null))
+					{
+						value.Admins.Add(this);
+						this._Psychologist_Id = value.Psychologist_Id;
+					}
+					else
+					{
+						this._Psychologist_Id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Psychologist");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -396,229 +619,6 @@ namespace MoM_Web
 		{
 			this.SendPropertyChanging();
 			entity.Student = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Admin")]
-	public partial class Admin : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Admin_Id;
-		
-		private string _Admin_Name;
-		
-		private string _Admin_Surname;
-		
-		private string _Admin_Email;
-		
-		private string _Admin_Password;
-		
-		private System.Nullable<int> _Psychologist_Id;
-		
-		private EntityRef<Psychologist> _Psychologist;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnAdmin_IdChanging(int value);
-    partial void OnAdmin_IdChanged();
-    partial void OnAdmin_NameChanging(string value);
-    partial void OnAdmin_NameChanged();
-    partial void OnAdmin_SurnameChanging(string value);
-    partial void OnAdmin_SurnameChanged();
-    partial void OnAdmin_EmailChanging(string value);
-    partial void OnAdmin_EmailChanged();
-    partial void OnAdmin_PasswordChanging(string value);
-    partial void OnAdmin_PasswordChanged();
-    partial void OnPsychologist_IdChanging(System.Nullable<int> value);
-    partial void OnPsychologist_IdChanged();
-    #endregion
-		
-		public Admin()
-		{
-			this._Psychologist = default(EntityRef<Psychologist>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Admin_Id
-		{
-			get
-			{
-				return this._Admin_Id;
-			}
-			set
-			{
-				if ((this._Admin_Id != value))
-				{
-					this.OnAdmin_IdChanging(value);
-					this.SendPropertyChanging();
-					this._Admin_Id = value;
-					this.SendPropertyChanged("Admin_Id");
-					this.OnAdmin_IdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_Name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string Admin_Name
-		{
-			get
-			{
-				return this._Admin_Name;
-			}
-			set
-			{
-				if ((this._Admin_Name != value))
-				{
-					this.OnAdmin_NameChanging(value);
-					this.SendPropertyChanging();
-					this._Admin_Name = value;
-					this.SendPropertyChanged("Admin_Name");
-					this.OnAdmin_NameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_Surname", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string Admin_Surname
-		{
-			get
-			{
-				return this._Admin_Surname;
-			}
-			set
-			{
-				if ((this._Admin_Surname != value))
-				{
-					this.OnAdmin_SurnameChanging(value);
-					this.SendPropertyChanging();
-					this._Admin_Surname = value;
-					this.SendPropertyChanged("Admin_Surname");
-					this.OnAdmin_SurnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_Email", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
-		public string Admin_Email
-		{
-			get
-			{
-				return this._Admin_Email;
-			}
-			set
-			{
-				if ((this._Admin_Email != value))
-				{
-					this.OnAdmin_EmailChanging(value);
-					this.SendPropertyChanging();
-					this._Admin_Email = value;
-					this.SendPropertyChanged("Admin_Email");
-					this.OnAdmin_EmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_Password", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
-		public string Admin_Password
-		{
-			get
-			{
-				return this._Admin_Password;
-			}
-			set
-			{
-				if ((this._Admin_Password != value))
-				{
-					this.OnAdmin_PasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Admin_Password = value;
-					this.SendPropertyChanged("Admin_Password");
-					this.OnAdmin_PasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Psychologist_Id", DbType="Int")]
-		public System.Nullable<int> Psychologist_Id
-		{
-			get
-			{
-				return this._Psychologist_Id;
-			}
-			set
-			{
-				if ((this._Psychologist_Id != value))
-				{
-					if (this._Psychologist.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPsychologist_IdChanging(value);
-					this.SendPropertyChanging();
-					this._Psychologist_Id = value;
-					this.SendPropertyChanged("Psychologist_Id");
-					this.OnPsychologist_IdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Psychologist_Admin", Storage="_Psychologist", ThisKey="Psychologist_Id", OtherKey="Psychologist_Id", IsForeignKey=true)]
-		public Psychologist Psychologist
-		{
-			get
-			{
-				return this._Psychologist.Entity;
-			}
-			set
-			{
-				Psychologist previousValue = this._Psychologist.Entity;
-				if (((previousValue != value) 
-							|| (this._Psychologist.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Psychologist.Entity = null;
-						previousValue.Admins.Remove(this);
-					}
-					this._Psychologist.Entity = value;
-					if ((value != null))
-					{
-						value.Admins.Add(this);
-						this._Psychologist_Id = value.Psychologist_Id;
-					}
-					else
-					{
-						this._Psychologist_Id = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Psychologist");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -1004,9 +1004,7 @@ namespace MoM_Web
 		
 		private int _Mood_Id;
 		
-		private System.DateTime _Mood_Date;
-		
-		private System.DateTime _Mood_Time;
+		private System.DateTime _Mood_DateTime;
 		
 		private string _Mood_Description;
 		
@@ -1020,10 +1018,8 @@ namespace MoM_Web
     partial void OnCreated();
     partial void OnMood_IdChanging(int value);
     partial void OnMood_IdChanged();
-    partial void OnMood_DateChanging(System.DateTime value);
-    partial void OnMood_DateChanged();
-    partial void OnMood_TimeChanging(System.DateTime value);
-    partial void OnMood_TimeChanged();
+    partial void OnMood_DateTimeChanging(System.DateTime value);
+    partial void OnMood_DateTimeChanged();
     partial void OnMood_DescriptionChanging(string value);
     partial void OnMood_DescriptionChanged();
     partial void OnStudent_IdChanging(int value);
@@ -1056,42 +1052,22 @@ namespace MoM_Web
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mood_Date", DbType="Date NOT NULL")]
-		public System.DateTime Mood_Date
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mood_DateTime", DbType="DateTime NOT NULL")]
+		public System.DateTime Mood_DateTime
 		{
 			get
 			{
-				return this._Mood_Date;
+				return this._Mood_DateTime;
 			}
 			set
 			{
-				if ((this._Mood_Date != value))
+				if ((this._Mood_DateTime != value))
 				{
-					this.OnMood_DateChanging(value);
+					this.OnMood_DateTimeChanging(value);
 					this.SendPropertyChanging();
-					this._Mood_Date = value;
-					this.SendPropertyChanged("Mood_Date");
-					this.OnMood_DateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Mood_Time", DbType="DateTime NOT NULL")]
-		public System.DateTime Mood_Time
-		{
-			get
-			{
-				return this._Mood_Time;
-			}
-			set
-			{
-				if ((this._Mood_Time != value))
-				{
-					this.OnMood_TimeChanging(value);
-					this.SendPropertyChanging();
-					this._Mood_Time = value;
-					this.SendPropertyChanged("Mood_Time");
-					this.OnMood_TimeChanged();
+					this._Mood_DateTime = value;
+					this.SendPropertyChanged("Mood_DateTime");
+					this.OnMood_DateTimeChanged();
 				}
 			}
 		}
