@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddMoodActivity"
+    android:background="@drawable/home">
+
+    <ImageView
+        android:id="@+id/id_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/roundlogo"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/backArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/MoodHeading"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:id="@+id/MoodHeading"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/edit_textborder"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Mood"
+        android:textColor="#5023af"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_logo" />
+
+    <ImageButton
+        android:id="@+id/happy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:src="@drawable/grinning"
+        android:tooltipText="Happy"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/MoodHeading"/>
+
+    <ImageButton
+        android:id="@+id/sad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:src="@drawable/sob"
+        android:tooltipText="Sad"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MoodHeading"/>
+
+    <ImageButton
+        android:id="@+id/indifferent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:src="@drawable/no_mouth"
+        android:tooltipText="Indifferent"
+        android:layout_marginTop="10dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MoodHeading"/>
+
+    <ImageButton
+        android:id="@+id/sick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:src="@drawable/face_with_thermometer"
+        android:tooltipText="Sick"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/happy"/>
+
+    <ImageButton
+        android:id="@+id/angry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:src="@drawable/rage"
+        android:tooltipText="Angry"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sad" />
+
+    <ImageButton
+        android:id="@+id/cool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:src="@drawable/sunglasses"
+        android:tooltipText="Cool"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/indifferent" />
+
+    <ImageButton
+        android:id="@+id/celebrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:src="@drawable/partying_face"
+        android:tooltipText="Celebrate"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sick"/>
+
+    <ImageButton
+        android:id="@+id/shocked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:src="@drawable/scream"
+        android:tooltipText="Shocked"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/angry" />
+
+    <ImageButton
+        android:id="@+id/anxious"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:src="@drawable/persevere"
+        android:tooltipText="Anxious"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/cool"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/savebtn"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:background="@drawable/round_buttonborder"
+        android:backgroundTint="#5023af"
+        android:text="Save"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shocked" />
+
+    <TextView
+        android:id="@+id/brought"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Brought to you by PsyCaD"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        app:layout_constraintRight_toLeftOf="@+id/uj"
+        app:layout_constraintStart_toStartOf="@id/MoodHeading"
+        app:layout_constraintTop_toBottomOf="@id/savebtn"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/uj"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ujlogo"
+        app:layout_constraintEnd_toEndOf="@id/MoodHeading"
+        app:layout_constraintLeft_toRightOf="@+id/brought"
+        app:layout_constraintTop_toBottomOf="@+id/savebtn"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

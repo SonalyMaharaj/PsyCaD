@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MoodActivity"
+    android:background="@drawable/home">
+
+    <ImageView
+        android:id="@+id/id_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/roundlogo"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/backArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/MoodHeading"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:id="@+id/MoodHeading"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_textborder"
+        android:gravity="center"
+        android:text="Mood Log"
+        android:padding="10dp"
+        android:textColor="#5023af"
+        android:textSize="25dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_logo"
+        app:layout_constraintRight_toLeftOf="@id/addButton"/>
+
+    <ImageView
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:src="@drawable/ic_baseline_add_circle_outline_24"
+        android:layout_marginTop="40dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_logo"
+        app:layout_constraintLeft_toRightOf="@+id/MoodHeading"/>
+
+    <ListView
+        android:id="@+id/lvMoodLogs"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/brought"
+        app:layout_constraintTop_toBottomOf="@id/MoodHeading"
+        android:divider="@color/black"/>
+
+    <TextView
+        android:id="@+id/brought"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
+        android:text="Brought to you by PsyCaD"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/uj"
+        app:layout_constraintStart_toStartOf="@id/MoodHeading"
+        app:layout_constraintTop_toBottomOf="@id/lvMoodLogs" />
+
+    <ImageView
+        android:id="@+id/uj"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ujlogo"
+        app:layout_constraintEnd_toEndOf="@id/MoodHeading"
+        app:layout_constraintLeft_toRightOf="@+id/brought"
+        app:layout_constraintTop_toBottomOf="@+id/lvMoodLogs"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
