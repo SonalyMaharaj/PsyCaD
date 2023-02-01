@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MoM_V1_db" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\MoM_V1_db.mdf;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MoM_V1_dbConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Admin" Member="Admins">
+    <Type Name="Admin">
+      <Column Name="Admin_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Admin_Name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Admin_Surname" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Admin_Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Admin_Password" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Psychologist_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Psychologist_Admin" Member="Psychologist" ThisKey="Psychologist_Id" OtherKey="Psychologist_Id" Type="Psychologist" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student" Member="Students">
+    <Type Name="Student">
+      <Column Name="Student_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Student_Name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Student_Surname" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Student_Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Student_Password" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Association Name="Student_Call" Member="Calls" ThisKey="Student_Id" OtherKey="Student_Id" Type="Call" />
+      <Association Name="Student_Diary" Member="Diaries" ThisKey="Student_Id" OtherKey="Student_Id" Type="Diary" />
+      <Association Name="Student_Mood" Member="Moods" ThisKey="Student_Id" OtherKey="Student_Id" Type="Mood" />
+      <Association Name="Student_Psychologist" Member="Psychologists" ThisKey="Student_Id" OtherKey="Student_Id" Type="Psychologist" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Call" Member="Calls">
+    <Type Name="Call">
+      <Column Name="Call_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Call_Name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Call_Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Student_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Student_Call" Member="Student" ThisKey="Student_Id" OtherKey="Student_Id" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Diary" Member="Diaries">
+    <Type Name="Diary">
+      <Column Name="Diary_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Diary_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Diary_Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="FlaggedWords" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Student_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Student_Diary" Member="Student" ThisKey="Student_Id" OtherKey="Student_Id" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Mood" Member="Moods">
+    <Type Name="Mood">
+      <Column Name="Mood_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Mood_DateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Mood_Description" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Student_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Student_Mood" Member="Student" ThisKey="Student_Id" OtherKey="Student_Id" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Psychologist" Member="Psychologists">
+    <Type Name="Psychologist">
+      <Column Name="Psychologist_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Psychologist_Name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Psychologist_Surname" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Psychologist_Email" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Psychologist_Password" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Admin_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Student_Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Psychologist_Admin" Member="Admins" ThisKey="Psychologist_Id" OtherKey="Psychologist_Id" Type="Admin" />
+      <Association Name="Student_Psychologist" Member="Student" ThisKey="Student_Id" OtherKey="Student_Id" Type="Student" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
