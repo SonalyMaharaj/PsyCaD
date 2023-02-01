@@ -116,5 +116,36 @@ namespace MindOverMatterRestAPI.Controllers
             }
 
         }
+
+        [Route("api/Student/AddStudent")]
+        [HttpPost]
+        public IHttpActionResult AddStudent(String studentName, String studentSurname, String studentEmail, String studentDOB, String studentPassword, Char studentGender, String studentQualification)
+        {
+
+            Student student = new Student
+            {
+                StudentName =studentName,
+                StudentSurname = studentSurname,
+                StudentEmail = studentEmail,
+                StudentPassword = Secrecy.HashPassword(studentPassword),
+                StudentGender = studentGender,
+                StudentDOB = Convert.ToDateTime(studentDOB),
+                StudentQualification = studentQualification
+            };
+
+            db.Students.InsertOnSubmit(student);
+
+            try
+            {
+                db.SubmitChanges();
+                return Ok(true);
+            }
+            catch (InvalidDataContractException e)
+            {
+                e.GetBaseException();
+                return Ok(false);
+            }
+
+        }
     }
 }
