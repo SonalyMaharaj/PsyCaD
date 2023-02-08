@@ -25,7 +25,9 @@ namespace MindOverMatterRestAPI.Controllers
                            select a).FirstOrDefault();
 
             if (student == null) {
-                return Ok(false);
+                StudentClass studentClassNull = new StudentClass { StudentNumber = 0, StudentName = "NULL", StudentSurname = "NULL", StudentEmail = "NULL" };
+
+                return Ok(studentClassNull);
             }
             StudentClass studentClass = new StudentClass {StudentNumber=student.StudentNumber,StudentName=student.StudentName,StudentSurname=student.StudentSurname,StudentEmail=student.StudentEmail};
             //return student

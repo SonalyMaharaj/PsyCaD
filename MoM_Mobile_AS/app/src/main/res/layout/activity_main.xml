@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/txtEmail"
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:background="@drawable/round_textborder"
@@ -34,17 +34,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/id_logo"
+        app:layout_constraintBottom_toTopOf="@id/txtPassword"/>
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/txtPassword"
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:background="@drawable/round_textborder"
         android:drawableLeft="@drawable/ic_baseline_lock_24"
         android:drawablePadding="20dp"
         android:padding="10dp"
-        android:hint="Ulink Password"
+        android:hint="@string/ulink_password"
         android:inputType="textPassword"
         android:textColor="#5023af"
         android:textColorHint="@color/black"
@@ -52,7 +53,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail"
+        app:layout_constraintBottom_toTopOf="@id/remMeButton"/>
 
     <CheckBox
         android:id="@+id/remMeButton"
@@ -65,7 +67,7 @@
         android:buttonTint="#f66608"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/forgot"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
     <TextView
         android:id="@+id/forgot"
@@ -77,10 +79,10 @@
         android:textSize="15dp"
         app:layout_constraintLeft_toRightOf="@id/remMeButton"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginbtn"
+        android:id="@+id/btnLogin"
         android:layout_width="180dp"
         android:layout_height="45dp"
         android:background="@drawable/round_buttonborder"
@@ -105,7 +107,7 @@
         android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginbtn" />
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
     <ImageView
         android:id="@+id/uj"

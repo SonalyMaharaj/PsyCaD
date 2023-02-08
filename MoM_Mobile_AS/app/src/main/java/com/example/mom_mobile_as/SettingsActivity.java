@@ -34,4 +34,16 @@ public class SettingsActivity extends AppCompatActivity
             }
         });
     }
+
+    public void LogOut(View view) {
+        //This method will remove the Session and Open Login Screen
+
+        SessionManager sessionManager=new SessionManager(SettingsActivity.this);
+        sessionManager.removeSession(); //remove the current Session
+
+        //MOVE to the LogIn Activity Method
+        Intent logoutIntent = new Intent(this, MainActivity.class);
+        logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(logoutIntent);
+    }
 }

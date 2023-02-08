@@ -55,7 +55,7 @@
         app:layout_constraintLeft_toRightOf="@+id/DiaryHeading"/>
 
     <ListView
-        android:id="@+id/lvCallLogs"
+        android:id="@+id/lvDiaryEntries"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"

@@ -33,11 +33,11 @@ namespace MindOverMatterRestAPI.Controllers
 
         [Route("api/Diary/GetStudentDiaryEntries")]
         [HttpGet]
-        public IHttpActionResult GetStudentDiaryEntries(int studentnum)
+        public IHttpActionResult GetStudentDiaryEntries(int StudentNumber)
         {
             List<DiaryClass> diaries = new List<DiaryClass>();
             List<Diary> list =new List<Diary>(from a in db.Diaries
-                        where a.StudentNumber.Equals(studentnum)
+                        where a.StudentNumber.Equals(StudentNumber)
                         select a);
             var listarray = list.ToArray<Diary>();
             //Sort the diaries to start with the recent added diary

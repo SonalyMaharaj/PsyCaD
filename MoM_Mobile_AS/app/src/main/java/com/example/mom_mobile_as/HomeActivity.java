@@ -3,10 +3,13 @@ package com.example.mom_mobile_as;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class HomeActivity extends AppCompatActivity
 {
@@ -15,12 +18,15 @@ public class HomeActivity extends AppCompatActivity
     private Button btnCall;
 
     ImageView imageView;
+    DataServiceReference client=new DataServiceReference(HomeActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        DisplayWelcomeMessage(); //Display Welcome Home Page Message
 
         //Redirect to diary page
         btnDiary = (Button) findViewById(R.id.EDiaryButton);
@@ -73,6 +79,33 @@ public class HomeActivity extends AppCompatActivity
         });
     }
 
+    public  void DisplayWelcomeMessage(){
+
+        SessionManager sessionManager=new SessionManager(HomeActivity.this);
+        int StudentNumber=sessionManager.getSession();
+
+        client.getStudent(String.valueOf(StudentNumber) , new DataServiceReference.IMoMVolleyListener() {
+            @Override
+            public void OnResponse(Object response) {
+
+                try{
+                    //display the Welcome Message
+                    Models.StudentModel student=(Models.StudentModel)response;
+                    TextView txtWelcomeMessage=findViewById(R.id.welcomeMessage);
+                    txtWelcomeMessage.setText("Hello, "+student.StudentName.toUpperCase());
+
+                }catch (Exception exception){
+                    exception.printStackTrace();
+                }
+            }
+
+            @Override
+            public void OnError(String error) {
+
+                Toast.makeText(HomeActivity.this,"Error Occured",Toast.LENGTH_LONG);
+            }
+        });
+    }
 
     public void openDiaryActivity()
     {
@@ -90,5 +123,13 @@ public class HomeActivity extends AppCompatActivity
     {
         Intent Call_intent = new Intent(this, CallActivity.class);
         startActivity(Call_intent);
+    }
+
+    public void BookingForm(View view) {
+
+        //redirect to the Booking Form
+        Intent Call_intent = new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.google.com"));
+        startActivity(Call_intent);
+
     }
 }
