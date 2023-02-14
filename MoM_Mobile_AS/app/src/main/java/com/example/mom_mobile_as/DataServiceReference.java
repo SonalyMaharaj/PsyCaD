@@ -267,20 +267,17 @@ public class DataServiceReference {
 
     public  void getMoods(IMoMVolleyListener volleyListener){
 
-        String url="";
+        String url=APIURL+"Mood/GetMoods?StudentNumber=200001";
 
         JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 ArrayList<Models.MoodModel> moodModels=new ArrayList<>();
-                moodModels.add(new Models.MoodModel("MOOD NAME","10/10/2022",R.drawable.grinning));
-                moodModels.add(new Models.MoodModel("MOOD NAME","10/10/2022",R.drawable.no_mouth));
-                moodModels.add(new Models.MoodModel("MOOD NAME","10/10/2022",R.drawable.face_with_thermometer));
 
                 for(int i=0;i<response.length();i++){
                     try {
                         JSONObject object= (JSONObject) response.get(i); //get JSON OBJECT
-                        Models.MoodModel mood=new Models.MoodModel(object.get("Mood").toString(),object.get("Date").toString(),Integer.parseInt(object.get("MoodIntegerImage").toString()));
+                        Models.MoodModel mood=new Models.MoodModel(object.get("MoodEmotion").toString(),object.get("MoodDate").toString(),Integer.parseInt(object.get("MoodIntegerImage").toString()));
                         moodModels.add(mood); //add mood to the list of moods
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -296,6 +293,43 @@ public class DataServiceReference {
             }
         });
         MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
+    }
+
+    //SAVE THE MOOD TO THE API
+    public  void LogMood(String MoodName, int MoodIntegerImage, IMoMVolleyListener volleyListener){
+        String url=APIURL+"";
+
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response.toString().equals("true")){
+                    volleyListener.OnResponse("Mood Saved");
+                }
+                else{
+                    volleyListener.OnError("Failed to save Mood");
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyListener.OnError(error.toString());
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+
+               SessionManager sessionManager=new SessionManager(context);
+               int StudentNum=sessionManager.getSession();
+                Map<String, String> params = new HashMap<>();
+                params.put("MoodEmotion", MoodName);
+                params.put("MoodIntegerImage",String.valueOf(MoodIntegerImage));
+                params.put("StudentNumber", String.valueOf(StudentNum));
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(stringRequest);
     }
 
 

@@ -21,6 +21,8 @@ import java.util.ArrayList;
 
 public class AddMoodActivity extends AppCompatActivity
 {
+    DataServiceReference client=new DataServiceReference(AddMoodActivity.this);
+
     ImageView iv_arrow;
     GridView gvMoods;
     Integer[] image={
@@ -28,6 +30,11 @@ public class AddMoodActivity extends AppCompatActivity
             R.drawable.face_with_thermometer, R.drawable.rage,R.drawable.sunglasses,
             R.drawable.partying_face,R.drawable.scream,R.drawable.persevere
     };
+
+    String[] MoodNames={
+        "Happy","Sad","Indifferent","Sick"
+            ,"Angry","Cool","Party","Shocked","Awful"
+};
 
 
     @Override
@@ -61,7 +68,17 @@ public class AddMoodActivity extends AppCompatActivity
                 Toast.makeText(AddMoodActivity.this,"clicked "+ image[i], Toast.LENGTH_SHORT).show();
 
                 //TODO: SAVE THE SELECTED MOOD TO THE DATABASE
+                client.LogMood(MoodNames[i], image[i], new DataServiceReference.IMoMVolleyListener() {
+                    @Override
+                    public void OnResponse(Object response) {
+                        Toast.makeText(AddMoodActivity.this,response.toString(),Toast.LENGTH_LONG).show();
+                    }
 
+                    @Override
+                    public void OnError(String error) {
+                        Toast.makeText(AddMoodActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
 

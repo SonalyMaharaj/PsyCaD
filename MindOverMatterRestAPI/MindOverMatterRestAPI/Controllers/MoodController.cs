@@ -85,8 +85,8 @@ namespace MindOverMatterRestAPI.Controllers
 
             Mood moodClass = new Mood
             {
-             MoodDate = Convert.ToDateTime(mood.MoodDate).Date,
-             MoodTime = mood.MoodTime,
+                MoodDate = DateTime.Now,
+                MoodTime = DateTime.Now.Hour.ToString(),
              MoodEmotion = mood.MoodEmotion,
              MoodIntegerImage=mood.MoodIntegerImage,
              StudentNumber = mood.StudentNumber,
