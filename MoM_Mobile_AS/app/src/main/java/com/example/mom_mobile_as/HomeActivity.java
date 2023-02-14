@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,8 +17,9 @@ public class HomeActivity extends AppCompatActivity
     private Button btnDiary;
     private Button btnMood;
     private Button btnCall;
-
+    private ProgressBar progressBar;
     ImageView imageView;
+
     DataServiceReference client=new DataServiceReference(HomeActivity.this);
 
     @Override
@@ -26,10 +28,10 @@ public class HomeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        DisplayWelcomeMessage(); //Display Welcome Home Page Message
-
         //Redirect to diary page
+        progressBar=findViewById(R.id.progressBar);
         btnDiary = (Button) findViewById(R.id.EDiaryButton);
+
         btnDiary.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -77,6 +79,9 @@ public class HomeActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+
+        DisplayWelcomeMessage(); //Display Welcome Home Page Message
+
     }
 
     public  void DisplayWelcomeMessage(){
@@ -105,6 +110,9 @@ public class HomeActivity extends AppCompatActivity
                 Toast.makeText(HomeActivity.this,"Error Occured",Toast.LENGTH_LONG);
             }
         });
+
+        //remove the progress Bar after successful load
+        progressBar.setVisibility(View.GONE);
     }
 
     public void openDiaryActivity()

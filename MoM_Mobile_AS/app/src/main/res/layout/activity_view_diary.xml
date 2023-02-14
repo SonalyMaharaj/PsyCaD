@@ -4,6 +4,98 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewDiary">
+    tools:context=".AddDiaryActivity"
+    android:background="@drawable/home">
+
+    <ImageView
+        android:id="@+id/id_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/roundlogo"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/backArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/DearDiary"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:id="@+id/DearDiary"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/edit_textborder"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="Dear Diary"
+        android:textColor="#5023af"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_logo" />
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSaveEntry"
+        android:layout_width="180dp"
+        android:layout_height="45dp"
+        android:background="@drawable/round_buttonborder"
+        android:backgroundTint="#5023af"
+        android:text="Save"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDiary" />
+
+    <TextView
+        android:id="@+id/brought"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Brought to you by PsyCaD"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        app:layout_constraintRight_toLeftOf="@+id/uj"
+        app:layout_constraintStart_toStartOf="@id/DearDiary"
+        app:layout_constraintTop_toBottomOf="@id/btnSaveEntry"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/uj"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ujlogo"
+        app:layout_constraintEnd_toEndOf="@id/DearDiary"
+        app:layout_constraintLeft_toRightOf="@+id/brought"
+        app:layout_constraintTop_toBottomOf="@+id/btnSaveEntry"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <EditText
+        android:id="@+id/txtDiary"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:background="@drawable/edit_textborder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DearDiary"
+        android:verticalScrollbarPosition="defaultPosition"
+        android:scrollbars="vertical"
+        android:scrollbarSize="20dp"
+        android:layout_marginTop="50dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

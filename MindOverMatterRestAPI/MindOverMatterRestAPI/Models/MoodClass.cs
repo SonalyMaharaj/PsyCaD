@@ -11,7 +11,7 @@ namespace MindOverMatterRestAPI.Models
         public string MoodTime { get; set; }
         public DateTime MoodDate { get; set; }
         public string MoodEmotion { get; set; }
-
+        public int MoodIntegerImage { get; set; }
         public int StudentNumber { get; set; }
 
     }

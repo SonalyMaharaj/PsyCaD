@@ -107,6 +107,74 @@ public class Models {
     }
 
 
+    public static class MoodModel{
+        private int MoodId;
+        private String MoodName;
+        private String MoodDate;
+        private Integer MoodIntegerImage;
+        private String Path;
+
+        public MoodModel(int moodId, String moodName, String moodDate, Integer moodIntegerImage, String imagePath) {
+            MoodId = moodId;
+            MoodName = moodName;
+            MoodDate = moodDate;
+            MoodIntegerImage = moodIntegerImage;
+            Path = imagePath;
+        }
+
+        public MoodModel(String moodName, String moodDate, Integer moodIntegerImage) {
+            MoodName = moodName;
+            MoodDate = moodDate;
+            MoodIntegerImage = moodIntegerImage;
+        }
+
+
+
+        //DEFAULT CONSTRUCTOR
+        public  MoodModel(){
+
+        }
+
+        public int getMoodId() {
+            return MoodId;
+        }
+
+        public void setMoodId(int moodId) {
+            MoodId = moodId;
+        }
+
+        public String getMoodName() {
+            return MoodName;
+        }
+
+        public void setMoodName(String moodName) {
+            MoodName = moodName;
+        }
+
+        public String getMoodDate() {
+            return MoodDate;
+        }
+
+        public void setMoodDate(String moodDate) {
+            MoodDate = moodDate;
+        }
+
+        public Integer getMoodIntegerImage() {
+            return MoodIntegerImage;
+        }
+
+        public void setMoodIntegerImage(Integer moodIntegerImage) {
+            MoodIntegerImage = moodIntegerImage;
+        }
+
+        public String getImagePath() {
+            return Path;
+        }
+
+        public void setImagePath(String imagePath) {
+            Path = imagePath;
+        }
+    }
 
 
 }

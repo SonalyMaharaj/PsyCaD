@@ -50,15 +50,17 @@ namespace MindOverMatterRestAPI.Controllers
             return Ok(diaries);
         }
 
+
         //Save the diary entry to the database
         [Route("api/Diary/LogDiaryEntry")]
         [HttpPost]
         public IHttpActionResult logDiaryEntry(DiaryClass diaryClass)
         {
-
-            if (diaryClass == null) {
+            if (diaryClass == null)
+            {
                 return Ok(false);
             }
+
 
             //determine whether the entry is flagged or not
             string wordsflagged = HelperClass.DetermineFlag(diaryClass.Description);
@@ -75,11 +77,11 @@ namespace MindOverMatterRestAPI.Controllers
             var diary = new Diary
             {
                 DiaryTitle = diaryClass.Title,
-                StudentNumber = diaryClass.StudentNumber,
+                StudentNumber = Convert.ToInt32(diaryClass.StudentNumber),
                 DiaryDescription = diaryClass.Description,
-                FlaggedWords =wordsflagged, //get flagged words
-                IsFlagged= isflagged,
-                DiaryDate = diaryClass.Date,
+                FlaggedWords = wordsflagged, //get flagged words
+                IsFlagged = isflagged,
+                DiaryDate = DateTime.Now
             };
 
             db.Diaries.InsertOnSubmit(diary);
@@ -95,6 +97,50 @@ namespace MindOverMatterRestAPI.Controllers
                 return Ok(false);
             }
         }
+
+        /* 
+        //Save the diary entry to the database
+        [Route("api/Diary/LogDiaryEntry")]
+        [HttpPost]
+        public IHttpActionResult logDiaryEntry(String DiaryTitle, String StudentNumber, String Description)
+        {
+
+           
+            //determine whether the entry is flagged or not
+            string wordsflagged = HelperClass.DetermineFlag(Description);
+            int isflagged = 0;
+            if (!wordsflagged.ToUpper().Equals("NONE"))
+            {
+                //if it has flagged words, then mark as flagged
+                isflagged = 1;
+            }
+            else
+            {
+                isflagged = 0;
+            }
+            var diary = new Diary
+            {
+                DiaryTitle = DiaryTitle,
+                StudentNumber =Convert.ToInt32(StudentNumber),
+                DiaryDescription = Description,
+                FlaggedWords =wordsflagged, //get flagged words
+                IsFlagged= isflagged,
+                DiaryDate =DateTime.Now
+            };
+
+            db.Diaries.InsertOnSubmit(diary);
+            try
+            {
+                db.SubmitChanges();
+                return Ok(true);
+            }
+            catch (Exception ex)
+            {
+                ex.GetBaseException();
+
+                return Ok(false);
+            }
+        }*/
 
         [Route("api/Diary/GetDiaryEntry")]
         [HttpGet]
@@ -125,6 +171,7 @@ namespace MindOverMatterRestAPI.Controllers
             //change diary fields
             diary.DiaryTitle = diaryClass.Title.Trim();
             diary.DiaryDescription = diaryClass.Description.Trim();
+            diary.DiaryDate = DateTime.Now; //update the date to date of mofification.
             diary.FlaggedWords = HelperClass.DetermineFlag(diaryClass.Description); //get flagged words
             if(!diary.FlaggedWords.ToUpper().Equals("NONE")) {
                 //if it has flagged words, then mark as flagged

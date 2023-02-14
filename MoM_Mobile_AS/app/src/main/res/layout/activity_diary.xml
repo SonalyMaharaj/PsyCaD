@@ -76,7 +76,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/uj"
         app:layout_constraintStart_toStartOf="@id/DiaryHeading"
-        app:layout_constraintTop_toBottomOf="@id/lvCallLogs" />
+        app:layout_constraintTop_toBottomOf="@id/lvDiaryEntries" />
 
     <ImageView
         android:id="@+id/uj"
@@ -86,7 +86,16 @@
         android:src="@drawable/ujlogo"
         app:layout_constraintEnd_toEndOf="@id/DiaryHeading"
         app:layout_constraintLeft_toRightOf="@+id/brought"
-        app:layout_constraintTop_toBottomOf="@+id/lvCallLogs"
+        app:layout_constraintTop_toBottomOf="@+id/lvDiaryEntries"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="92dp"
+        android:layout_height="66dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/DiaryHeading" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

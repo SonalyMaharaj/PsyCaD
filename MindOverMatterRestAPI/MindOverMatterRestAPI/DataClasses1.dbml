@@ -40,15 +40,6 @@
       <Column Name="IsActive" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Mood" Member="Moods">
-    <Type Name="Mood">
-      <Column Name="MoodId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="MoodDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="MoodTime" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="MoodEmotion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="StudentNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.Notification" Member="Notifications">
     <Type Name="Notification">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -129,6 +120,16 @@
       <Column Name="ExerciseDescription" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="MediaPath" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="IsActive" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Mood" Member="Moods">
+    <Type Name="Mood">
+      <Column Name="MoodId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MoodDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="MoodTime" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MoodEmotion" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MoodIntegerImage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StudentNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

@@ -25,12 +25,35 @@ namespace MindOverMatterRestAPI.Controllers
             }
             foreach (var a in list)
             {
-                MoodClass mood = new MoodClass { MoodId = a.MoodId, MoodTime = a.MoodTime, MoodDate = Convert.ToDateTime(a.MoodDate), MoodEmotion = a.MoodEmotion, StudentNumber = Convert.ToInt32(a.StudentNumber) };
+                MoodClass mood = new MoodClass { MoodId = a.MoodId, MoodTime = a.MoodTime, MoodDate = Convert.ToDateTime(a.MoodDate), MoodEmotion = a.MoodEmotion, MoodIntegerImage= Convert.ToInt32(a.MoodIntegerImage),StudentNumber = Convert.ToInt32(a.StudentNumber) };
                 moods.Add(mood);
             }
 
             return Ok(moods);
         }
+
+        [Route("api/Mood/GetMoods")]
+        [HttpGet]
+        public IHttpActionResult GetMoods(int StudentNumber)
+        {
+            List<MoodClass> moods = new List<MoodClass>();
+            var list = (from a in db.Moods
+                        where a.StudentNumber.Equals(StudentNumber)
+                        select a);
+            if (list == null)
+            {
+                return Ok(false); //return false if the list is null
+            }
+            foreach (var a in list)
+            {
+                MoodClass mood = new MoodClass { MoodId = a.MoodId, MoodTime = a.MoodTime, MoodDate = Convert.ToDateTime(a.MoodDate), MoodEmotion = a.MoodEmotion, MoodIntegerImage = Convert.ToInt32(a.MoodIntegerImage), StudentNumber = Convert.ToInt32(a.StudentNumber) };
+                moods.Add(mood);
+            }
+
+            return Ok(moods);
+        }
+
+   
 
         [Route("api/Mood/getMood")]
         [HttpGet]
@@ -45,7 +68,7 @@ namespace MindOverMatterRestAPI.Controllers
                 return Ok(false);
             }
 
-            MoodClass moodClass = new MoodClass { MoodId = mood.MoodId, MoodDate = Convert.ToDateTime(mood.MoodDate), MoodTime = mood.MoodTime, MoodEmotion = mood.MoodEmotion, StudentNumber = Convert.ToInt32(mood.StudentNumber) };
+            MoodClass moodClass = new MoodClass { MoodId = mood.MoodId, MoodDate = Convert.ToDateTime(mood.MoodDate), MoodTime = mood.MoodTime, MoodEmotion = mood.MoodEmotion,MoodIntegerImage= Convert.ToInt32(mood.MoodIntegerImage), StudentNumber = Convert.ToInt32(mood.StudentNumber) };
 
             return Ok(moodClass);
         }
@@ -65,6 +88,7 @@ namespace MindOverMatterRestAPI.Controllers
              MoodDate = Convert.ToDateTime(mood.MoodDate).Date,
              MoodTime = mood.MoodTime,
              MoodEmotion = mood.MoodEmotion,
+             MoodIntegerImage=mood.MoodIntegerImage,
              StudentNumber = mood.StudentNumber,
             };
 

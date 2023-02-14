@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity
                         }catch (Exception exception)
                         {
                             exception.printStackTrace();
+                            Toast.makeText(MainActivity.this, "Login Failed ", Toast.LENGTH_SHORT).show();
+
                         }
                     }
 
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity
                     public void OnError(String error) {
                         //after this function has been called back do the following
                         Toast.makeText(MainActivity.this, error, Toast.LENGTH_LONG).show();
+                        txtPassword.setText(""); //clear the password field
                     }
                 });
 

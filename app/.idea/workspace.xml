@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6cf44fc8-2d03-4c33-ac1f-32be304d9272" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../MoM_Web/.vs/MoM_Web/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Web/.vs/MoM_Web/v16/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MoM_Web/obj/Debug/MoM_Web.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Web/obj/Debug/MoM_Web.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/.vs/MindOverMatterRestAPI/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/.vs/MindOverMatterRestAPI/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/Controllers/DiaryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/Controllers/DiaryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/bin/MindOverMatterRestAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/bin/MindOverMatterRestAPI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/bin/MindOverMatterRestAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/bin/MindOverMatterRestAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/obj/Debug/MindOverMatterRestAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/obj/Debug/MindOverMatterRestAPI.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/obj/Debug/MindOverMatterRestAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/obj/Debug/MindOverMatterRestAPI.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/AddDiaryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/AddDiaryActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/DataServiceReference.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/DataServiceReference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/ViewDiary.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/ViewDiary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_add_diary.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_add_diary.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_view_diary.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_view_diary.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

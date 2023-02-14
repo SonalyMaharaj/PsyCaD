@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,8 +21,10 @@ public class DiaryActivity extends AppCompatActivity
 {
     ImageView iv_arrow;
     ImageView iv_add;
-    DataServiceReference client=new DataServiceReference(DiaryActivity.this);
     ListView lvDiaries;
+    ProgressBar progressBar;
+    DataServiceReference client=new DataServiceReference(DiaryActivity.this);
+
     ArrayList<DiaryModel> InitialDiaryEntries; //this variable will store  List of Fixed Diary Entries requested from the API
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,7 +34,7 @@ public class DiaryActivity extends AppCompatActivity
 
         lvDiaries=findViewById(R.id.lvDiaryEntries);
         iv_arrow = findViewById(R.id.backArrow);
-
+        progressBar=findViewById(R.id.progressBar);
         iv_arrow.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -71,13 +74,15 @@ public class DiaryActivity extends AppCompatActivity
                DiaryModel diary=InitialDiaryEntries.get(i);
                //create intent
                Intent intent=new Intent(getApplicationContext(),ViewDiary.class);
-               //parse the class needed to the next activity
+               //parse the object needed to the next activity
                intent.putExtra("diary", diary);
                startActivity(intent);
             }
         });
+
     }
-    
+
+
     public void populateDiaryEntries(){
 
         //Get Diary Entries Objects
@@ -95,6 +100,9 @@ public class DiaryActivity extends AppCompatActivity
                 ArrayAdapter diariesAdapter=new ArrayAdapter( DiaryActivity.this,android.R.layout.simple_list_item_1, DiariesTitles);//this, android.R.layout.simple_list_item_1, DiariesTitles);
                 //pass the adapter to the ListView
                 lvDiaries.setAdapter(diariesAdapter);
+
+                //pro
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -115,6 +123,8 @@ public class DiaryActivity extends AppCompatActivity
         for (DiaryModel diaryModel:diaryEntries) {
             titles.add(diaryModel.getDiaryTitle()); //add title to list of titles
         }
+
+
         return  titles; //return titles
     }
 

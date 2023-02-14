@@ -42,9 +42,6 @@ namespace MindOverMatterRestAPI
     partial void InsertMeidicineTracker(MeidicineTracker instance);
     partial void UpdateMeidicineTracker(MeidicineTracker instance);
     partial void DeleteMeidicineTracker(MeidicineTracker instance);
-    partial void InsertMood(Mood instance);
-    partial void UpdateMood(Mood instance);
-    partial void DeleteMood(Mood instance);
     partial void InsertNotification(Notification instance);
     partial void UpdateNotification(Notification instance);
     partial void DeleteNotification(Notification instance);
@@ -69,6 +66,9 @@ namespace MindOverMatterRestAPI
     partial void InsertExercise(Exercise instance);
     partial void UpdateExercise(Exercise instance);
     partial void DeleteExercise(Exercise instance);
+    partial void InsertMood(Mood instance);
+    partial void UpdateMood(Mood instance);
+    partial void DeleteMood(Mood instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -133,14 +133,6 @@ namespace MindOverMatterRestAPI
 			}
 		}
 		
-		public System.Data.Linq.Table<Mood> Moods
-		{
-			get
-			{
-				return this.GetTable<Mood>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Notification> Notifications
 		{
 			get
@@ -202,6 +194,14 @@ namespace MindOverMatterRestAPI
 			get
 			{
 				return this.GetTable<Exercise>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Mood> Moods
+		{
+			get
+			{
+				return this.GetTable<Mood>();
 			}
 		}
 	}
@@ -909,164 +909,6 @@ namespace MindOverMatterRestAPI
 					this._IsActive = value;
 					this.SendPropertyChanged("IsActive");
 					this.OnIsActiveChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Mood")]
-	public partial class Mood : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MoodId;
-		
-		private System.DateTime _MoodDate;
-		
-		private string _MoodTime;
-		
-		private string _MoodEmotion;
-		
-		private int _StudentNumber;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMoodIdChanging(int value);
-    partial void OnMoodIdChanged();
-    partial void OnMoodDateChanging(System.DateTime value);
-    partial void OnMoodDateChanged();
-    partial void OnMoodTimeChanging(string value);
-    partial void OnMoodTimeChanged();
-    partial void OnMoodEmotionChanging(string value);
-    partial void OnMoodEmotionChanged();
-    partial void OnStudentNumberChanging(int value);
-    partial void OnStudentNumberChanged();
-    #endregion
-		
-		public Mood()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoodId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int MoodId
-		{
-			get
-			{
-				return this._MoodId;
-			}
-			set
-			{
-				if ((this._MoodId != value))
-				{
-					this.OnMoodIdChanging(value);
-					this.SendPropertyChanging();
-					this._MoodId = value;
-					this.SendPropertyChanged("MoodId");
-					this.OnMoodIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoodDate", DbType="Date NOT NULL")]
-		public System.DateTime MoodDate
-		{
-			get
-			{
-				return this._MoodDate;
-			}
-			set
-			{
-				if ((this._MoodDate != value))
-				{
-					this.OnMoodDateChanging(value);
-					this.SendPropertyChanging();
-					this._MoodDate = value;
-					this.SendPropertyChanged("MoodDate");
-					this.OnMoodDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoodTime", DbType="VarChar(MAX)")]
-		public string MoodTime
-		{
-			get
-			{
-				return this._MoodTime;
-			}
-			set
-			{
-				if ((this._MoodTime != value))
-				{
-					this.OnMoodTimeChanging(value);
-					this.SendPropertyChanging();
-					this._MoodTime = value;
-					this.SendPropertyChanged("MoodTime");
-					this.OnMoodTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoodEmotion", DbType="VarChar(MAX)")]
-		public string MoodEmotion
-		{
-			get
-			{
-				return this._MoodEmotion;
-			}
-			set
-			{
-				if ((this._MoodEmotion != value))
-				{
-					this.OnMoodEmotionChanging(value);
-					this.SendPropertyChanging();
-					this._MoodEmotion = value;
-					this.SendPropertyChanged("MoodEmotion");
-					this.OnMoodEmotionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentNumber", DbType="Int NOT NULL")]
-		public int StudentNumber
-		{
-			get
-			{
-				return this._StudentNumber;
-			}
-			set
-			{
-				if ((this._StudentNumber != value))
-				{
-					this.OnStudentNumberChanging(value);
-					this.SendPropertyChanging();
-					this._StudentNumber = value;
-					this.SendPropertyChanged("StudentNumber");
-					this.OnStudentNumberChanged();
 				}
 			}
 		}
@@ -2571,6 +2413,188 @@ namespace MindOverMatterRestAPI
 					this._IsActive = value;
 					this.SendPropertyChanged("IsActive");
 					this.OnIsActiveChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Mood")]
+	public partial class Mood : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MoodId;
+		
+		private System.DateTime _MoodDate;
+		
+		private string _MoodTime;
+		
+		private string _MoodEmotion;
+		
+		private System.Nullable<int> _MoodIntegerImage;
+		
+		private int _StudentNumber;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMoodIdChanging(int value);
+    partial void OnMoodIdChanged();
+    partial void OnMoodDateChanging(System.DateTime value);
+    partial void OnMoodDateChanged();
+    partial void OnMoodTimeChanging(string value);
+    partial void OnMoodTimeChanged();
+    partial void OnMoodEmotionChanging(string value);
+    partial void OnMoodEmotionChanged();
+    partial void OnMoodIntegerImageChanging(System.Nullable<int> value);
+    partial void OnMoodIntegerImageChanged();
+    partial void OnStudentNumberChanging(int value);
+    partial void OnStudentNumberChanged();
+    #endregion
+		
+		public Mood()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoodId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MoodId
+		{
+			get
+			{
+				return this._MoodId;
+			}
+			set
+			{
+				if ((this._MoodId != value))
+				{
+					this.OnMoodIdChanging(value);
+					this.SendPropertyChanging();
+					this._MoodId = value;
+					this.SendPropertyChanged("MoodId");
+					this.OnMoodIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoodDate", DbType="Date NOT NULL")]
+		public System.DateTime MoodDate
+		{
+			get
+			{
+				return this._MoodDate;
+			}
+			set
+			{
+				if ((this._MoodDate != value))
+				{
+					this.OnMoodDateChanging(value);
+					this.SendPropertyChanging();
+					this._MoodDate = value;
+					this.SendPropertyChanged("MoodDate");
+					this.OnMoodDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoodTime", DbType="VarChar(MAX)")]
+		public string MoodTime
+		{
+			get
+			{
+				return this._MoodTime;
+			}
+			set
+			{
+				if ((this._MoodTime != value))
+				{
+					this.OnMoodTimeChanging(value);
+					this.SendPropertyChanging();
+					this._MoodTime = value;
+					this.SendPropertyChanged("MoodTime");
+					this.OnMoodTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoodEmotion", DbType="VarChar(MAX)")]
+		public string MoodEmotion
+		{
+			get
+			{
+				return this._MoodEmotion;
+			}
+			set
+			{
+				if ((this._MoodEmotion != value))
+				{
+					this.OnMoodEmotionChanging(value);
+					this.SendPropertyChanging();
+					this._MoodEmotion = value;
+					this.SendPropertyChanged("MoodEmotion");
+					this.OnMoodEmotionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MoodIntegerImage", DbType="Int")]
+		public System.Nullable<int> MoodIntegerImage
+		{
+			get
+			{
+				return this._MoodIntegerImage;
+			}
+			set
+			{
+				if ((this._MoodIntegerImage != value))
+				{
+					this.OnMoodIntegerImageChanging(value);
+					this.SendPropertyChanging();
+					this._MoodIntegerImage = value;
+					this.SendPropertyChanged("MoodIntegerImage");
+					this.OnMoodIntegerImageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentNumber", DbType="Int NOT NULL")]
+		public int StudentNumber
+		{
+			get
+			{
+				return this._StudentNumber;
+			}
+			set
+			{
+				if ((this._StudentNumber != value))
+				{
+					this.OnStudentNumberChanging(value);
+					this.SendPropertyChanging();
+					this._StudentNumber = value;
+					this.SendPropertyChanged("StudentNumber");
+					this.OnStudentNumberChanged();
 				}
 			}
 		}
