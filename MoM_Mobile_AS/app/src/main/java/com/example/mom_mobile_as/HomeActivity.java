@@ -18,6 +18,7 @@ public class HomeActivity extends AppCompatActivity
     private Button btnMood;
     private Button btnCall;
     private ProgressBar progressBar;
+    private TextView txtWelcomeMessage;
     ImageView imageView;
 
     DataServiceReference client=new DataServiceReference(HomeActivity.this);
@@ -30,6 +31,7 @@ public class HomeActivity extends AppCompatActivity
 
         //Redirect to diary page
         progressBar=findViewById(R.id.progressBar);
+        txtWelcomeMessage=findViewById(R.id.welcomeMessage);
         btnDiary = (Button) findViewById(R.id.EDiaryButton);
 
         btnDiary.setOnClickListener(new View.OnClickListener()
@@ -96,8 +98,7 @@ public class HomeActivity extends AppCompatActivity
                 try{
                     //display the Welcome Message
                     Models.StudentModel student=(Models.StudentModel)response;
-                    TextView txtWelcomeMessage=findViewById(R.id.welcomeMessage);
-                    txtWelcomeMessage.setText("Hello, "+student.StudentName.toUpperCase());
+                    txtWelcomeMessage.setText("Hello, "+student.StudentName);
 
                 }catch (Exception exception){
                     exception.printStackTrace();
@@ -107,7 +108,7 @@ public class HomeActivity extends AppCompatActivity
             @Override
             public void OnError(String error) {
 
-                Toast.makeText(HomeActivity.this,"Error Occured",Toast.LENGTH_LONG);
+                Toast.makeText(HomeActivity.this,"Error Occurred",Toast.LENGTH_LONG);
             }
         });
 

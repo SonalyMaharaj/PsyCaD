@@ -21,6 +21,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.StringTokenizer;
 
 public class DataServiceReference {
 
@@ -81,7 +82,9 @@ public class DataServiceReference {
 
     public void getStudent(String StudentNumber,IMoMVolleyListener volleyResponseListener){
         //method to get a particular Student using StudentNumber
-        String url=APIURL+"Student//GetStudent?StudentNumber=200001";
+        SessionManager sessionManager=new SessionManager(context);//
+
+        String url=APIURL+"Student//GetStudent?StudentNumber="+sessionManager.getSession();
 
         //request a JSONObject
         JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null,
@@ -277,7 +280,11 @@ public class DataServiceReference {
                 for(int i=0;i<response.length();i++){
                     try {
                         JSONObject object= (JSONObject) response.get(i); //get JSON OBJECT
-                        Models.MoodModel mood=new Models.MoodModel(object.get("MoodEmotion").toString(),object.get("MoodDate").toString(),Integer.parseInt(object.get("MoodIntegerImage").toString()));
+                        String strDate= object.get("MoodDate").toString(); //get a Mood
+                        StringTokenizer stringTokenizer=new StringTokenizer(strDate,"T"); //take only the date, without the default time 00:00:00
+
+                        String strTime=object.get("MoodTime").toString();
+                        Models.MoodModel mood=new Models.MoodModel(object.get("MoodEmotion").toString(),stringTokenizer.nextToken(),strTime,Integer.parseInt(object.get("MoodIntegerImage").toString()));
                         moodModels.add(mood); //add mood to the list of moods
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -297,7 +304,7 @@ public class DataServiceReference {
 
     //SAVE THE MOOD TO THE API
     public  void LogMood(String MoodName, int MoodIntegerImage, IMoMVolleyListener volleyListener){
-        String url=APIURL+"";
+        String url=APIURL+"Mood/LogMood";
 
         StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -332,6 +339,91 @@ public class DataServiceReference {
         MySingleton.getInstance(context).addToRequestQueue(stringRequest);
     }
 
+
+
+    public void LogCall(String CallNumber, String CallName, IMoMVolleyListener volleyListener){
+
+        String url=APIURL+"CallLog/LogCall";
+
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response.toString().equals("true")){
+                    volleyListener.OnResponse("Calling...");
+                }
+                else{
+                    volleyListener.OnError("Failed to save Mood");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyListener.OnError(error.toString());
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+
+                SessionManager sessionManager=new SessionManager(context);
+                int StudentNum=sessionManager.getSession();
+                Map<String, String> params = new HashMap<>();
+                params.put("TelHolder", CallName);
+                params.put("TelNumber",CallNumber);
+                params.put("StudentNumber", String.valueOf(StudentNum));
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(stringRequest);
+
+    }
+
+    //This function will request Call Logs from the database, specifically for this Student
+
+    public void getCallLogs(IMoMVolleyListener volleyListener){
+        SessionManager sessionManager=new SessionManager(context); //create a Session Manager Object
+
+        int StudentNumber=sessionManager.getSession(); //get Student Number stored at in the SessionManager
+        String url=APIURL+"CallLog/getCallLogs?StudentNumber="+StudentNumber;
+
+        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                ArrayList<Models.CallLogModel> callLogModels=new ArrayList<>();
+
+                for(int i=0;i<response.length();i++){
+
+                    try {
+                        //convert to JSON object
+                        JSONObject jsonObject= (JSONObject) response.get(i);
+                        //create a CallLogModel
+                        Models.CallLogModel callLog=new Models.CallLogModel();
+                        //POPULATE callLog fields
+                        callLog.setCallID(Integer.parseInt(jsonObject.get("CallId").toString()));
+                        callLog.setTelHolder(jsonObject.get("TelHolder").toString());
+                        callLog.setTelNumber(jsonObject.get("TelNumber").toString());
+                        callLog.setCallTime(jsonObject.get("CallTime").toString());
+                        callLog.setCallDate(jsonObject.get("CallDate").toString());
+
+                        callLogModels.add(callLog);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                //call back
+                volleyListener.OnResponse(callLogModels);
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyListener.OnError(error.toString());
+            }
+        });
+
+        MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest); //add request to request Queue
+    }
 
     //create an Edit Diary Entry Function
 

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
@@ -25,6 +26,8 @@ public class AddMoodActivity extends AppCompatActivity
 
     ImageView iv_arrow;
     GridView gvMoods;
+    Button btnSave;
+    int ClickedMoodPosition=-1; //
     Integer[] image={
             R.drawable.grinning, R.drawable.sob,R.drawable.no_mouth,
             R.drawable.face_with_thermometer, R.drawable.rage,R.drawable.sunglasses,
@@ -45,6 +48,7 @@ public class AddMoodActivity extends AppCompatActivity
 
         iv_arrow = findViewById(R.id.backArrow);
         gvMoods=findViewById(R.id.gvEmojis);
+        btnSave=findViewById(R.id.btnSave);
         iv_arrow.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -53,8 +57,7 @@ public class AddMoodActivity extends AppCompatActivity
                 // Intent class will help to go to next activity using
                 // it's object named intent.
                 // SecondActivity is the name of new created EmptyActivity.
-                Intent intent = new Intent(AddMoodActivity.this, MoodActivity.class);
-                startActivity(intent);
+                goBack();
             }
         });
         ArrayList<Image> listemojis=new ArrayList<>();
@@ -65,26 +68,39 @@ public class AddMoodActivity extends AppCompatActivity
         gvMoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(AddMoodActivity.this,"clicked "+ image[i], Toast.LENGTH_SHORT).show();
-
-                //TODO: SAVE THE SELECTED MOOD TO THE DATABASE
-                client.LogMood(MoodNames[i], image[i], new DataServiceReference.IMoMVolleyListener() {
-                    @Override
-                    public void OnResponse(Object response) {
-                        Toast.makeText(AddMoodActivity.this,response.toString(),Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void OnError(String error) {
-                        Toast.makeText(AddMoodActivity.this,error.toString(),Toast.LENGTH_LONG).show();
-                    }
-                });
+                ClickedMoodPosition=i;
+                Toast.makeText(AddMoodActivity.this,MoodNames[i], Toast.LENGTH_SHORT).show();
             }
         });
 
 
         //save the Mood that was Chosen
+        btnSave.setOnClickListener(e->{
+            //TODO: SAVE THE SELECTED MOOD TO THE DATABASE
+            if(ClickedMoodPosition!=-1){
+            client.LogMood(MoodNames[ClickedMoodPosition], image[ClickedMoodPosition], new DataServiceReference.IMoMVolleyListener() {
+                @Override
+                public void OnResponse(Object response) {
+                    Toast.makeText(AddMoodActivity.this,response.toString(),Toast.LENGTH_LONG).show();
+                    goBack();
+                }
 
+                @Override
+                public void OnError(String error) {
+                    Toast.makeText(AddMoodActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+                }
+            });
+            }
+            else{
+                Toast.makeText(AddMoodActivity.this,"Choose a Mood", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    public void goBack(){
+        Intent moodIntent = new Intent(AddMoodActivity.this, MoodActivity.class);
+        startActivity(moodIntent);
     }
 
     //create a custom made ImageAdapterGridView, this will allow the GridView to accept Images

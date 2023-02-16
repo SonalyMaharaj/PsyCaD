@@ -106,11 +106,12 @@ public class Models {
 
     }
 
-
+    //TODO: CREATE A MOOD MODEL
     public static class MoodModel{
         private int MoodId;
         private String MoodName;
         private String MoodDate;
+        private String MoodTime;
         private Integer MoodIntegerImage;
         private String Path;
 
@@ -122,13 +123,28 @@ public class Models {
             Path = imagePath;
         }
 
-        public MoodModel(String moodName, String moodDate, Integer moodIntegerImage) {
+        public MoodModel(String moodName, String moodDate, String moodtime,Integer moodIntegerImage) {
             MoodName = moodName;
             MoodDate = moodDate;
+            MoodTime=moodtime;
             MoodIntegerImage = moodIntegerImage;
         }
 
+        public String getMoodTime() {
+            return MoodTime;
+        }
 
+        public void setMoodTime(String moodTime) {
+            MoodTime = moodTime;
+        }
+
+        public String getPath() {
+            return Path;
+        }
+
+        public void setPath(String path) {
+            Path = path;
+        }
 
         //DEFAULT CONSTRUCTOR
         public  MoodModel(){
@@ -176,5 +192,68 @@ public class Models {
         }
     }
 
+
+    //TODO: CREATE A CALL LOG MODEL
+    public static class CallLogModel{
+
+        private int CallID;
+        private String TelHolder;
+        private String TelNumber;
+        private String CallDate;
+        private String CallTime;
+
+        //DEFAULT CONSTRUCTOR
+        public CallLogModel() {
+
+        }
+
+        public CallLogModel(int callID, String telHolder, String telNumber, String callDate, String callTime) {
+            CallID = callID;
+            TelHolder = telHolder;
+            TelNumber = telNumber;
+            CallDate = callDate;
+            CallTime = callTime;
+        }
+
+        public int getCallID() {
+            return CallID;
+        }
+
+        public void setCallID(int callID) {
+            CallID = callID;
+        }
+
+        public String getTelHolder() {
+            return TelHolder;
+        }
+
+        public void setTelHolder(String telHolder) {
+            TelHolder = telHolder;
+        }
+
+        public String getTelNumber() {
+            return TelNumber;
+        }
+
+        public void setTelNumber(String telNumber) {
+            TelNumber = telNumber;
+        }
+
+        public String getCallDate() {
+            return CallDate;
+        }
+
+        public void setCallDate(String callDate) {
+            CallDate = callDate;
+        }
+
+        public String getCallTime() {
+            return CallTime;
+        }
+
+        public void setCallTime(String callTime) {
+            CallTime = callTime;
+        }
+    }
 
 }

@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,12 +27,14 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class MoodActivity extends AppCompatActivity
 {
     ImageView iv_arrow;
     ImageView iv_add;
     ListView lvMoods;
+    ProgressBar progressBar;
     DataServiceReference client=new DataServiceReference(MoodActivity.this);
 
     Integer[] images={
@@ -48,6 +51,7 @@ public class MoodActivity extends AppCompatActivity
 
         iv_arrow = findViewById(R.id.backArrow);
         lvMoods=findViewById(R.id.lvMoodLogs);
+        progressBar=findViewById(R.id.progressBar);
         iv_arrow.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -82,10 +86,13 @@ public class MoodActivity extends AppCompatActivity
             public void OnResponse(Object response) {
                 ArrayList<Models.MoodModel> moodModels = (ArrayList<Models.MoodModel>) response;
 
-        //use the created custom AdapterView on the list view
-        MoodAdapterView moodAdapterView=new MoodAdapterView(MoodActivity.this,R.layout.list_row,moodModels);
-        lvMoods.setAdapter(moodAdapterView);
-            }
+                    //use the created custom AdapterView on the list view
+                MoodAdapterView moodAdapterView=new MoodAdapterView(MoodActivity.this,R.layout.list_row,moodModels);
+                lvMoods.setAdapter(moodAdapterView);
+
+                //hide the progress bar
+                progressBar.setVisibility(View.GONE);
+                }
             @Override
             public void OnError(String error) {
                 Toast.makeText(MoodActivity.this, ""+error, Toast.LENGTH_SHORT).show();
@@ -120,7 +127,9 @@ public class MoodActivity extends AppCompatActivity
 
             imageView.setImageResource(getItem(position).getMoodIntegerImage());
             txtMoodName.setText(getItem(position).getMoodName());
-            txtMoodDate.setText(getItem(position).getMoodDate());
+            String time= getItem(position).getMoodTime().toString();
+            StringTokenizer stringTokenizer=new StringTokenizer(time,".");
+            txtMoodDate.setText(getItem(position).getMoodDate()+" "+stringTokenizer.nextToken()); //set the date and the time
 
 
             return convertView;

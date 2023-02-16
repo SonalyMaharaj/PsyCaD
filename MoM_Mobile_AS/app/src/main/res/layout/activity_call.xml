@@ -55,7 +55,7 @@
         app:layout_constraintLeft_toRightOf="@+id/CallHeading"/>
 
     <Button
-        android:id="@+id/er24"
+        android:id="@+id/btnER24"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:text="ER24"
@@ -65,34 +65,34 @@
         app:layout_constraintTop_toBottomOf="@+id/CallHeading" />
 
     <Button
-        android:id="@+id/crisis"
+        android:id="@+id/btnCrisis"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:text="CRISIS LINE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/er24" />
+        app:layout_constraintTop_toBottomOf="@+id/btnER24" />
 
     <Button
-        android:id="@+id/ps"
+        android:id="@+id/btnProtectionServices"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:text="PROTECTION SERVICES"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/crisis" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCrisis" />
 
     <Button
-        android:id="@+id/ch"
+        android:id="@+id/btnCampusHealth"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:text="CAMPUS HEALTH"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/ps" />
+        app:layout_constraintTop_toBottomOf="@+id/btnProtectionServices" />
 
     <TextView
         android:id="@+id/brought"
@@ -104,8 +104,8 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintRight_toLeftOf="@+id/uj"
-        app:layout_constraintStart_toStartOf="@id/er24"
-        app:layout_constraintTop_toBottomOf="@id/ch" />
+        app:layout_constraintStart_toStartOf="@id/btnER24"
+        app:layout_constraintTop_toBottomOf="@id/btnCampusHealth" />
 
     <ImageView
         android:id="@+id/uj"
@@ -113,9 +113,9 @@
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
         android:src="@drawable/ujlogo"
-        app:layout_constraintEnd_toEndOf="@id/er24"
+        app:layout_constraintEnd_toEndOf="@id/btnER24"
         app:layout_constraintLeft_toRightOf="@+id/brought"
-        app:layout_constraintTop_toBottomOf="@+id/ch" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCampusHealth" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -159,6 +159,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AvailableDatesAndTimesController.cs" />
     <Compile Include="Controllers\BookConsultationController.cs" />
+    <Compile Include="Controllers\CallLogController.cs" />
     <Compile Include="Controllers\PsychologistController.cs" />
     <Compile Include="Controllers\DiaryController.cs" />
     <Compile Include="Controllers\ExerciseController.cs" />
@@ -180,6 +181,7 @@
     <Compile Include="Models\AdminClass.cs" />
     <Compile Include="Models\AvailableDatesAndTimesClass.cs" />
     <Compile Include="Models\BookConsultationClass.cs" />
+    <Compile Include="Models\CallModel.cs" />
     <Compile Include="Models\PsychologistClass.cs" />
     <Compile Include="Models\DiaryClass.cs" />
     <Compile Include="Models\ExerciseClass.cs" />
@@ -259,6 +261,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\CallLog\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

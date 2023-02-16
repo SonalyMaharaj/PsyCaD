@@ -23,11 +23,16 @@ namespace MindOverMatterRestAPI.Controllers
             if (list==null) {
                 return Ok(false); //return false if the list is null
             }
-            foreach (var a in list)
-            {
-                MoodClass mood = new MoodClass { MoodId = a.MoodId, MoodTime = a.MoodTime, MoodDate = Convert.ToDateTime(a.MoodDate), MoodEmotion = a.MoodEmotion, MoodIntegerImage= Convert.ToInt32(a.MoodIntegerImage),StudentNumber = Convert.ToInt32(a.StudentNumber) };
+
+            var listarray = list.ToArray<Mood>(); //Convert the returned list to an Array
+
+            for (int i = listarray.Length-1;i>=0;i--) {
+                //populate the list from rescent to old, "Descending Order from the Database"
+                MoodClass mood = new MoodClass { MoodId = listarray[i].MoodId, MoodTime = listarray[i].MoodTime, MoodDate = Convert.ToDateTime(listarray[i].MoodDate), MoodEmotion = listarray[i].MoodEmotion, MoodIntegerImage = Convert.ToInt32(listarray[i].MoodIntegerImage), StudentNumber = Convert.ToInt32(listarray[i].StudentNumber) };
                 moods.Add(mood);
             }
+
+            
 
             return Ok(moods);
         }
@@ -44,9 +49,12 @@ namespace MindOverMatterRestAPI.Controllers
             {
                 return Ok(false); //return false if the list is null
             }
-            foreach (var a in list)
+            var listarray = list.ToArray<Mood>(); //Convert the returned list to an Array
+
+            for (int i = listarray.Length - 1; i >= 0; i--)
             {
-                MoodClass mood = new MoodClass { MoodId = a.MoodId, MoodTime = a.MoodTime, MoodDate = Convert.ToDateTime(a.MoodDate), MoodEmotion = a.MoodEmotion, MoodIntegerImage = Convert.ToInt32(a.MoodIntegerImage), StudentNumber = Convert.ToInt32(a.StudentNumber) };
+                //populate the list from rescent to old, "Descending Order from the Database"
+                MoodClass mood = new MoodClass { MoodId = listarray[i].MoodId, MoodTime = listarray[i].MoodTime, MoodDate = Convert.ToDateTime(listarray[i].MoodDate), MoodEmotion = listarray[i].MoodEmotion, MoodIntegerImage = Convert.ToInt32(listarray[i].MoodIntegerImage), StudentNumber = Convert.ToInt32(listarray[i].StudentNumber) };
                 moods.Add(mood);
             }
 
@@ -86,7 +94,7 @@ namespace MindOverMatterRestAPI.Controllers
             Mood moodClass = new Mood
             {
                 MoodDate = DateTime.Now,
-                MoodTime = DateTime.Now.Hour.ToString(),
+                MoodTime = DateTime.Now.TimeOfDay.ToString(),
              MoodEmotion = mood.MoodEmotion,
              MoodIntegerImage=mood.MoodIntegerImage,
              StudentNumber = mood.StudentNumber,

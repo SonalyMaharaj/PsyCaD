@@ -69,6 +69,9 @@ namespace MindOverMatterRestAPI
     partial void InsertMood(Mood instance);
     partial void UpdateMood(Mood instance);
     partial void DeleteMood(Mood instance);
+    partial void InsertCallLog(CallLog instance);
+    partial void UpdateCallLog(CallLog instance);
+    partial void DeleteCallLog(CallLog instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -202,6 +205,14 @@ namespace MindOverMatterRestAPI
 			get
 			{
 				return this.GetTable<Mood>();
+			}
+		}
+		
+		public System.Data.Linq.Table<CallLog> CallLogs
+		{
+			get
+			{
+				return this.GetTable<CallLog>();
 			}
 		}
 	}
@@ -2575,6 +2586,188 @@ namespace MindOverMatterRestAPI
 					this._MoodIntegerImage = value;
 					this.SendPropertyChanged("MoodIntegerImage");
 					this.OnMoodIntegerImageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentNumber", DbType="Int NOT NULL")]
+		public int StudentNumber
+		{
+			get
+			{
+				return this._StudentNumber;
+			}
+			set
+			{
+				if ((this._StudentNumber != value))
+				{
+					this.OnStudentNumberChanging(value);
+					this.SendPropertyChanging();
+					this._StudentNumber = value;
+					this.SendPropertyChanged("StudentNumber");
+					this.OnStudentNumberChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CallLog")]
+	public partial class CallLog : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CallId;
+		
+		private string _TelHolder;
+		
+		private string _TelNumber;
+		
+		private System.DateTime _CallDate;
+		
+		private string _CallTime;
+		
+		private int _StudentNumber;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCallIdChanging(int value);
+    partial void OnCallIdChanged();
+    partial void OnTelHolderChanging(string value);
+    partial void OnTelHolderChanged();
+    partial void OnTelNumberChanging(string value);
+    partial void OnTelNumberChanged();
+    partial void OnCallDateChanging(System.DateTime value);
+    partial void OnCallDateChanged();
+    partial void OnCallTimeChanging(string value);
+    partial void OnCallTimeChanged();
+    partial void OnStudentNumberChanging(int value);
+    partial void OnStudentNumberChanged();
+    #endregion
+		
+		public CallLog()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CallId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int CallId
+		{
+			get
+			{
+				return this._CallId;
+			}
+			set
+			{
+				if ((this._CallId != value))
+				{
+					this.OnCallIdChanging(value);
+					this.SendPropertyChanging();
+					this._CallId = value;
+					this.SendPropertyChanged("CallId");
+					this.OnCallIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TelHolder", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string TelHolder
+		{
+			get
+			{
+				return this._TelHolder;
+			}
+			set
+			{
+				if ((this._TelHolder != value))
+				{
+					this.OnTelHolderChanging(value);
+					this.SendPropertyChanging();
+					this._TelHolder = value;
+					this.SendPropertyChanged("TelHolder");
+					this.OnTelHolderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TelNumber", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string TelNumber
+		{
+			get
+			{
+				return this._TelNumber;
+			}
+			set
+			{
+				if ((this._TelNumber != value))
+				{
+					this.OnTelNumberChanging(value);
+					this.SendPropertyChanging();
+					this._TelNumber = value;
+					this.SendPropertyChanged("TelNumber");
+					this.OnTelNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CallDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CallDate
+		{
+			get
+			{
+				return this._CallDate;
+			}
+			set
+			{
+				if ((this._CallDate != value))
+				{
+					this.OnCallDateChanging(value);
+					this.SendPropertyChanging();
+					this._CallDate = value;
+					this.SendPropertyChanged("CallDate");
+					this.OnCallDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CallTime", DbType="VarChar(30) NOT NULL", CanBeNull=false)]
+		public string CallTime
+		{
+			get
+			{
+				return this._CallTime;
+			}
+			set
+			{
+				if ((this._CallTime != value))
+				{
+					this.OnCallTimeChanging(value);
+					this.SendPropertyChanging();
+					this._CallTime = value;
+					this.SendPropertyChanged("CallTime");
+					this.OnCallTimeChanged();
 				}
 			}
 		}
