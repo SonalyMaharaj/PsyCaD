@@ -12,6 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 public class HomeActivity extends AppCompatActivity
 {
     private Button btnDiary;
@@ -98,7 +100,7 @@ public class HomeActivity extends AppCompatActivity
                 try{
                     //display the Welcome Message
                     Models.StudentModel student=(Models.StudentModel)response;
-                    txtWelcomeMessage.setText("Hello, "+student.StudentName);
+                    txtWelcomeMessage.setText(("Hello, "+student.StudentName).toUpperCase());
 
                 }catch (Exception exception){
                     exception.printStackTrace();
@@ -137,7 +139,7 @@ public class HomeActivity extends AppCompatActivity
     public void BookingForm(View view) {
 
         //redirect to the Booking Form
-        Intent Call_intent = new Intent(Intent.ACTION_VIEW,Uri.parse("http://www.google.com"));
+        Intent Call_intent = new Intent(Intent.ACTION_VIEW,Uri.parse("https://outlook.office365.com/owa/calendar/APKPsyCaD@ujac.onmicrosoft.com/bookings/"));
         startActivity(Call_intent);
 
     }

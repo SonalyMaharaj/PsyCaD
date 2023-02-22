@@ -27,7 +27,7 @@ public class DataServiceReference {
 
     private Context context;
     Models.StudentModel student;
-    private String APIURL="http://172.28.208.1/api/";
+    private String APIURL="http://172.21.192.1/api/";
     public interface IMoMVolleyListener{
         public void OnResponse(Object response);
         public  void  OnError(String error);
@@ -270,7 +270,9 @@ public class DataServiceReference {
 
     public  void getMoods(IMoMVolleyListener volleyListener){
 
-        String url=APIURL+"Mood/GetMoods?StudentNumber=200001";
+        SessionManager sessionManager=new SessionManager(context);
+
+        String url=APIURL+"Mood/GetMoods?StudentNumber="+sessionManager.getSession();
 
         JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
@@ -290,7 +292,7 @@ public class DataServiceReference {
                         e.printStackTrace();
                     }
                 }
-                //TODO: CHECK THE API AND ENSURE THAT THE DATABASE HAS AN OPTION FOR THE INTERGER IMAGE VLAUES
+                //TODO: CHECK THE API AND ENSURE THAT THE DATABASE HAS AN OPTION FOR THE INTEGER IMAGE VAlUES
                 volleyListener.OnResponse(moodModels);
             }
         }, new Response.ErrorListener() {
