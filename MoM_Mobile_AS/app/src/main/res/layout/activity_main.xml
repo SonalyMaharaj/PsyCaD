@@ -45,7 +45,7 @@
         android:drawableLeft="@drawable/ic_baseline_lock_24"
         android:drawablePadding="20dp"
         android:padding="10dp"
-        android:hint="@string/ulink_password"
+        android:hint="Password"
         android:inputType="textPassword"
         android:textColor="#5023af"
         android:textColorHint="@color/black"
