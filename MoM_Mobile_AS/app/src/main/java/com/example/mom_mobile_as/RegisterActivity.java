@@ -27,14 +27,14 @@ public class RegisterActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
-                openHomeActivity();
+                openMainActivity();
             }
         });
     }
 
-    public void openHomeActivity()
+    public void openMainActivity()
     {
-        Intent Home_intent = new Intent(this, HomeActivity.class);
-        startActivity(Home_intent);
+        Intent Main_intent = new Intent(this, MainActivity.class);
+        startActivity(Main_intent);
     }
 }
