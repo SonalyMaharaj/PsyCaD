@@ -209,6 +209,7 @@
     <Compile Include="Models\AvailableTimesOnly.cs" />
     <Compile Include="Models\BookConsultationClass.cs" />
     <Compile Include="Models\BookedSession.cs" />
+    <Compile Include="Models\CallModel.cs" />
     <Compile Include="Models\CounsBookingsData.cs" />
     <Compile Include="Models\Diary.cs" />
     <Compile Include="Models\DiaryClass.cs" />

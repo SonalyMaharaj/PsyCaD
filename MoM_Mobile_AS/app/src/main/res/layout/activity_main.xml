@@ -41,60 +41,60 @@
         android:id="@+id/txtPassword"
         android:layout_width="320dp"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/round_textborder"
         android:drawableLeft="@drawable/ic_baseline_lock_24"
         android:drawablePadding="20dp"
-        android:padding="10dp"
         android:hint="Password"
         android:inputType="textPassword"
+        android:padding="10dp"
         android:textColor="#5023af"
         android:textColorHint="@color/black"
-        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmail"
-        app:layout_constraintBottom_toTopOf="@id/remMeButton"/>
-
-    <CheckBox
-        android:id="@+id/remMeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Remember me"
-        android:textColor="@color/black"
-        android:textSize="15dp"
-        android:buttonTint="#f66608"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/forgot"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
 
     <TextView
         android:id="@+id/forgot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="28dp"
         android:text="Forgot Password?"
         android:textColor="#f66608"
         android:textSize="15dp"
-        app:layout_constraintLeft_toRightOf="@id/remMeButton"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+
+    <TextView
+        android:id="@+id/txtRegister"
+        android:layout_width="203dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="32dp"
+        android:onClick="openRegisterActivity"
+        android:text="Don't have an account?"
+        android:textColor="#f66608"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toStartOf="@+id/forgot"
+        app:layout_constraintHorizontal_bias="0.803"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
         android:layout_width="180dp"
         android:layout_height="45dp"
+        android:layout_marginTop="72dp"
         android:background="@drawable/round_buttonborder"
         android:backgroundTint="#5023af"
         android:text="Sign In"
-        android:textSize="20dp"
         android:textColor="@color/white"
-        android:layout_marginTop="30dp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/remMeButton" />
+        app:layout_constraintTop_toBottomOf="@id/txtRegister" />
 
     <TextView
         android:id="@+id/brought"

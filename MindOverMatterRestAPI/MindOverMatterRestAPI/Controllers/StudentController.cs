@@ -93,10 +93,11 @@ namespace MindOverMatterRestAPI.Controllers
 
             Student student = new Student
             {
+                StudentNumber=studentClass.StudentNumber,
                 StudentName=studentClass.StudentName,
                 StudentSurname=studentClass.StudentSurname,
                 StudentEmail=studentClass.StudentEmail,
-                StudentPassword= Secrecy.HashPassword(studentClass.StudentPassword),
+                StudentPassword= studentClass.StudentPassword,
                 StudentGender=studentClass.StudentGender,
                 StudentDOB= Convert.ToDateTime(studentClass.StudentDOB),
                 StudentQualification=studentClass.StudentQualification

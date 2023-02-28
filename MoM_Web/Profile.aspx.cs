@@ -57,9 +57,11 @@ namespace MoM_Web
             var diaries = client.GetStudentDiaryEntries(Convert.ToInt32(Request.QueryString["StudentNumber"])); //fetch Student's diaries
             String result = "";
             foreach (var diary in diaries) {
+                String date = diary.Date.ToString();
+                String[] arrayDates = date.Split(' ');
                 result += "<tr>";
-                result += "<td>28 January 2022 10am</td>";
-                result += "<td>Death</td>";
+                result += "<td>"+ arrayDates[0]+ "</td>";
+                result += "<td>"+diary.DiaryFlaggedWords+"</td>";
                 result += "<td><input type='checkbox' class='checkstyle' name='attend'/></td>";
                 result += "</tr>";
             }
@@ -74,10 +76,13 @@ namespace MoM_Web
             String results = "";
             foreach (var appoint in appointments) 
             {
+
                 var psychologist = client.GetPsychologist(appoint.PsychologistId); //get psychologist who was appointed by the student for this specific appointment
+                String date = appoint.BookDate.ToString();
+                String[] arrayDates = date.Split(' ');
                 results += "<tr>";
-                results += "<td>"+appoint.BookDate+"</td>";
-                results += "<td>"+psychologist.PsychologistName.Substring(0,1)+" "+psychologist.PsychologistSurname+" "+psychologist.PsychologistId+"</td>"; // e.g S MOYO ID: 2001210
+                results += "<td>"+ arrayDates[0]+" "+appoint.BookTime+ "</td>";
+                results += "<td>"+psychologist.PsychologistName.Substring(0,1)+" "+psychologist.PsychologistSurname+" ID:"+psychologist.PsychologistId+"</td>"; // e.g S MOYO ID: 2001210
                 results += "<tr>";
             }
 
@@ -87,17 +92,15 @@ namespace MoM_Web
 
         public void populateMoods() 
         {
-            /*<tr>
-                            <td>01 May 2022 1pm</td>
-                            <td>Happy</td>
-                        </tr>*/
-
-            var moods = client.GetMoods();
+          
+            var moods = client.GetMoods(Convert.ToInt32(Request.QueryString["StudentNumber"]));
             String result = "";
             foreach (var mood in moods)
             {
+                String date = mood.MoodDate.ToString();
+                String[] arraydates = date.Split(' ');
                 result += "<tr>";
-                result += "<td>"+mood.MoodDate+"</td>";
+                result += "<td>"+ arraydates[0]+ "</td>";
                 result += "<td>"+mood.MoodEmotion+"</td>";
                 result += "</tr>";
             }
@@ -106,7 +109,18 @@ namespace MoM_Web
 
         public void populateCallLogs() 
         {
-            //code for populating call logs
+            var calls = client.getCallLogs(Convert.ToInt32(Request.QueryString["StudentNumber"]));
+            String result = "";
+
+            foreach (var call in calls) {
+
+                result += "<tr>";
+                result += "<td>" + call.CallDate + "</td>";
+                result += "<td>" +call.TelHolder+ " "+call.TelNumber + "</td>";
+                result += "</tr>";
+            }
+
+            callsBody.InnerHtml = result;
         }
     }
 }

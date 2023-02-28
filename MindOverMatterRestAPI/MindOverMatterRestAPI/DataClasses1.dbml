@@ -84,18 +84,6 @@
       <Column Name="PsychologistId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.Student" Member="Students">
-    <Type Name="Student">
-      <Column Name="StudentNumber" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="StudentName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="StudentSurname" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="StudentEmail" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="StudentPassword" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
-      <Column Name="StudentGender" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Column Name="StudentDOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="StudentQualification" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.UnAvailableDateAndTime" Member="UnAvailableDateAndTimes">
     <Type Name="UnAvailableDateAndTime">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -140,6 +128,19 @@
       <Column Name="CallDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="CallTime" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Column Name="StudentNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Student" Member="Students">
+    <Type Name="Student">
+      <Column Name="StudentNumber" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StudentName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="StudentSurname" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="StudentEmail" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="StudentPassword" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="StudentGender" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="StudentDOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="StudentQualification" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Campus" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

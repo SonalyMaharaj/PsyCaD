@@ -79,6 +79,44 @@ public class DataServiceReference {
     }
 
 
+    public void AddStudent(Models.StudentModel Student, IMoMVolleyListener volleyListener){
+        String url=APIURL+"Student//AddStudent";
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response.equals("true")){
+                    //if the return value is true
+                    volleyListener.OnResponse("Successfully registered");
+                }
+                else{
+                    //if false is returned might be because the Student Number already exists in the database
+                    volleyListener.OnError("registration failed, Student already registered");
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyListener.OnError("Student Might Already exist, go to login or forgot password \n"+error.toString());
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params=new HashMap<>();
+                params.put("StudentNumber", String.valueOf(Student.getStudentNumber()));
+                params.put("StudentName",Student.getStudentName());
+                params.put("StudentSurname", Student.getStudentSurname());
+                params.put("StudentEmail",Student.getStudentEmail());
+                params.put("StudentPassword",Secrecy.HashPassword(Student.getStudentPassword()));
+                params.put("StudentGender","X");
+                params.put("StudentDOB","01/01/2023");
+                params.put("StudentQualification", "X");
+
+                return  params;
+            }
+        };
+        MySingleton.getInstance(context).addToRequestQueue(stringRequest);
+    }
 
     public void getStudent(String StudentNumber,IMoMVolleyListener volleyResponseListener){
         //method to get a particular Student using StudentNumber

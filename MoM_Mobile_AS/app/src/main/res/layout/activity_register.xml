@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/id_logo" />
 
     <EditText
-        android:id="@+id/txtName"
+        android:id="@+id/txtNameSurname"
         android:layout_width="320dp"
         android:layout_height="50dp"
         android:background="@drawable/round_textborder"
@@ -54,12 +54,13 @@
         android:drawablePadding="20dp"
         android:padding="10dp"
         android:hint="Student Number"
+        android:inputType="number"
         android:textColor="#5023af"
         android:textColorHint="@color/black"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtName" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNameSurname" />
 
     <EditText
         android:id="@+id/txtEmail"
@@ -71,6 +72,7 @@
         android:padding="10dp"
         android:hint="Student Email"
         android:textColor="#5023af"
+        android:inputType="textEmailAddress"
         android:textColorHint="@color/black"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,6 +89,7 @@
         android:drawablePadding="20dp"
         android:padding="10dp"
         android:hint="Password"
+        android:inputType="textPassword"
         android:textColor="#5023af"
         android:textColorHint="@color/black"
         android:layout_marginTop="20dp"
@@ -103,6 +106,7 @@
         android:drawablePadding="20dp"
         android:padding="10dp"
         android:hint="Confirm Password"
+        android:inputType="textPassword"
         android:textColor="#5023af"
         android:textColorHint="@color/black"
         android:layout_marginTop="20dp"

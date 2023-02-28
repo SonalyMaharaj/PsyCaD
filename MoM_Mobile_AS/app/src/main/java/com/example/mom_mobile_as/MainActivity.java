@@ -99,12 +99,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    public void openRegisterActivity()
-    {
-        Intent Register_intent = new Intent(this, RegisterActivity.class);
-        startActivity(Register_intent);
-    }
-
     public void openHomeActivity(){
         //this code will redirect to the HomeActivity page
         Intent Home_Intent = new Intent(this, HomeActivity.class);
@@ -114,5 +108,10 @@ public class MainActivity extends AppCompatActivity
 
     public void SaveSession(){
 
+    }
+
+    public void openRegisterActivity(View view) {
+        Intent Register_intent = new Intent(this, RegisterActivity.class);
+        startActivity(Register_intent);
     }
 }

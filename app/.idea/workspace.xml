@@ -5,17 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6cf44fc8-2d03-4c33-ac1f-32be304d9272" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/ForgotPasswordCodePage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/ForgotPasswordEmailPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/ForgotPasswordNewPass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_forgot_password_code_page.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_forgot_password_email_page.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_forgot_password_new_pass.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/.vs/MindOverMatterRestAPI/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/.vs/MindOverMatterRestAPI/v16/.suo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/Controllers/DiaryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/Controllers/DiaryController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/Controllers/StudentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/Controllers/StudentController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/DataClasses1.dbml" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/DataClasses1.dbml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/DataClasses1.dbml.layout" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/DataClasses1.dbml.layout" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/DataClasses1.designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/DataClasses1.designer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/bin/MindOverMatterRestAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/bin/MindOverMatterRestAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/bin/MindOverMatterRestAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/bin/MindOverMatterRestAPI.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/obj/Debug/MindOverMatterRestAPI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/obj/Debug/MindOverMatterRestAPI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/obj/Debug/MindOverMatterRestAPI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/obj/Debug/MindOverMatterRestAPI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/AddDiaryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/AddDiaryActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/obj/Debug/TempPE/DataClasses1.designer.cs.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../MindOverMatterRestAPI/MindOverMatterRestAPI/obj/Debug/TempPE/DataClasses1.designer.cs.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/DataServiceReference.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/DataServiceReference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/ViewDiary.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/ViewDiary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_add_diary.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_add_diary.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_view_diary.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_view_diary.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/Models.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/Models.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/RegisterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/java/com/example/mom_mobile_as/RegisterActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/layout/activity_register.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Mobile_AS/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Web/.vs/MoM_Web/v16/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Web/.vs/MoM_Web/v16/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Web/MoM_Web.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Web/MoM_Web.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Web/Models/HelperClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Web/Models/HelperClass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Web/Profile.aspx" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Web/Profile.aspx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Web/Profile.aspx.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Web/Profile.aspx.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Web/ServiceReference/MoMServiceClient.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Web/ServiceReference/MoMServiceClient.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Web/bin/MoM_Web.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Web/bin/MoM_Web.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Web/bin/MoM_Web.dll.config" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Web/bin/MoM_Web.dll.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Web/bin/MoM_Web.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Web/bin/MoM_Web.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Web/obj/Debug/DesignTimeResolveAssemblyReferences.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Web/obj/Debug/DesignTimeResolveAssemblyReferences.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Web/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Web/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MoM_Web/obj/Debug/MoM_Web.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../MoM_Web/obj/Debug/MoM_Web.csproj.AssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

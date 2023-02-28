@@ -88,8 +88,8 @@ public class Models {
             StudentPassword = studentPassword;
         }
 
-        public char getStudentGender() {
-            return StudentGender;
+        public String getStudentGender() {
+            return String.valueOf(StudentGender);
         }
 
         public void setStudentGender(char studentGender) {

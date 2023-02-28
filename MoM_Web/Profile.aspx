@@ -163,14 +163,7 @@
                         </tr>
                     </thead>
                     <tbody id="callsBody" runat="server">
-                        <tr>
-                            <td>01 May 2022 1pm</td>
-                            <td>Crisis Line</td>
-                        </tr>
-                        <tr>
-                            <td>28 January 2022 10am</td>
-                            <td>Help Desk</td>
-                        </tr>
+                        <!--Populated from code behin-->
                     </tbody>
                 </table>
             </div>

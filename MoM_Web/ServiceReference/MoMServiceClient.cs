@@ -628,7 +628,7 @@ namespace MoM_Web.ServiceReference
         {
             try
             {
-                string json = getJson("Diary/GetStudentDiaryEntries?studentnum=" + studentnum);
+                string json = getJson("Diary/GetStudentDiaryEntries?StudentNumber=" + studentnum);
                 if (json == "false")
                 {
                     return null;
@@ -754,6 +754,7 @@ namespace MoM_Web.ServiceReference
 
         /* [OperationContract]
          List<CallLog> GetCallLogs();*/
+
         public bool allocateSlot(int UserID, DateTime date, string timeName)
         {
             try
@@ -1043,6 +1044,25 @@ namespace MoM_Web.ServiceReference
             return null;
         }
 
+        public List<MoodClass> GetMoods(int StudentNumber) {
+            try
+            {
+                string json = getJson("Mood/GetMoods?StudentNumber="+StudentNumber);
+                if (json == "false")
+                {
+                    return null;
+                }
+
+                List<MoodClass> moodClasses = JsonConvert.DeserializeObject<List<MoodClass>>(json);
+                return moodClasses;
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine("Issue with calling to the server " + e.GetBaseException());
+            }
+            return null;
+        }
+
         public NotificationClass GetNotification(int StudentNumber)
         {
             try
@@ -1187,6 +1207,26 @@ namespace MoM_Web.ServiceReference
                 System.Console.WriteLine("Issue with calling to the server " + e.GetBaseException());
             }
             return false;
+
+        }
+
+        public List<CallModel> getCallLogs(int StudentNumber) {
+
+            try
+            {
+                string jsonIn = getJson("CallLog/getCallLogs?StudentNumber=" + StudentNumber);
+                if (jsonIn == "false")
+                {
+                    return null;
+                }
+                List<CallModel> callModels = JsonConvert.DeserializeObject<List<CallModel>>(jsonIn);
+                return callModels;
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine("Issue with calling to the server " + e.GetBaseException());
+            }
+            return null;
 
         }
 
