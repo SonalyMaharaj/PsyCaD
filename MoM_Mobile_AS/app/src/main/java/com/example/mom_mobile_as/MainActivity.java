@@ -114,4 +114,9 @@ public class MainActivity extends AppCompatActivity
         Intent Register_intent = new Intent(this, RegisterActivity.class);
         startActivity(Register_intent);
     }
+
+    public void openForgotPasswordActivity(View view){
+        Intent forgotPswrd_Intent = new Intent(this, ForgotPasswordEmailPage.class);
+        startActivity(forgotPswrd_Intent);
+    }
 }

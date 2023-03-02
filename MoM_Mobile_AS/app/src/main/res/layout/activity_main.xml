@@ -61,6 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginRight="28dp"
+        android:onClick="openForgotPasswordActivity"
         android:text="Forgot Password?"
         android:textColor="#f66608"
         android:textSize="15dp"
