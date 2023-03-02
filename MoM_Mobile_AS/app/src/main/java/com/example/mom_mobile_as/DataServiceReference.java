@@ -160,6 +160,23 @@ public class DataServiceReference {
 
     }
 
+    //TODO: create a function to retrieve List of Students from the database.
+    public void getStudents(IMoMVolleyListener volleyListener){
+        String url="";
+
+        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+    }
+
 
     public  void getMyDiaryEntries(IMoMVolleyListener volleyListener){
         SessionManager sessionManager=new SessionManager(context);
