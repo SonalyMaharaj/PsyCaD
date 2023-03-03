@@ -27,7 +27,7 @@ public class DataServiceReference {
 
     private Context context;
     Models.StudentModel student;
-    private String APIURL="http://172.21.192.1/api/";
+    private String APIURL="http://172.28.128.1/api/";
     public interface IMoMVolleyListener{
         public void OnResponse(Object response);
         public  void  OnError(String error);
@@ -162,19 +162,40 @@ public class DataServiceReference {
 
     //TODO: create a function to retrieve List of Students from the database.
     public void getStudents(IMoMVolleyListener volleyListener){
-        String url="";
+        String url=APIURL+"Student//GetStudents";
 
         JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                //create an ArrayList of StudentModels
+                ArrayList<Models.StudentModel> studentModels=new ArrayList<>();
+                for(int i=0;i<response.length();i++){
+                    try {
+                        JSONObject jsonObject=(JSONObject)response.get(i);//get JSON object at index i
+                        Models.StudentModel studentModel=new Models.StudentModel();
+                        studentModel.setStudentNumber(Integer.parseInt(jsonObject.get("StudentNumber").toString()));
+                        studentModel.setStudentName(jsonObject.get("StudentName").toString());
+                        studentModel.setStudentSurname(jsonObject.get("StudentSurname").toString());
+                        studentModel.setStudentEmail(jsonObject.get("StudentEmail").toString());
+                        studentModel.setStudentDOB(jsonObject.get("StudentDOB").toString());
+                        studentModels.add(studentModel);
 
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        volleyListener.OnError(e.toString());
+                    }
+
+                }
+                volleyListener.OnResponse(studentModels);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                volleyListener.OnError(error.toString());
             }
         });
+
+        MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
     }
 
 

@@ -1,10 +1,12 @@
 package com.example.mom_mobile_as;
 
+import java.io.Serializable;
+
 public class Models {
 
 
     //Nested Class, StudentModel
-    public static class StudentModel {
+    public static class StudentModel implements Serializable {
         int StudentNumber=0;
         String StudentName="";
         String StudentSurname="";

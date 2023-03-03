@@ -5,23 +5,90 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import java.util.Properties;
+import java.util.Random;
+import javax.mail.Session;
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
 
 public class ForgotPasswordCodePage extends AppCompatActivity {
     private Button btnVerify;
+    private EditText txtUserOTPInput;
+    private String generatedOTP; //this OTP will not be stored on the database, will generate only when the page is loaded, and when the User request new OTP generation
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password_code_page);
 
         btnVerify=findViewById(R.id.btnVerify);
+        txtUserOTPInput=findViewById(R.id.txtMyOTP);
+
+        //get passed student
+        Models.StudentModel student=GetPassedStudent();
+        //Generate OTP
+        generatedOTP=generateOTP();
+        //send email with this OTP to the given email address
+        String[] emails={student.getStudentEmail().toString()}; //only one email address
+        String emailBody=generateEmailBody(student.getStudentName());
+        sendEmail(emails,"MindMatter ForgotPassword OTP",emailBody);
 
         btnVerify.setOnClickListener(e->{
-            OpenNewPasswordPage();
+            //Confirm the provided OTP with the one generated
+            String input=txtUserOTPInput.getText().toString();
+            Boolean OTPMatch=false;
+            if(generatedOTP.equals(input)){
+                OTPMatch=true;
+            }
+
+            //if the OTPs match, Pass the StudentModel forward to the NewPassword Intent and redirect
+            if(OTPMatch){
+                OpenNewPasswordPage(student);
+            }
+            else{
+                //OTP does not Match
+                Toast.makeText(this,"OTP does not Match",Toast.LENGTH_LONG).show();
+            }
         });
     }
 
-    public void OpenNewPasswordPage(){
+    public String generateEmailBody(String studentName){
+        //this function generates a personalised email body for the student,
+        String emailBody="Hi "+studentName+" \n\n"+"This is your OTP for renewing your MindOverMatter Password" +
+                "\n\n"+generatedOTP.toUpperCase()+"\n\n"+" stay safe and remember we will not send you an email asking personal details" +
+                "\n\n"+"MindOverMatter";
+
+        return  emailBody;
+    }
+    public Models.StudentModel GetPassedStudent(){
+        Models.StudentModel student = (Models.StudentModel) getIntent().getSerializableExtra("student");
+        return student;
+    }
+
+    public void sendEmail(String[] addresses, String subject,String body) {
+        /// watch: https://www.youtube.com/watch?v=xtZI23hxetw&t=357s
+    }
+
+
+    public void OpenNewPasswordPage(Models.StudentModel student){
         Intent forgotPswrd_Intent = new Intent(this, ForgotPasswordNewPass.class);
+        forgotPswrd_Intent.putExtra("student",student);
         startActivity(forgotPswrd_Intent);
+    }
+
+    private String generateOTP(){
+        //this function will generate a unique OTP of 5 digits
+        Random rand=new Random();
+
+        int randNum=0;
+        String generatedOTP="";
+        for(int i=0;i<=5;i++){
+            //generate a unique number 5 times
+            randNum=rand.nextInt(9);
+            generatedOTP+=randNum; //append the generated digit to the OTP digits
+        }
+
+        return generatedOTP;
     }
 }
