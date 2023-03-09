@@ -39,7 +39,7 @@
         android:textColor="@color/black"
         android:textSize="13dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/AppButton"
+        app:layout_constraintBottom_toTopOf="@+id/btnBookings"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/id_logo" />
@@ -56,7 +56,7 @@
         android:layout_marginRight="10dp"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/AppButton"
+        android:id="@+id/btnBookings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:width="140dp"
@@ -70,8 +70,6 @@
         android:textAllCaps="true"
         android:textColor="@color/black"
         android:textSize="30px"
-        android:onClick="BookingForm"
-
         android:layout_marginTop="40dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/EDiaryButton"
@@ -93,7 +91,7 @@
         android:textColor="@color/black"
         android:textSize="30px"
         android:layout_marginTop="40dp"
-        app:layout_constraintLeft_toRightOf="@+id/AppButton"
+        app:layout_constraintLeft_toRightOf="@+id/btnBookings"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_logo" />
 
@@ -115,7 +113,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/CallButton"
-        app:layout_constraintTop_toBottomOf="@+id/AppButton" />
+        app:layout_constraintTop_toBottomOf="@+id/btnBookings" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/CallButton"

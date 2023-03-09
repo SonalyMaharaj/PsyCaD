@@ -44,6 +44,38 @@ namespace MindOverMatterRestAPI.Controllers
 
         }
 
+
+
+        [Route("api/Student/ChangePassword")]
+        [HttpPost]
+        public IHttpActionResult ChangePassword(StudentClass studentClass)
+        {
+            if (studentClass == null)
+            {
+                return Ok(false);
+            }
+            var student = (from s in db.Students
+                           where s.StudentNumber.Equals(studentClass.StudentNumber)
+                           select s).FirstOrDefault();
+
+            student.StudentPassword = studentClass.StudentPassword;
+
+            try
+            {
+                db.SubmitChanges(); //does not want to update
+                return Ok(true);
+            }
+            catch (InvalidDataContractException ex)
+            {
+                ex.GetBaseException();
+
+                return Ok(false);
+            }
+
+        }
+
+
+
         [Route("api/Student/GetStudent")]
         [HttpGet]
         public IHttpActionResult GetStudent(int StudentNumber)

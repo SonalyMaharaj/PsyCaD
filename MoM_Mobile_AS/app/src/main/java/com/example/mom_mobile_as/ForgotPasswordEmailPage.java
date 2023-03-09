@@ -28,7 +28,7 @@ public class ForgotPasswordEmailPage extends AppCompatActivity {
                 return;
             }
             //GET all the students
-            client.getStudents(new DataServiceReference.IMoMVolleyListener() {
+           client.getStudents(new DataServiceReference.IMoMVolleyListener() {
                 @Override
                 public void OnResponse(Object response) {
                     //Cast response to ArrayList

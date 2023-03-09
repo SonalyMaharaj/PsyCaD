@@ -1,5 +1,6 @@
 package com.example.mom_mobile_as;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,12 +22,12 @@ public class HomeActivity extends AppCompatActivity
     private Button btnDiary;
     private Button btnMood;
     private Button btnCall;
+    private Button btnBookings;
     private ProgressBar progressBar;
     private TextView txtWelcomeMessage;
-    ImageView imageView;
+    private ImageView imgvSettings;
 
     DataServiceReference client=new DataServiceReference(HomeActivity.this);
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -35,6 +38,23 @@ public class HomeActivity extends AppCompatActivity
         progressBar=findViewById(R.id.progressBar);
         txtWelcomeMessage=findViewById(R.id.welcomeMessage);
         btnDiary = (Button) findViewById(R.id.EDiaryButton);
+        btnBookings=findViewById(R.id.btnBookings);
+        btnMood = (Button) findViewById(R.id.MoodButton);
+        btnCall = (Button) findViewById(R.id.CallButton);
+        imgvSettings = findViewById(R.id.SettingsButton);
+
+        btnBookings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // create an AlertDialog object
+                AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+                // set the view of the AlertDialog to your layout file
+                builder.setView(getLayoutInflater().inflate(R.layout.activity_pop_up_window, null));
+                // create the AlertDialog and show it
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
 
         btnDiary.setOnClickListener(new View.OnClickListener()
         {
@@ -46,7 +66,6 @@ public class HomeActivity extends AppCompatActivity
         });
 
         //Redirect to mood page
-        btnMood = (Button) findViewById(R.id.MoodButton);
         btnMood.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -57,7 +76,6 @@ public class HomeActivity extends AppCompatActivity
         });
 
         //Redirect to call page
-        btnCall = (Button) findViewById(R.id.CallButton);
         btnCall.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -66,12 +84,9 @@ public class HomeActivity extends AppCompatActivity
                 openCallActivity();
             }
         });
-
-        imageView = findViewById(R.id.SettingsButton);
-
         // Apply OnClickListener  to imageView to
         // switch from one activity to another
-        imageView.setOnClickListener(new View.OnClickListener()
+        imgvSettings.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -136,10 +151,43 @@ public class HomeActivity extends AppCompatActivity
         startActivity(Call_intent);
     }
 
-    public void BookingForm(View view) {
+    public void OpenBookingForm(View view) {
 
         //redirect to the Booking Form
         Intent Call_intent = new Intent(Intent.ACTION_VIEW,Uri.parse("https://outlook.office365.com/owa/calendar/APKPsyCaD@ujac.onmicrosoft.com/bookings/"));
+        startActivity(Call_intent);
+
+    }
+//This Code is for the pop_up_window layout file, since it is a pop up, it cannot read its activity file but shares an activity file with the HomeActivity, an intent(redirect) was not used, so it its own activity was not created.
+
+    public void OpenKingsway(View view) {
+
+        //redirect to the Booking Form
+        Intent Call_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://outlook.office365.com/owa/calendar/APKPsyCaD@ujac.onmicrosoft.com/bookings/"));
+        startActivity(Call_intent);
+
+    }
+
+    public void OpenBunting(View view) {
+
+        //redirect to the Booking Form
+        Intent Call_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://outlook.office365.com/owa/calendar/APKPsyCaD@ujac.onmicrosoft.com/bookings/"));
+        startActivity(Call_intent);
+
+    }
+
+    public void OpenDFC(View view) {
+
+        //redirect to the Booking Form
+        Intent Call_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://outlook.office365.com/owa/calendar/APKPsyCaD@ujac.onmicrosoft.com/bookings/"));
+        startActivity(Call_intent);
+
+    }
+
+    public void OpenSWT(View view) {
+
+        //redirect to the Booking Form
+        Intent Call_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://outlook.office365.com/owa/calendar/APKPsyCaD@ujac.onmicrosoft.com/bookings/"));
         startActivity(Call_intent);
 
     }

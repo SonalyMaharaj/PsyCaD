@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,7 +28,7 @@ public class DataServiceReference {
 
     private Context context;
     Models.StudentModel student;
-    private String APIURL="http://172.28.128.1/api/";
+    private String APIURL="http://172.30.144.1/api/";
     public interface IMoMVolleyListener{
         public void OnResponse(Object response);
         public  void  OnError(String error);
@@ -198,6 +199,74 @@ public class DataServiceReference {
         MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
     }
 
+
+    public void EditStudent(Models.StudentModel student, IMoMVolleyListener volleyListener){
+        String url=APIURL +"Student/EditStudent";
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response.equals("true")){
+                    volleyListener.OnResponse("Successful");
+                }
+                else{
+                    volleyListener.OnError("Failed to edit user");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyListener.OnError(error.toString());
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params=new HashMap<>();
+                params.put("StudentNumber", String.valueOf(student.getStudentNumber()));
+                params.put("StudentName",student.getStudentName());
+                params.put("StudentSurname", student.getStudentSurname());
+                params.put("StudentEmail",student.getStudentEmail());
+                params.put("StudentPassword",Secrecy.HashPassword(student.getStudentPassword()));
+                params.put("StudentGender","X");
+                params.put("StudentDOB","01/01/2023");
+                params.put("StudentQualification", "X");
+
+                return  params;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(stringRequest);
+    }
+
+    public void ChangePassword(Models.StudentModel student, IMoMVolleyListener volleyListener){
+        String url=APIURL +"Student/ChangePassword";
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response.equals("true")){
+                    volleyListener.OnResponse("Successful");
+                }
+                else{
+                    volleyListener.OnError("Failed to edit user");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyListener.OnError(error.toString());
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params=new HashMap<>();
+                params.put("StudentNumber", String.valueOf(student.getStudentNumber()));
+                params.put("StudentPassword",Secrecy.HashPassword(student.getStudentPassword()));
+
+                return  params;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(stringRequest);
+    }
 
     public  void getMyDiaryEntries(IMoMVolleyListener volleyListener){
         SessionManager sessionManager=new SessionManager(context);

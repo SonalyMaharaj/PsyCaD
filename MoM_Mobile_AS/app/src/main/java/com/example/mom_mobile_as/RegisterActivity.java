@@ -72,19 +72,21 @@ public class RegisterActivity extends AppCompatActivity
         });
 
     }
-
+    //TODO: restrict the input data on the Entry boxes to deny anything that may promote SQL Injection or so ...
     public Models.StudentModel setStudent(){
         Models.StudentModel student = null;
 
         //set student number and Email
         try {
 
-            StudentNumber = Integer.parseInt(txtStudentNumber.getText().toString());
+            StudentNumber = Integer.parseInt(txtStudentNumber.getText().toString()); //if this is not an integer, it will throw an exception
             //generate email
             if(txtEmail.getText().toString().length()<=1){
                 return  null; //if the email field is null
             }
-            else if(txtPassword1.getText().toString().length()<=1){
+            else if(txtPassword1.getText().toString().length()<=8){
+                //if the password entry is empty
+                Toast.makeText(RegisterActivity.this, "Enter password with at-least 8 chars",Toast.LENGTH_LONG).show();
                 return  null;
             }
 
@@ -117,7 +119,6 @@ public class RegisterActivity extends AppCompatActivity
 
         }
         catch(NumberFormatException numberFormatException){
-
             Toast.makeText(this,"fill in correct student number",Toast.LENGTH_SHORT).show();
             return  null;
         }
@@ -129,6 +130,7 @@ public class RegisterActivity extends AppCompatActivity
             return student;
         }
     }
+
 
     public boolean ConfirmPasswords(String password1, String password2){
         //This function checks whether the passwords in the two fields are the same(passwrod and Confirm password)

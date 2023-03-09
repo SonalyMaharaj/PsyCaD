@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import java.util.Properties;
-import java.util.Random;
-import javax.mail.Session;
-import javax.mail.Authenticator;
-import javax.mail.PasswordAuthentication;
 
+import com.google.api.client.util.store.FileDataStoreFactory;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.security.GeneralSecurityException;
+import java.util.Random;
 public class ForgotPasswordCodePage extends AppCompatActivity {
     private Button btnVerify;
     private EditText txtUserOTPInput;
@@ -24,15 +26,21 @@ public class ForgotPasswordCodePage extends AppCompatActivity {
 
         btnVerify=findViewById(R.id.btnVerify);
         txtUserOTPInput=findViewById(R.id.txtMyOTP);
-
-        //get passed student
-        Models.StudentModel student=GetPassedStudent();
         //Generate OTP
         generatedOTP=generateOTP();
+        //get passed student
+        Models.StudentModel student=GetPassedStudent();
         //send email with this OTP to the given email address
-        String[] emails={student.getStudentEmail().toString()}; //only one email address
+        String StudentEmail=student.getStudentEmail().toString(); //only one email address
         String emailBody=generateEmailBody(student.getStudentName());
-        sendEmail(emails,"MindMatter ForgotPassword OTP",emailBody);
+        try {
+            //TO DO: Send email that contains OTP to the Student
+            //Toast.makeText(ForgotPasswordCodePage.this,generatedOTP,Toast.LENGTH_LONG).show();
+            //TODO: Send email that contains OTP to the Student
+            //sendEmail(StudentEmail,"MindMatter ForgotPassword OTP",emailBody);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         btnVerify.setOnClickListener(e->{
             //Confirm the provided OTP with the one generated
@@ -53,6 +61,14 @@ public class ForgotPasswordCodePage extends AppCompatActivity {
         });
     }
 
+    public void sendEmail(String studentEmail, String subject,String body) throws Exception {
+        /// watch: https://www.youtube.com/watch?v=xtZI23hxetw&t=357s
+
+        EmailSender emailSender=new EmailSender(ForgotPasswordCodePage.this,getAssets().open("secretclient.json"));
+        emailSender.sendMail("psycadotponly@gmail.com",studentEmail,subject,body);
+
+    }
+
     public String generateEmailBody(String studentName){
         //this function generates a personalised email body for the student,
         String emailBody="Hi "+studentName+" \n\n"+"This is your OTP for renewing your MindOverMatter Password" +
@@ -64,10 +80,6 @@ public class ForgotPasswordCodePage extends AppCompatActivity {
     public Models.StudentModel GetPassedStudent(){
         Models.StudentModel student = (Models.StudentModel) getIntent().getSerializableExtra("student");
         return student;
-    }
-
-    public void sendEmail(String[] addresses, String subject,String body) {
-        /// watch: https://www.youtube.com/watch?v=xtZI23hxetw&t=357s
     }
 
 
@@ -91,4 +103,8 @@ public class ForgotPasswordCodePage extends AppCompatActivity {
 
         return generatedOTP;
     }
+
+
+
+
 }
