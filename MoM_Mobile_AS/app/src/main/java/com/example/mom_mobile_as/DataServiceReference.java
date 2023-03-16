@@ -28,7 +28,7 @@ public class DataServiceReference {
 
     private Context context;
     Models.StudentModel student;
-    private String APIURL="http://172.30.144.1/api/";
+    private String APIURL="http://172.21.224.1/api/";
     public interface IMoMVolleyListener{
         public void OnResponse(Object response);
         public  void  OnError(String error);
@@ -60,7 +60,8 @@ public class DataServiceReference {
                                 response.get("StudentName").toString(),
                                 response.get("StudentSurname").toString(),
                                 response.get("StudentEmail").toString(),
-                                response.get("StudentDOB").toString()
+                                response.get("StudentDOB").toString(),
+                                response.get("Campus").toString()
                         );
 
                         volleyListener.OnResponse(student);
@@ -112,6 +113,7 @@ public class DataServiceReference {
                 params.put("StudentGender","X");
                 params.put("StudentDOB","01/01/2023");
                 params.put("StudentQualification", "X");
+                params.put("Campus",Student.getCampus());
 
                 return  params;
             }
@@ -137,7 +139,8 @@ public class DataServiceReference {
                                     response.get("StudentName").toString(),
                                     response.get("StudentSurname").toString(),
                                     response.get("StudentEmail").toString(),
-                                    response.get("StudentDOB").toString()
+                                    response.get("StudentDOB").toString(),
+                                    response.get("Campus").toString()
                             );
                             volleyResponseListener.OnResponse(student);
                         }
@@ -161,7 +164,7 @@ public class DataServiceReference {
 
     }
 
-    //TODO: create a function to retrieve List of Students from the database.
+    //This function returns a List of Students.
     public void getStudents(IMoMVolleyListener volleyListener){
         String url=APIURL+"Student//GetStudents";
 
@@ -179,6 +182,7 @@ public class DataServiceReference {
                         studentModel.setStudentSurname(jsonObject.get("StudentSurname").toString());
                         studentModel.setStudentEmail(jsonObject.get("StudentEmail").toString());
                         studentModel.setStudentDOB(jsonObject.get("StudentDOB").toString());
+                        studentModel.setCampus(jsonObject.get("Campus").toString());
                         studentModels.add(studentModel);
 
                     } catch (JSONException e) {
@@ -268,6 +272,40 @@ public class DataServiceReference {
         MySingleton.getInstance(context).addToRequestQueue(stringRequest);
     }
 
+    //THis function will request to change the Campus the Student wants to book from.
+
+    public void ChangeCampus(String Campus, IMoMVolleyListener volleyListener){
+        String url=APIURL +"Student/ChangeCampus";
+
+        SessionManager sessionManager=new SessionManager(context);
+        int StudentNumber=sessionManager.getSession();
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response.equals("true")){
+                    volleyListener.OnResponse("Successful");
+                }
+                else{
+                    volleyListener.OnError("Failed to edit user");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyListener.OnError(error.toString());
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params=new HashMap<>();
+                params.put("StudentNumber", String.valueOf(StudentNumber));
+                params.put("Campus",Campus);
+                return  params;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(stringRequest);
+    }
     public  void getMyDiaryEntries(IMoMVolleyListener volleyListener){
         SessionManager sessionManager=new SessionManager(context);
         String url=APIURL+"Diary/GetStudentDiaryEntries?StudentNumber="+sessionManager.getSession();

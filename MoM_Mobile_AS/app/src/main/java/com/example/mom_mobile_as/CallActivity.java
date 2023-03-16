@@ -29,6 +29,7 @@ public class CallActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call);
+        getSupportActionBar().hide();
 
         btnER24=findViewById(R.id.btnER24);
         btnCrisis=findViewById(R.id.btnCrisis);
@@ -145,7 +146,7 @@ public class CallActivity extends AppCompatActivity
         callIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED){
             //If the Permission is NOT GRANTED, let the user Know to grant the Permission
-            Toast.makeText(CallActivity.this,"Permissions: Allow App to access phone", Toast.LENGTH_LONG);
+            Toast.makeText(CallActivity.this,"Permissions: Allow App to access phone", Toast.LENGTH_LONG).show();
             return;
         }
         startActivity(callIntent);

@@ -23,6 +23,7 @@ public class AddDiaryActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_diary);
+        getSupportActionBar().hide();
 
         iv_arrow = findViewById(R.id.backArrow);
         txtDiaryEntry=findViewById(R.id.txtDiary);

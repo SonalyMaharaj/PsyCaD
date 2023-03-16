@@ -23,6 +23,7 @@ public class ForgotPasswordCodePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password_code_page);
+        getSupportActionBar().hide();//hide the App name Title bar
 
         btnVerify=findViewById(R.id.btnVerify);
         txtUserOTPInput=findViewById(R.id.txtMyOTP);

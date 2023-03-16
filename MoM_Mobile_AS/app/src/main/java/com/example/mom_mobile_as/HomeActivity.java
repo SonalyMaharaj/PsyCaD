@@ -4,6 +4,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ApkChecksum;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
+import kotlin.random.Random;
+
 public class HomeActivity extends AppCompatActivity
 {
     private Button btnDiary;
@@ -27,12 +30,14 @@ public class HomeActivity extends AppCompatActivity
     private TextView txtWelcomeMessage;
     private ImageView imgvSettings;
 
-    DataServiceReference client=new DataServiceReference(HomeActivity.this);
+    private DataServiceReference client=new DataServiceReference(HomeActivity.this);
+    private Models.StudentModel student;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        getSupportActionBar().hide();//hide the App name Title bar
 
         //Redirect to diary page
         progressBar=findViewById(R.id.progressBar);
@@ -43,16 +48,27 @@ public class HomeActivity extends AppCompatActivity
         btnCall = (Button) findViewById(R.id.CallButton);
         imgvSettings = findViewById(R.id.SettingsButton);
 
+
+        InitializeStudent(); //Display Welcome Home Page Message and Initialize the Student object
+
         btnBookings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // create an AlertDialog object
-                AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
-                // set the view of the AlertDialog to your layout file
-                builder.setView(getLayoutInflater().inflate(R.layout.activity_pop_up_window, null));
-                // create the AlertDialog and show it
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
+              switch(student.getCampus()){
+                  case "APB":
+                      OpenAPB();
+                      break;
+                  case "DFC":
+                      OpenDFC();
+                      break;
+                  case "SWT":
+                      OpenSWT();
+                      break;
+                  default:
+                      //redirect to APK
+                      OpenAPK();
+                      break;
+              }
             }
         });
 
@@ -99,11 +115,10 @@ public class HomeActivity extends AppCompatActivity
             }
         });
 
-        DisplayWelcomeMessage(); //Display Welcome Home Page Message
 
     }
 
-    public  void DisplayWelcomeMessage(){
+    public  void InitializeStudent(){
 
         SessionManager sessionManager=new SessionManager(HomeActivity.this);
         int StudentNumber=sessionManager.getSession();
@@ -113,8 +128,9 @@ public class HomeActivity extends AppCompatActivity
             public void OnResponse(Object response) {
 
                 try{
+                    //initialize the Student object
+                    student=(Models.StudentModel)response;
                     //display the Welcome Message
-                    Models.StudentModel student=(Models.StudentModel)response;
                     txtWelcomeMessage.setText(("Hello, "+student.StudentName).toUpperCase());
 
                 }catch (Exception exception){
@@ -160,7 +176,7 @@ public class HomeActivity extends AppCompatActivity
     }
 //This Code is for the pop_up_window layout file, since it is a pop up, it cannot read its activity file but shares an activity file with the HomeActivity, an intent(redirect) was not used, so it its own activity was not created.
 
-    public void OpenKingsway(View view) {
+    public void OpenAPK() {
 
         //redirect to the Booking Form
         Intent Call_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://outlook.office365.com/owa/calendar/APKPsyCaD@ujac.onmicrosoft.com/bookings/"));
@@ -168,27 +184,37 @@ public class HomeActivity extends AppCompatActivity
 
     }
 
-    public void OpenBunting(View view) {
+    public void OpenAPB() {
 
         //redirect to the Booking Form
-        Intent Call_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://outlook.office365.com/owa/calendar/APKPsyCaD@ujac.onmicrosoft.com/bookings/"));
+        Intent Call_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://outlook.office365.com/owa/calendar/APBPsyCaD@ujac.onmicrosoft.com/bookings/"));
         startActivity(Call_intent);
 
     }
 
-    public void OpenDFC(View view) {
+    public void OpenDFC() {
 
         //redirect to the Booking Form
-        Intent Call_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://outlook.office365.com/owa/calendar/APKPsyCaD@ujac.onmicrosoft.com/bookings/"));
+        Intent Call_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://outlook.office365.com/owa/calendar/DFCPsyCaD@ujac.onmicrosoft.com/bookings/"));
         startActivity(Call_intent);
 
     }
 
-    public void OpenSWT(View view) {
+    public void OpenSWT() {
 
         //redirect to the Booking Form
-        Intent Call_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://outlook.office365.com/owa/calendar/APKPsyCaD@ujac.onmicrosoft.com/bookings/"));
+        Intent Call_intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://outlook.office365.com/owa/calendar/SWTPsyCaD@ujac.onmicrosoft.com/bookings/"));
         startActivity(Call_intent);
 
+    }
+
+    public void DisplayPopUp(){
+        // create an AlertDialog object
+        AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+        // set the view of the AlertDialog to your layout file
+        builder.setView(getLayoutInflater().inflate(R.layout.activity_pop_up_window, null));
+        // create the AlertDialog and show it
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

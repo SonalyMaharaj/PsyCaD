@@ -21,6 +21,8 @@ public class ViewDiary extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_diary);
+        getSupportActionBar().hide();//hide the App name Title bar
+
 
         iv_arrow = findViewById(R.id.backArrow);
         txtViewDiary=findViewById(R.id.txtDiary);
@@ -64,7 +66,6 @@ public class ViewDiary extends AppCompatActivity {
                 @Override
                 public void OnError(String error) {
                     Toast.makeText(ViewDiary.this, error.toString(), Toast.LENGTH_LONG).show();
-
                 }
             });
         }

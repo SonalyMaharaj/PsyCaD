@@ -36,6 +36,8 @@ public class RegisterActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        getSupportActionBar().hide();//hide the App name Title bar
+
 
         btnRegsiter = (Button) findViewById(R.id.buttonSave);
         txtNameSurname=findViewById(R.id.txtNameSurname);
@@ -110,12 +112,14 @@ public class RegisterActivity extends AppCompatActivity
                 return null;
             }
 
+            //generate Student and Initialize all relevant fields
             student = new Models.StudentModel();
             student.setStudentName(studentName);
             student.setStudentSurname(studentSurname);
             student.setStudentNumber(StudentNumber);
             student.setStudentEmail(studentEmail);
             student.setStudentPassword(password);
+            student.setCampus("APK");
 
         }
         catch(NumberFormatException numberFormatException){
@@ -151,9 +155,6 @@ public class RegisterActivity extends AppCompatActivity
         nameSurname[1]=stringTokenizer.nextToken();
         return  nameSurname;
     }
-
-
-
 
     public void openMainActivity()
     {

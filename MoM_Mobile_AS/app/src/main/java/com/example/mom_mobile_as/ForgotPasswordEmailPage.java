@@ -18,6 +18,8 @@ public class ForgotPasswordEmailPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password_email_page);
+        getSupportActionBar().hide();//hide the App name Title bar
+
         btnNext=findViewById(R.id.btnNext);
         txtEmail=findViewById(R.id.txtEmail);
         btnNext.setOnClickListener(e->{

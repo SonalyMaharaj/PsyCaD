@@ -38,6 +38,7 @@ public class DiaryActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
+        getSupportActionBar().hide();
 
         lvDiaries=findViewById(R.id.lvDiaryEntries);
         iv_arrow = findViewById(R.id.backArrow);

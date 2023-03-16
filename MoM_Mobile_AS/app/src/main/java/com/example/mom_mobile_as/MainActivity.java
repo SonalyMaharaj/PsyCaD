@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
         btnLogin = (Button) findViewById(R.id.btnLogin);
         txtUsername=findViewById(R.id.txtEmail);

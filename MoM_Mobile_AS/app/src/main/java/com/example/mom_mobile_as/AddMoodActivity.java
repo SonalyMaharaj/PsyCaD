@@ -45,6 +45,7 @@ public class AddMoodActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_mood);
+        getSupportActionBar().hide();
 
         iv_arrow = findViewById(R.id.backArrow);
         gvMoods=findViewById(R.id.gvEmojis);
@@ -60,7 +61,6 @@ public class AddMoodActivity extends AppCompatActivity
                 goBack();
             }
         });
-        ArrayList<Image> listemojis=new ArrayList<>();
 
         //TODO: CREATE A GRID VIEW AND POPULATE EMOJIS TO IT
         gvMoods.setAdapter(new ImageAdapterGridView(this));

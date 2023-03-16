@@ -15,25 +15,25 @@ public class Models {
         String StudentPassword;
         char StudentGender;
         String StudentQualification;
-
-        //CONTRUCTORS
-
-        public StudentModel(int studentNumber, String studentName, String studentSurname, String studentEmail, String studentDOB) {
-            StudentNumber = studentNumber;
-            StudentName = studentName;
-            StudentSurname = studentSurname;
-            StudentEmail = studentEmail;
-            StudentDOB = studentDOB;
+        String Campus;
+        //CONSTRUCTORS
+        public StudentModel(int studentNumber, String studentName, String studentSurname, String studentEmail, String studentDOB,String Campus) {
+            this.StudentNumber = studentNumber;
+            this.StudentName = studentName;
+            this.StudentSurname = studentSurname;
+            this.StudentEmail = studentEmail;
+            this.StudentDOB = studentDOB;
+            this.Campus=Campus;
         }
 
         public StudentModel(String studentName, String studentSurname, String studentEmail, String studentDOB, String studentPassword, char studentGender, String studentQualification) {
-            StudentName = studentName;
-            StudentSurname = studentSurname;
-            StudentEmail = studentEmail;
-            StudentDOB = studentDOB;
-            StudentPassword = studentPassword;
-            StudentGender = studentGender;
-            StudentQualification = studentQualification;
+            this.StudentName = studentName;
+            this.StudentSurname = studentSurname;
+            this.StudentEmail = studentEmail;
+            this.StudentDOB = studentDOB;
+            this.StudentPassword = studentPassword;
+            this.StudentGender = studentGender;
+            this.StudentQualification = studentQualification;
         }
 
         public StudentModel(){
@@ -88,6 +88,14 @@ public class Models {
 
         public void setStudentPassword(String studentPassword) {
             StudentPassword = studentPassword;
+        }
+
+        public String getCampus() {
+            return Campus;
+        }
+
+        public void setCampus(String campus) {
+            Campus = campus;
         }
 
         public String getStudentGender() {

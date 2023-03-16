@@ -16,6 +16,7 @@ public class SettingsActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        getSupportActionBar().hide();//hide the App name Title bar
 
         imageView = findViewById(R.id.backArrow);
 
@@ -45,5 +46,10 @@ public class SettingsActivity extends AppCompatActivity
         Intent logoutIntent = new Intent(this, MainActivity.class);
         logoutIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(logoutIntent);
+    }
+
+    public void openDetailtsActivity(View view) {
+        Intent intent = new Intent(SettingsActivity.this, DetailsActivity.class);
+        startActivity(intent);
     }
 }

@@ -33,6 +33,7 @@ public class CallLogActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call_log);
+        getSupportActionBar().hide();
 
         lvCallLogs=findViewById(R.id.lvCallLogs);
         progressBar=findViewById(R.id.progressBar);

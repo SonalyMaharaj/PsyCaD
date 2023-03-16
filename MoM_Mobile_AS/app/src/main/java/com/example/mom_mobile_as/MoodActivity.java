@@ -48,6 +48,8 @@ public class MoodActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood);
+        getSupportActionBar().hide();//hide the App name Title bar
+
 
         iv_arrow = findViewById(R.id.backArrow);
         lvMoods=findViewById(R.id.lvMoodLogs);

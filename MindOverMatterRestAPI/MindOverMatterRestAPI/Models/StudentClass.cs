@@ -22,6 +22,7 @@ namespace MindOverMatterRestAPI.Models
         public char StudentGender { get; set; }
         public string StudentDOB { get; set; }
         public string StudentQualification { get; set; }
+        public String Campus { get; set; }
 
     }
 }

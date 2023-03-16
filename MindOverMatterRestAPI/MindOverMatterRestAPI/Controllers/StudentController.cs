@@ -74,6 +74,35 @@ namespace MindOverMatterRestAPI.Controllers
 
         }
 
+        [Route("api/Student/ChangeCampus")]
+        [HttpPost]
+        public IHttpActionResult ChangeCampus(StudentClass studentClass)
+        {
+            //
+            if (studentClass == null)
+            {
+                return Ok(false);
+            }
+            var student = (from s in db.Students
+                           where s.StudentNumber.Equals(studentClass.StudentNumber)
+                           select s).FirstOrDefault();
+
+            student.Campus = studentClass.Campus;
+
+            try
+            {
+                db.SubmitChanges(); //does not want to update
+                return Ok(true);
+            }
+            catch (InvalidDataContractException ex)
+            {
+                ex.GetBaseException();
+
+                return Ok(false);
+            }
+
+        }
+
 
 
         [Route("api/Student/GetStudent")]
@@ -87,7 +116,7 @@ namespace MindOverMatterRestAPI.Controllers
             if (student==null) {
                 return Ok(false);
             }
-            StudentClass studentClass = new StudentClass { StudentNumber = student.StudentNumber, StudentName = student.StudentName, StudentSurname = student.StudentSurname, StudentEmail = student.StudentEmail,StudentGender=Convert.ToChar(student.StudentGender), StudentDOB=Convert.ToString(student.StudentDOB),StudentQualification=student.StudentQualification};
+            StudentClass studentClass = new StudentClass { StudentNumber = student.StudentNumber, StudentName = student.StudentName, StudentSurname = student.StudentSurname, StudentEmail = student.StudentEmail,StudentGender=Convert.ToChar(student.StudentGender), StudentDOB=Convert.ToString(student.StudentDOB),StudentQualification=student.StudentQualification,Campus=student.Campus};
 
             return Ok(studentClass);
         }
@@ -106,7 +135,7 @@ namespace MindOverMatterRestAPI.Controllers
 
             foreach (var student in list)
             {
-                StudentClass studentClass = new StudentClass { StudentNumber = student.StudentNumber, StudentName = student.StudentName, StudentSurname = student.StudentSurname, StudentEmail = student.StudentEmail, StudentGender = Convert.ToChar(student.StudentGender), StudentDOB = Convert.ToString(student.StudentDOB), StudentQualification = student.StudentQualification };
+                StudentClass studentClass = new StudentClass { StudentNumber = student.StudentNumber, StudentName = student.StudentName, StudentSurname = student.StudentSurname, StudentEmail = student.StudentEmail, StudentGender = Convert.ToChar(student.StudentGender), StudentDOB = Convert.ToString(student.StudentDOB), StudentQualification = student.StudentQualification, Campus = student.Campus };
 
                 students.Add(studentClass);
             }
@@ -132,7 +161,8 @@ namespace MindOverMatterRestAPI.Controllers
                 StudentPassword= studentClass.StudentPassword,
                 StudentGender=studentClass.StudentGender,
                 StudentDOB= Convert.ToDateTime(studentClass.StudentDOB),
-                StudentQualification=studentClass.StudentQualification
+                StudentQualification=studentClass.StudentQualification,
+                Campus=studentClass.Campus
             };
 
             db.Students.InsertOnSubmit(student);

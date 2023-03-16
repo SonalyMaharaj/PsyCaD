@@ -19,6 +19,7 @@ public class ForgotPasswordNewPass extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password_new_pass);
+        getSupportActionBar().hide();//hide the App name Title bar
 
         btnSave=findViewById(R.id.btnSave);
         txtPassword1=findViewById(R.id.txtPassword);
