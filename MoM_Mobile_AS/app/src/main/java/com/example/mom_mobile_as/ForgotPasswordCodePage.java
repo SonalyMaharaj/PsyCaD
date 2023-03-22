@@ -8,12 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.api.client.util.store.FileDataStoreFactory;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
-import java.security.GeneralSecurityException;
 import java.util.Random;
 public class ForgotPasswordCodePage extends AppCompatActivity {
     private Button btnVerify;
@@ -36,9 +30,7 @@ public class ForgotPasswordCodePage extends AppCompatActivity {
         String emailBody=generateEmailBody(student.getStudentName());
         try {
             //TO DO: Send email that contains OTP to the Student
-            //Toast.makeText(ForgotPasswordCodePage.this,generatedOTP,Toast.LENGTH_LONG).show();
-            //TODO: Send email that contains OTP to the Student
-            //sendEmail(StudentEmail,"MindMatter ForgotPassword OTP",emailBody);
+            //sendEmail(StudentEmail,emailBody);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -62,11 +54,12 @@ public class ForgotPasswordCodePage extends AppCompatActivity {
         });
     }
 
-    public void sendEmail(String studentEmail, String subject,String body) throws Exception {
+    public void sendEmail(String studentEmail,String body) throws Exception {
         /// watch: https://www.youtube.com/watch?v=xtZI23hxetw&t=357s
 
-        EmailSender emailSender=new EmailSender(ForgotPasswordCodePage.this,getAssets().open("secretclient.json"));
-        emailSender.sendMail("psycadotponly@gmail.com",studentEmail,subject,body);
+        EmailSender emailSender=new EmailSender(this);
+
+        emailSender.sendEmail(studentEmail,body); //send email to student
 
     }
 

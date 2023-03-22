@@ -82,8 +82,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-
-       checkSession();
+        checkSession();
     }
 
     private void checkSession() {
