@@ -18,7 +18,7 @@ namespace MindOverMatterRestAPI.Controllers
         public IHttpActionResult GetMedicine(int medicineId)
         {
 
-            var med = (from a in db.MeidicineTrackers
+            var med = (from a in db.MedicineTrackers
                        where a.Id.Equals(medicineId)
                        select a).FirstOrDefault();
 
@@ -37,7 +37,7 @@ namespace MindOverMatterRestAPI.Controllers
         public IHttpActionResult GetMedicines(int StudentNumber)
         {
             List<MedicineTrackerClass> medicines = new List<MedicineTrackerClass>();
-            var list = (from a in db.MeidicineTrackers
+            var list = (from a in db.MedicineTrackers
                         where a.StudentNumber.Equals(StudentNumber)
                         select a);
 
@@ -52,24 +52,24 @@ namespace MindOverMatterRestAPI.Controllers
 
         }
         
-        [Route("api/Medicine/LogMedicine")]
+        [Route("api/Medicine/AddMedicine")]
         [HttpPost]
-        public IHttpActionResult LogMedicine(MedicineTrackerClass medicine)
+        public IHttpActionResult AddMedicine(MedicineTrackerClass medicine)
         {
             if (medicine==null) {
                 return Ok(false);
             }
 
-            MeidicineTracker medicineTracker = new MeidicineTracker 
+            MedicineTracker medicineTracker = new MedicineTracker 
             {
-            Date = medicine.Date,
+            Date = DateTime.Now,
             NameOfMedication = medicine.NameOfMedicine,
             Category = medicine.Category,
             StudentNumber = medicine.StudentNumber,
             NameOfDoctor = medicine.NameOfDoctor,
             IsActive=1,
         };
-            db.MeidicineTrackers.InsertOnSubmit(medicineTracker);
+            db.MedicineTrackers.InsertOnSubmit(medicineTracker);
             try
             {
                 //save changes
@@ -88,7 +88,7 @@ namespace MindOverMatterRestAPI.Controllers
         [HttpGet]
         public IHttpActionResult RemoveMedicine(int medicineID)
         {
-            var medicine = (from a in db.MeidicineTrackers
+            var medicine = (from a in db.MedicineTrackers
                             where a.Id.Equals(medicineID)
                             select a).FirstOrDefault();
 
@@ -115,11 +115,12 @@ namespace MindOverMatterRestAPI.Controllers
         [HttpPost]
         public IHttpActionResult EditMedicine(MedicineTrackerClass medicine)
         {
+
             if (medicine==null) {
                 return Ok(false);
             }
 
-            var med = (from a in db.MeidicineTrackers
+            var med = (from a in db.MedicineTrackers
                        where a.Id.Equals(medicine.ID)
                        select a).FirstOrDefault();
 
@@ -127,7 +128,7 @@ namespace MindOverMatterRestAPI.Controllers
                 return Ok(false);
             }
 
-            med.Date = medicine.Date;
+            med.Date = DateTime.Now;
             med.NameOfMedication = medicine.NameOfMedicine;
             med.Category = medicine.Category;
             med.StudentNumber = medicine.StudentNumber;
@@ -145,8 +146,6 @@ namespace MindOverMatterRestAPI.Controllers
             }
           
         }
-
-
 
 
     }

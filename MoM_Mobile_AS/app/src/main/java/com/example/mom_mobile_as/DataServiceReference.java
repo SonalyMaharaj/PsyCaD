@@ -80,7 +80,6 @@ public class DataServiceReference {
         MySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
     }
 
-
     public void AddStudent(Models.StudentModel Student, IMoMVolleyListener volleyListener){
         String url=APIURL+"Student//AddStudent";
         StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -598,6 +597,121 @@ public class DataServiceReference {
                 }
                 //call back
                 volleyListener.OnResponse(callLogModels);
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyListener.OnError(error.toString());
+            }
+        });
+
+        MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest); //add request to request Queue
+    }
+
+    public void addMedicine(Models.Medicine medicine, IMoMVolleyListener volleyListener){
+        String url=APIURL+"Medicine/AddMedicine";
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response.equals("true")){
+                    //send back a success message
+                    volleyListener.OnResponse("Medicine saved Successfully");
+                }
+                else{
+                    volleyListener.OnError("Medicine failed to save");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyListener.OnError(error.toString());
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+                SessionManager sessionManager=new SessionManager(context);
+                int StudentNum=sessionManager.getSession();
+                Map<String, String> params = new HashMap<>();
+                params.put("NameOfMedication",medicine.getMedicineName());
+                params.put("Category", medicine.getMedicineCategory());
+                params.put("StudentNumber", String.valueOf(StudentNum));
+                params.put("NameOfDoctor", medicine.getNameOfDoctor());
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(stringRequest); //add request to request Queue
+    }
+
+    public void EditMedicine(Models.Medicine medicine, IMoMVolleyListener volleyListener){
+        String url=APIURL+"Medicine/EditMedicine";
+        StringRequest stringRequest=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if(response.equals("true")){
+                    //send back a success message
+                    volleyListener.OnResponse("Medicine saved Successfully");
+                }
+                else{
+                    volleyListener.OnError("Medicine failed to save");
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyListener.OnError(error.toString());
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+                SessionManager sessionManager=new SessionManager(context);
+                int StudentNum=sessionManager.getSession();
+                Map<String, String> params = new HashMap<>();
+                params.put("NameOfMedication",medicine.getMedicineName());
+                params.put("Category", medicine.getMedicineCategory());
+                params.put("StudentNumber", String.valueOf(StudentNum));
+                params.put("NameOfDoctor", medicine.getNameOfDoctor());
+                return params;
+            }
+        };
+
+        MySingleton.getInstance(context).addToRequestQueue(stringRequest); //add request to request Queue
+    }
+
+    public void GetStudentMedicines(int studentNumber, IMoMVolleyListener volleyListener){
+        SessionManager sessionManager=new SessionManager(context); //create a Session Manager Object
+
+        int StudentNumber=sessionManager.getSession(); //get Student Number stored at in the SessionManager
+        String url=APIURL+"Medicine/GetMedicines?StudentNumber="+StudentNumber;
+
+        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                ArrayList<Models.Medicine> medicines=new ArrayList<>();
+
+                for(int i=0;i<response.length();i++){
+
+                    try {
+                        //convert to JSON object
+                        JSONObject jsonObject= (JSONObject) response.get(i);
+                        //create a CallLogModel
+                        Models.Medicine medicine=new Models.Medicine();
+                        //POPULATE callLog fields
+                        medicine.setMedicineID(Integer.parseInt(jsonObject.get("ID").toString()));
+                        medicine.setNameOfDoctor(jsonObject.get("NameOfDoctor").toString());
+                        medicine.setMedicineName(jsonObject.get("MedicineName").toString());
+                        medicine.setMedicineCategory(jsonObject.get("Category").toString());
+                        medicine.setStudentNumber(Integer.parseInt(jsonObject.get("ID").toString()));
+
+                        medicines.add(medicine);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                //call back
+                volleyListener.OnResponse(medicines);
             }
 
         }, new Response.ErrorListener() {

@@ -116,6 +116,67 @@ public class Models {
 
     }
 
+    //CREATE A Medicine Model
+    public static class Medicine{
+        private int MedicineID;
+        private String MedicineName;
+        private String MedicineCategory;
+        private String NameOfDoctor;
+        private int StudentNumber;
+
+        public Medicine(int medicineID, String medicineName, String medicineCategory, String nameOfDoctor, int studentNumber) {
+            MedicineID = medicineID;
+            MedicineName = medicineName;
+            MedicineCategory = medicineCategory;
+            NameOfDoctor = nameOfDoctor;
+            StudentNumber = studentNumber;
+        }
+
+        public  Medicine(){
+
+        }
+
+        public int getMedicineID() {
+            return MedicineID;
+        }
+
+        public void setMedicineID(int medicineID) {
+            MedicineID = medicineID;
+        }
+
+        public String getMedicineName() {
+            return MedicineName;
+        }
+
+        public void setMedicineName(String medicineName) {
+            MedicineName = medicineName;
+        }
+
+        public String getMedicineCategory() {
+            return MedicineCategory;
+        }
+
+        public void setMedicineCategory(String medicineCategory) {
+            MedicineCategory = medicineCategory;
+        }
+
+        public String getNameOfDoctor() {
+            return NameOfDoctor;
+        }
+
+        public void setNameOfDoctor(String nameOfDoctor) {
+            NameOfDoctor = nameOfDoctor;
+        }
+
+        public int getStudentNumber() {
+            return StudentNumber;
+        }
+
+        public void setStudentNumber(int studentNumber) {
+            StudentNumber = studentNumber;
+        }
+    }
+
     //TODO: CREATE A MOOD MODEL
     public static class MoodModel{
         private int MoodId;

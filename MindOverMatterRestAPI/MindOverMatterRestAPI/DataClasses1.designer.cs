@@ -39,9 +39,6 @@ namespace MindOverMatterRestAPI
     partial void InsertDiary(Diary instance);
     partial void UpdateDiary(Diary instance);
     partial void DeleteDiary(Diary instance);
-    partial void InsertMeidicineTracker(MeidicineTracker instance);
-    partial void UpdateMeidicineTracker(MeidicineTracker instance);
-    partial void DeleteMeidicineTracker(MeidicineTracker instance);
     partial void InsertNotification(Notification instance);
     partial void UpdateNotification(Notification instance);
     partial void DeleteNotification(Notification instance);
@@ -72,6 +69,9 @@ namespace MindOverMatterRestAPI
     partial void InsertStudent(Student instance);
     partial void UpdateStudent(Student instance);
     partial void DeleteStudent(Student instance);
+    partial void InsertMedicineTracker(MedicineTracker instance);
+    partial void UpdateMedicineTracker(MedicineTracker instance);
+    partial void DeleteMedicineTracker(MedicineTracker instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -125,14 +125,6 @@ namespace MindOverMatterRestAPI
 			get
 			{
 				return this.GetTable<Diary>();
-			}
-		}
-		
-		public System.Data.Linq.Table<MeidicineTracker> MeidicineTrackers
-		{
-			get
-			{
-				return this.GetTable<MeidicineTracker>();
 			}
 		}
 		
@@ -213,6 +205,14 @@ namespace MindOverMatterRestAPI
 			get
 			{
 				return this.GetTable<Student>();
+			}
+		}
+		
+		public System.Data.Linq.Table<MedicineTracker> MedicineTrackers
+		{
+			get
+			{
+				return this.GetTable<MedicineTracker>();
 			}
 		}
 	}
@@ -714,212 +714,6 @@ namespace MindOverMatterRestAPI
 					this._IsFlagged = value;
 					this.SendPropertyChanged("IsFlagged");
 					this.OnIsFlaggedChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MeidicineTracker")]
-	public partial class MeidicineTracker : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.DateTime _Date;
-		
-		private string _NameOfMedication;
-		
-		private string _Category;
-		
-		private int _StudentNumber;
-		
-		private string _NameOfDoctor;
-		
-		private System.Nullable<int> _IsActive;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnDateChanging(System.DateTime value);
-    partial void OnDateChanged();
-    partial void OnNameOfMedicationChanging(string value);
-    partial void OnNameOfMedicationChanged();
-    partial void OnCategoryChanging(string value);
-    partial void OnCategoryChanged();
-    partial void OnStudentNumberChanging(int value);
-    partial void OnStudentNumberChanged();
-    partial void OnNameOfDoctorChanging(string value);
-    partial void OnNameOfDoctorChanged();
-    partial void OnIsActiveChanging(System.Nullable<int> value);
-    partial void OnIsActiveChanged();
-    #endregion
-		
-		public MeidicineTracker()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
-		public System.DateTime Date
-		{
-			get
-			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this.OnDateChanging(value);
-					this.SendPropertyChanging();
-					this._Date = value;
-					this.SendPropertyChanged("Date");
-					this.OnDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameOfMedication", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string NameOfMedication
-		{
-			get
-			{
-				return this._NameOfMedication;
-			}
-			set
-			{
-				if ((this._NameOfMedication != value))
-				{
-					this.OnNameOfMedicationChanging(value);
-					this.SendPropertyChanging();
-					this._NameOfMedication = value;
-					this.SendPropertyChanged("NameOfMedication");
-					this.OnNameOfMedicationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Category
-		{
-			get
-			{
-				return this._Category;
-			}
-			set
-			{
-				if ((this._Category != value))
-				{
-					this.OnCategoryChanging(value);
-					this.SendPropertyChanging();
-					this._Category = value;
-					this.SendPropertyChanged("Category");
-					this.OnCategoryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentNumber", DbType="Int NOT NULL")]
-		public int StudentNumber
-		{
-			get
-			{
-				return this._StudentNumber;
-			}
-			set
-			{
-				if ((this._StudentNumber != value))
-				{
-					this.OnStudentNumberChanging(value);
-					this.SendPropertyChanging();
-					this._StudentNumber = value;
-					this.SendPropertyChanged("StudentNumber");
-					this.OnStudentNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameOfDoctor", DbType="VarChar(50)")]
-		public string NameOfDoctor
-		{
-			get
-			{
-				return this._NameOfDoctor;
-			}
-			set
-			{
-				if ((this._NameOfDoctor != value))
-				{
-					this.OnNameOfDoctorChanging(value);
-					this.SendPropertyChanging();
-					this._NameOfDoctor = value;
-					this.SendPropertyChanged("NameOfDoctor");
-					this.OnNameOfDoctorChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Int")]
-		public System.Nullable<int> IsActive
-		{
-			get
-			{
-				return this._IsActive;
-			}
-			set
-			{
-				if ((this._IsActive != value))
-				{
-					this.OnIsActiveChanging(value);
-					this.SendPropertyChanging();
-					this._IsActive = value;
-					this.SendPropertyChanged("IsActive");
-					this.OnIsActiveChanged();
 				}
 			}
 		}
@@ -2812,6 +2606,212 @@ namespace MindOverMatterRestAPI
 					this._Campus = value;
 					this.SendPropertyChanged("Campus");
 					this.OnCampusChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MedicineTracker")]
+	public partial class MedicineTracker : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private System.DateTime _Date;
+		
+		private string _NameOfMedication;
+		
+		private string _Category;
+		
+		private int _StudentNumber;
+		
+		private string _NameOfDoctor;
+		
+		private System.Nullable<int> _IsActive;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    partial void OnNameOfMedicationChanging(string value);
+    partial void OnNameOfMedicationChanged();
+    partial void OnCategoryChanging(string value);
+    partial void OnCategoryChanged();
+    partial void OnStudentNumberChanging(int value);
+    partial void OnStudentNumberChanged();
+    partial void OnNameOfDoctorChanging(string value);
+    partial void OnNameOfDoctorChanged();
+    partial void OnIsActiveChanging(System.Nullable<int> value);
+    partial void OnIsActiveChanged();
+    #endregion
+		
+		public MedicineTracker()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
+		public System.DateTime Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameOfMedication", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string NameOfMedication
+		{
+			get
+			{
+				return this._NameOfMedication;
+			}
+			set
+			{
+				if ((this._NameOfMedication != value))
+				{
+					this.OnNameOfMedicationChanging(value);
+					this.SendPropertyChanging();
+					this._NameOfMedication = value;
+					this.SendPropertyChanged("NameOfMedication");
+					this.OnNameOfMedicationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Category", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Category
+		{
+			get
+			{
+				return this._Category;
+			}
+			set
+			{
+				if ((this._Category != value))
+				{
+					this.OnCategoryChanging(value);
+					this.SendPropertyChanging();
+					this._Category = value;
+					this.SendPropertyChanged("Category");
+					this.OnCategoryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentNumber", DbType="Int NOT NULL")]
+		public int StudentNumber
+		{
+			get
+			{
+				return this._StudentNumber;
+			}
+			set
+			{
+				if ((this._StudentNumber != value))
+				{
+					this.OnStudentNumberChanging(value);
+					this.SendPropertyChanging();
+					this._StudentNumber = value;
+					this.SendPropertyChanged("StudentNumber");
+					this.OnStudentNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NameOfDoctor", DbType="VarChar(50)")]
+		public string NameOfDoctor
+		{
+			get
+			{
+				return this._NameOfDoctor;
+			}
+			set
+			{
+				if ((this._NameOfDoctor != value))
+				{
+					this.OnNameOfDoctorChanging(value);
+					this.SendPropertyChanging();
+					this._NameOfDoctor = value;
+					this.SendPropertyChanged("NameOfDoctor");
+					this.OnNameOfDoctorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Int")]
+		public System.Nullable<int> IsActive
+		{
+			get
+			{
+				return this._IsActive;
+			}
+			set
+			{
+				if ((this._IsActive != value))
+				{
+					this.OnIsActiveChanging(value);
+					this.SendPropertyChanging();
+					this._IsActive = value;
+					this.SendPropertyChanged("IsActive");
+					this.OnIsActiveChanged();
 				}
 			}
 		}
