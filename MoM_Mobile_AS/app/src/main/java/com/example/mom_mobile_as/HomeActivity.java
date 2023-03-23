@@ -43,11 +43,12 @@ public class HomeActivity extends AppCompatActivity
         progressBar=findViewById(R.id.progressBar);
         txtWelcomeMessage=findViewById(R.id.welcomeMessage);
         btnDiary = (Button) findViewById(R.id.EDiaryButton);
-        btnBookings=findViewById(R.id.btnBookings);
+        btnBookings= (Button) findViewById(R.id.AppointmentButton);
         btnMood = (Button) findViewById(R.id.MoodButton);
         btnCall = (Button) findViewById(R.id.CallButton);
         imgvSettings = findViewById(R.id.SettingsButton);
 
+        //Add Code for medication button and event calendar button - redirect
 
         InitializeStudent(); //Display Welcome Home Page Message and Initialize the Student object
 

@@ -8,7 +8,7 @@
     android:background="@drawable/home">
 
     <ImageView
-        android:id="@+id/id_logo"
+        android:id="@+id/momLogo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/roundlogo"
@@ -39,10 +39,10 @@
         android:textColor="@color/black"
         android:textSize="13dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnBookings"
+        app:layout_constraintBottom_toTopOf="@+id/AppointmentButton"
         app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/id_logo" />
+        app:layout_constraintRight_toLeftOf="@+id/momLogo" />
 
     <ImageView
         android:id="@+id/SettingsButton"
@@ -56,11 +56,11 @@
         android:layout_marginRight="10dp"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnBookings"
+        android:id="@+id/AppointmentButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:width="140dp"
-        android:height="140dp"
+        android:width="120dp"
+        android:height="120dp"
         android:backgroundTint="@color/white"
         android:clickable="true"
         android:drawableTop="@drawable/ic_baseline_calendar_month_24"
@@ -69,18 +69,18 @@
         android:text="Appointments"
         android:textAllCaps="true"
         android:textColor="@color/black"
-        android:textSize="30px"
+        android:textSize="20px"
         android:layout_marginTop="40dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/EDiaryButton"
-        app:layout_constraintTop_toBottomOf="@+id/id_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/momLogo" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/EDiaryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:width="140dp"
-        android:height="140dp"
+        android:width="120dp"
+        android:height="120dp"
         android:backgroundTint="@color/white"
         android:clickable="true"
         android:drawableTop="@drawable/ic_baseline_book_24"
@@ -89,18 +89,18 @@
         android:text="My Journal"
         android:textAllCaps="true"
         android:textColor="@color/black"
-        android:textSize="30px"
+        android:textSize="20px"
         android:layout_marginTop="40dp"
-        app:layout_constraintLeft_toRightOf="@+id/btnBookings"
+        app:layout_constraintLeft_toRightOf="@+id/AppointmentButton"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_logo" />
+        app:layout_constraintTop_toBottomOf="@+id/momLogo" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/MoodButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:width="140dp"
-        android:height="140dp"
+        android:width="120dp"
+        android:height="120dp"
         android:backgroundTint="@color/white"
         android:clickable="true"
         android:drawableTop="@drawable/ic_baseline_mood_24"
@@ -109,11 +109,11 @@
         android:text="Mood Tracker"
         android:textAllCaps="true"
         android:textColor="@color/black"
-        android:textSize="30px"
+        android:textSize="20px"
         android:layout_marginTop="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/CallButton"
-        app:layout_constraintTop_toBottomOf="@+id/btnBookings" />
+        app:layout_constraintTop_toBottomOf="@+id/AppointmentButton" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/CallButton"
@@ -121,8 +121,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/MoodButton"
-        android:width="140dp"
-        android:height="140dp"
+        android:width="120dp"
+        android:height="120dp"
         android:backgroundTint="@color/white"
         android:clickable="true"
         android:drawableTop="@drawable/ic_baseline_call_24"
@@ -131,11 +131,53 @@
         android:text="Emergency Call"
         android:textAllCaps="true"
         android:textColor="@color/black"
-        android:textSize="30px"
+        android:textSize="20px"
         android:layout_marginTop="20dp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EDiaryButton"
         app:layout_constraintLeft_toRightOf="@+id/MoodButton"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/MedicationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="120dp"
+        android:height="120dp"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:drawableTop="@drawable/ic_baseline_medical_services_24"
+        android:drawablePadding="10dp"
+        android:outlineAmbientShadowColor="@color/black"
+        android:text="Med Tracker"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="20px"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/EventButton"
+        app:layout_constraintTop_toBottomOf="@+id/MoodButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/EventButton"
+        android_layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/MoodButton"
+        android:width="120dp"
+        android:height="120dp"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:drawableTop="@drawable/ic_baseline_event_available_24"
+        android:drawablePadding="10dp"
+        android:outlineAmbientShadowColor="@color/black"
+        android:text="Event Calendar"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="20px"
+        android:layout_marginTop="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CallButton"
+        app:layout_constraintLeft_toRightOf="@+id/MedicationButton"/>
 
     <TextView
         android:id="@+id/brought"
@@ -147,7 +189,8 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintRight_toLeftOf="@+id/uj"
-        app:layout_constraintTop_toBottomOf="@+id/MoodButton"
+        app:layout_constraintTop_toBottomOf="@+id/MedicationButton"
+        app:layout_constraintBottom_toBottomOf="parent"
          />
 
     <ImageView
@@ -157,7 +200,8 @@
         android:layout_marginTop="80dp"
         android:src="@drawable/ujlogo"
         app:layout_constraintLeft_toRightOf="@+id/brought"
-        app:layout_constraintTop_toBottomOf="@+id/CallButton"
-        app:layout_constraintStart_toStartOf="@id/EDiaryButton"/>
+        app:layout_constraintTop_toBottomOf="@+id/EventButton"
+        app:layout_constraintStart_toStartOf="@id/EDiaryButton"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
