@@ -1,4 +1,7 @@
 ﻿using HashPass;
+using MailKit.Net.Smtp;
+using MailKit.Security;
+using MimeKit;
 using MindOverMatterRestAPI.Models;
 using System;
 using System.Collections.Generic;
@@ -6,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace MindOverMatterRestAPI.Controllers
@@ -13,7 +17,10 @@ namespace MindOverMatterRestAPI.Controllers
     public class StudentController : ApiController
     {
 
+
         DataClasses1DataContext db = new DataClasses1DataContext();
+
+
 
         [Route("api/Student/EditStudent")]
         [HttpPost]
