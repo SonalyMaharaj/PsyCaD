@@ -8,11 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.Locale;
 import java.util.Random;
 public class ForgotPasswordCodePage extends AppCompatActivity {
     private Button btnVerify;
     private EditText txtUserOTPInput;
-    private String generatedOTP; //this OTP will not be stored on the database, will generate only when the page is loaded, and when the User request new OTP generation
+    private String generatedOTP=new String(); //this OTP will not be stored on the database, will generate only when the page is loaded, and when the User request new OTP generation
+    private DataServiceReference client=new DataServiceReference(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,30 +23,35 @@ public class ForgotPasswordCodePage extends AppCompatActivity {
 
         btnVerify=findViewById(R.id.btnVerify);
         txtUserOTPInput=findViewById(R.id.txtMyOTP);
-        //Generate OTP
-        generatedOTP=generateOTP();
         //get passed student
         Models.StudentModel student=GetPassedStudent();
         //send email with this OTP to the given email address
         String StudentEmail=student.getStudentEmail().toString(); //only one email address
-        String emailBody=generateEmailBody(student.getStudentName());
-        try {
-            //TO DO: Send email that contains OTP to the Student
-            //sendEmail(StudentEmail,emailBody);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        //Send email to the Student and receive OTP
+        client.sendEmail(StudentEmail, new DataServiceReference.IMoMVolleyListener() {
+            @Override
+            public void OnResponse(Object response) {
+                try{
+                    Models.OTP otp=(Models.OTP) response;
+                    generatedOTP=otp.getGeneratedOTP(); //initialize the generatedOTP
+
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void OnError(String error) {
+                Toast.makeText(ForgotPasswordCodePage.this,error.toString(),Toast.LENGTH_LONG).show();
+            }
+        });
 
         btnVerify.setOnClickListener(e->{
             //Confirm the provided OTP with the one generated
-            String input=txtUserOTPInput.getText().toString();
-            Boolean OTPMatch=false;
-            if(generatedOTP.equals(input)){
-                OTPMatch=true;
-            }
-
-            //if the OTPs match, Pass the StudentModel forward to the NewPassword Intent and redirect
-            if(OTPMatch){
+            String otp1=Secrecy.HashPassword(txtUserOTPInput.getText().toString()); //use the HashPassword function to hash the OTP
+            String otp2=generatedOTP.toString();
+            if((otp1).equals(otp2)){
+                //if the OTPs match, Pass the StudentModel forward to the NewPassword Intent and redirect
                 OpenNewPasswordPage(student);
             }
             else{
@@ -62,15 +69,6 @@ public class ForgotPasswordCodePage extends AppCompatActivity {
         emailSender.sendEmail(studentEmail,body); //send email to student
 
     }
-
-    public String generateEmailBody(String studentName){
-        //this function generates a personalised email body for the student,
-        String emailBody="Hi "+studentName+" \n\n"+"This is your OTP for renewing your MindOverMatter Password" +
-                "\n\n"+generatedOTP.toUpperCase()+"\n\n"+" stay safe and remember we will not send you an email asking personal details" +
-                "\n\n"+"MindOverMatter";
-
-        return  emailBody;
-    }
     public Models.StudentModel GetPassedStudent(){
         Models.StudentModel student = (Models.StudentModel) getIntent().getSerializableExtra("student");
         return student;
@@ -83,20 +81,6 @@ public class ForgotPasswordCodePage extends AppCompatActivity {
         startActivity(forgotPswrd_Intent);
     }
 
-    private String generateOTP(){
-        //this function will generate a unique OTP of 5 digits
-        Random rand=new Random();
-
-        int randNum=0;
-        String generatedOTP="";
-        for(int i=0;i<=5;i++){
-            //generate a unique number 5 times
-            randNum=rand.nextInt(9);
-            generatedOTP+=randNum; //append the generated digit to the OTP digits
-        }
-
-        return generatedOTP;
-    }
 
 
 

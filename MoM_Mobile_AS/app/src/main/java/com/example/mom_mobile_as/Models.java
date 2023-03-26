@@ -5,6 +5,17 @@ import java.io.Serializable;
 public class Models {
 
 
+    public static class OTP{
+        String generatedOTP;
+
+        public String getGeneratedOTP() {
+            return generatedOTP;
+        }
+
+        public void setGeneratedOTP(String generatedOTP) {
+            this.generatedOTP = generatedOTP;
+        }
+    }
     //Nested Class, StudentModel
     public static class StudentModel implements Serializable {
         int StudentNumber=0;

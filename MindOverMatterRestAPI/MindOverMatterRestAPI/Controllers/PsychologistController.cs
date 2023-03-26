@@ -238,6 +238,35 @@ namespace MindOverMatterRestAPI.Controllers
             return student;
         }
 
-        
+        //HELPER FUNCTION: for taking every data from the database and editing the passwords to use hash passwords
+        /*[Route("api/Admin/HashAllPasswords")]
+        [HttpGet]
+        public IHttpActionResult hashPsychologistsPasswords()
+        {
+
+            var counsellors = (from a in db.Psychologists
+                               select a);
+
+
+            foreach (var a in counsellors)
+            {
+                a.PsychologistPassword = HashPass.Secrecy.HashPassword(a.PsychologistPassword);
+
+            }
+
+            try
+            {
+                db.SubmitChanges();
+                return Ok(true);
+            }
+            catch (InvalidDataContractException e)
+            {
+                e.GetBaseException();
+                return Ok(false);
+            }
+
+        }*/
+
+
     }
 }

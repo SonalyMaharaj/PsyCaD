@@ -724,6 +724,32 @@ public class DataServiceReference {
         MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest); //add request to request Queue
     }
 
+    //Function to send an email to the given email
+
+    public void sendEmail(String studentEmail, IMoMVolleyListener volleyListener){
+        String url=APIURL+"email/sendEmail?studentEmail="+studentEmail;
+        JsonObjectRequest jsonObjectRequest=new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    String generatedOTP= (String) response.get("generatedOTP"); //get the generatedOTP
+                    Models.OTP otp=new Models.OTP();
+                    otp.setGeneratedOTP(generatedOTP);
+                    volleyListener.OnResponse(otp);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyListener.OnError(error.toString());
+            }
+        });
+
+        MySingleton.getInstance(context).addToRequestQueue(jsonObjectRequest);
+    }
+
     //create an Edit Diary Entry Function
 
     //HELPER FUNCTIONS
