@@ -8,7 +8,7 @@
     android:background="@drawable/home">
 
     <ImageView
-        android:id="@+id/id_logo"
+        android:id="@+id/momLogo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/roundlogo"
@@ -40,7 +40,7 @@
         android:textSize="25dp"
         android:layout_marginTop="40dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_logo"
+        app:layout_constraintTop_toBottomOf="@+id/momLogo"
         app:layout_constraintRight_toLeftOf="@id/addButton"/>
 
     <ImageView
@@ -51,7 +51,7 @@
         android:src="@drawable/ic_baseline_add_circle_outline_24"
         android:layout_marginTop="40dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_logo"
+        app:layout_constraintTop_toBottomOf="@+id/momLogo"
         app:layout_constraintLeft_toRightOf="@+id/DiaryHeading"/>
 
     <ListView
@@ -67,26 +67,26 @@
         android:id="@+id/brought"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="500dp"
         android:text="Brought to you by PsyCaD"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/uj"
-        app:layout_constraintStart_toStartOf="@id/DiaryHeading"
-        app:layout_constraintTop_toBottomOf="@id/lvDiaryEntries" />
+        app:layout_constraintTop_toBottomOf="@+id/momLogo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <ImageView
         android:id="@+id/uj"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="500dp"
         android:src="@drawable/ujlogo"
-        app:layout_constraintEnd_toEndOf="@id/DiaryHeading"
         app:layout_constraintLeft_toRightOf="@+id/brought"
-        app:layout_constraintTop_toBottomOf="@+id/lvDiaryEntries"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/momLogo"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ProgressBar
