@@ -45,18 +45,12 @@ namespace MindOverMatterRestAPI
     partial void InsertPrescribeExercise(PrescribeExercise instance);
     partial void UpdatePrescribeExercise(PrescribeExercise instance);
     partial void DeletePrescribeExercise(PrescribeExercise instance);
-    partial void InsertPsychologist(Psychologist instance);
-    partial void UpdatePsychologist(Psychologist instance);
-    partial void DeletePsychologist(Psychologist instance);
     partial void InsertSessionNote(SessionNote instance);
     partial void UpdateSessionNote(SessionNote instance);
     partial void DeleteSessionNote(SessionNote instance);
     partial void InsertUnAvailableDateAndTime(UnAvailableDateAndTime instance);
     partial void UpdateUnAvailableDateAndTime(UnAvailableDateAndTime instance);
     partial void DeleteUnAvailableDateAndTime(UnAvailableDateAndTime instance);
-    partial void InsertStudentPsychologistLink(StudentPsychologistLink instance);
-    partial void UpdateStudentPsychologistLink(StudentPsychologistLink instance);
-    partial void DeleteStudentPsychologistLink(StudentPsychologistLink instance);
     partial void InsertExercise(Exercise instance);
     partial void UpdateExercise(Exercise instance);
     partial void DeleteExercise(Exercise instance);
@@ -66,12 +60,15 @@ namespace MindOverMatterRestAPI
     partial void InsertCallLog(CallLog instance);
     partial void UpdateCallLog(CallLog instance);
     partial void DeleteCallLog(CallLog instance);
-    partial void InsertStudent(Student instance);
-    partial void UpdateStudent(Student instance);
-    partial void DeleteStudent(Student instance);
     partial void InsertMedicineTracker(MedicineTracker instance);
     partial void UpdateMedicineTracker(MedicineTracker instance);
     partial void DeleteMedicineTracker(MedicineTracker instance);
+    partial void InsertPsychologist(Psychologist instance);
+    partial void UpdatePsychologist(Psychologist instance);
+    partial void DeletePsychologist(Psychologist instance);
+    partial void InsertStudent(Student instance);
+    partial void UpdateStudent(Student instance);
+    partial void DeleteStudent(Student instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -144,14 +141,6 @@ namespace MindOverMatterRestAPI
 			}
 		}
 		
-		public System.Data.Linq.Table<Psychologist> Psychologists
-		{
-			get
-			{
-				return this.GetTable<Psychologist>();
-			}
-		}
-		
 		public System.Data.Linq.Table<SessionNote> SessionNotes
 		{
 			get
@@ -165,14 +154,6 @@ namespace MindOverMatterRestAPI
 			get
 			{
 				return this.GetTable<UnAvailableDateAndTime>();
-			}
-		}
-		
-		public System.Data.Linq.Table<StudentPsychologistLink> StudentPsychologistLinks
-		{
-			get
-			{
-				return this.GetTable<StudentPsychologistLink>();
 			}
 		}
 		
@@ -200,19 +181,27 @@ namespace MindOverMatterRestAPI
 			}
 		}
 		
-		public System.Data.Linq.Table<Student> Students
-		{
-			get
-			{
-				return this.GetTable<Student>();
-			}
-		}
-		
 		public System.Data.Linq.Table<MedicineTracker> MedicineTrackers
 		{
 			get
 			{
 				return this.GetTable<MedicineTracker>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Psychologist> Psychologists
+		{
+			get
+			{
+				return this.GetTable<Psychologist>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Student> Students
+		{
+			get
+			{
+				return this.GetTable<Student>();
 			}
 		}
 	}
@@ -1151,236 +1140,6 @@ namespace MindOverMatterRestAPI
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Psychologist")]
-	public partial class Psychologist : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _PsychologistId;
-		
-		private string _PsychologistName;
-		
-		private string _PsychologistSurname;
-		
-		private string _PsychologistEmail;
-		
-		private string _PsychologistPassword;
-		
-		private int _NumStudentsLinked;
-		
-		private char _IsActive;
-		
-		private System.Nullable<int> _AdminId;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnPsychologistIdChanging(int value);
-    partial void OnPsychologistIdChanged();
-    partial void OnPsychologistNameChanging(string value);
-    partial void OnPsychologistNameChanged();
-    partial void OnPsychologistSurnameChanging(string value);
-    partial void OnPsychologistSurnameChanged();
-    partial void OnPsychologistEmailChanging(string value);
-    partial void OnPsychologistEmailChanged();
-    partial void OnPsychologistPasswordChanging(string value);
-    partial void OnPsychologistPasswordChanged();
-    partial void OnNumStudentsLinkedChanging(int value);
-    partial void OnNumStudentsLinkedChanged();
-    partial void OnIsActiveChanging(char value);
-    partial void OnIsActiveChanged();
-    partial void OnAdminIdChanging(System.Nullable<int> value);
-    partial void OnAdminIdChanged();
-    #endregion
-		
-		public Psychologist()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PsychologistId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int PsychologistId
-		{
-			get
-			{
-				return this._PsychologistId;
-			}
-			set
-			{
-				if ((this._PsychologistId != value))
-				{
-					this.OnPsychologistIdChanging(value);
-					this.SendPropertyChanging();
-					this._PsychologistId = value;
-					this.SendPropertyChanged("PsychologistId");
-					this.OnPsychologistIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PsychologistName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string PsychologistName
-		{
-			get
-			{
-				return this._PsychologistName;
-			}
-			set
-			{
-				if ((this._PsychologistName != value))
-				{
-					this.OnPsychologistNameChanging(value);
-					this.SendPropertyChanging();
-					this._PsychologistName = value;
-					this.SendPropertyChanged("PsychologistName");
-					this.OnPsychologistNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PsychologistSurname", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string PsychologistSurname
-		{
-			get
-			{
-				return this._PsychologistSurname;
-			}
-			set
-			{
-				if ((this._PsychologistSurname != value))
-				{
-					this.OnPsychologistSurnameChanging(value);
-					this.SendPropertyChanging();
-					this._PsychologistSurname = value;
-					this.SendPropertyChanged("PsychologistSurname");
-					this.OnPsychologistSurnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PsychologistEmail", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
-		public string PsychologistEmail
-		{
-			get
-			{
-				return this._PsychologistEmail;
-			}
-			set
-			{
-				if ((this._PsychologistEmail != value))
-				{
-					this.OnPsychologistEmailChanging(value);
-					this.SendPropertyChanging();
-					this._PsychologistEmail = value;
-					this.SendPropertyChanged("PsychologistEmail");
-					this.OnPsychologistEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PsychologistPassword", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
-		public string PsychologistPassword
-		{
-			get
-			{
-				return this._PsychologistPassword;
-			}
-			set
-			{
-				if ((this._PsychologistPassword != value))
-				{
-					this.OnPsychologistPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._PsychologistPassword = value;
-					this.SendPropertyChanged("PsychologistPassword");
-					this.OnPsychologistPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumStudentsLinked", DbType="Int NOT NULL")]
-		public int NumStudentsLinked
-		{
-			get
-			{
-				return this._NumStudentsLinked;
-			}
-			set
-			{
-				if ((this._NumStudentsLinked != value))
-				{
-					this.OnNumStudentsLinkedChanging(value);
-					this.SendPropertyChanging();
-					this._NumStudentsLinked = value;
-					this.SendPropertyChanged("NumStudentsLinked");
-					this.OnNumStudentsLinkedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Char(1) NOT NULL")]
-		public char IsActive
-		{
-			get
-			{
-				return this._IsActive;
-			}
-			set
-			{
-				if ((this._IsActive != value))
-				{
-					this.OnIsActiveChanging(value);
-					this.SendPropertyChanging();
-					this._IsActive = value;
-					this.SendPropertyChanged("IsActive");
-					this.OnIsActiveChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdminId", DbType="Int")]
-		public System.Nullable<int> AdminId
-		{
-			get
-			{
-				return this._AdminId;
-			}
-			set
-			{
-				if ((this._AdminId != value))
-				{
-					this.OnAdminIdChanging(value);
-					this.SendPropertyChanging();
-					this._AdminId = value;
-					this.SendPropertyChanged("AdminId");
-					this.OnAdminIdChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SessionNote")]
 	public partial class SessionNote : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1696,140 +1455,6 @@ namespace MindOverMatterRestAPI
 					this._IsAvailable = value;
 					this.SendPropertyChanged("IsAvailable");
 					this.OnIsAvailableChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.StudentPsychologistLink")]
-	public partial class StudentPsychologistLink : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _LinkID;
-		
-		private System.Nullable<int> _PsychologistId;
-		
-		private System.Nullable<int> _StudentNumber;
-		
-		private System.Nullable<int> _IsLinked;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnLinkIDChanging(int value);
-    partial void OnLinkIDChanged();
-    partial void OnPsychologistIdChanging(System.Nullable<int> value);
-    partial void OnPsychologistIdChanged();
-    partial void OnStudentNumberChanging(System.Nullable<int> value);
-    partial void OnStudentNumberChanged();
-    partial void OnIsLinkedChanging(System.Nullable<int> value);
-    partial void OnIsLinkedChanged();
-    #endregion
-		
-		public StudentPsychologistLink()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LinkID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int LinkID
-		{
-			get
-			{
-				return this._LinkID;
-			}
-			set
-			{
-				if ((this._LinkID != value))
-				{
-					this.OnLinkIDChanging(value);
-					this.SendPropertyChanging();
-					this._LinkID = value;
-					this.SendPropertyChanged("LinkID");
-					this.OnLinkIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PsychologistId", DbType="Int")]
-		public System.Nullable<int> PsychologistId
-		{
-			get
-			{
-				return this._PsychologistId;
-			}
-			set
-			{
-				if ((this._PsychologistId != value))
-				{
-					this.OnPsychologistIdChanging(value);
-					this.SendPropertyChanging();
-					this._PsychologistId = value;
-					this.SendPropertyChanged("PsychologistId");
-					this.OnPsychologistIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentNumber", DbType="Int")]
-		public System.Nullable<int> StudentNumber
-		{
-			get
-			{
-				return this._StudentNumber;
-			}
-			set
-			{
-				if ((this._StudentNumber != value))
-				{
-					this.OnStudentNumberChanging(value);
-					this.SendPropertyChanging();
-					this._StudentNumber = value;
-					this.SendPropertyChanged("StudentNumber");
-					this.OnStudentNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsLinked", DbType="Int")]
-		public System.Nullable<int> IsLinked
-		{
-			get
-			{
-				return this._IsLinked;
-			}
-			set
-			{
-				if ((this._IsLinked != value))
-				{
-					this.OnIsLinkedChanging(value);
-					this.SendPropertyChanging();
-					this._IsLinked = value;
-					this.SendPropertyChanged("IsLinked");
-					this.OnIsLinkedChanged();
 				}
 			}
 		}
@@ -2377,260 +2002,6 @@ namespace MindOverMatterRestAPI
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Student")]
-	public partial class Student : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _StudentNumber;
-		
-		private string _StudentName;
-		
-		private string _StudentSurname;
-		
-		private string _StudentEmail;
-		
-		private string _StudentPassword;
-		
-		private System.Nullable<char> _StudentGender;
-		
-		private System.Nullable<System.DateTime> _StudentDOB;
-		
-		private string _StudentQualification;
-		
-		private string _Campus;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnStudentNumberChanging(int value);
-    partial void OnStudentNumberChanged();
-    partial void OnStudentNameChanging(string value);
-    partial void OnStudentNameChanged();
-    partial void OnStudentSurnameChanging(string value);
-    partial void OnStudentSurnameChanged();
-    partial void OnStudentEmailChanging(string value);
-    partial void OnStudentEmailChanged();
-    partial void OnStudentPasswordChanging(string value);
-    partial void OnStudentPasswordChanged();
-    partial void OnStudentGenderChanging(System.Nullable<char> value);
-    partial void OnStudentGenderChanged();
-    partial void OnStudentDOBChanging(System.Nullable<System.DateTime> value);
-    partial void OnStudentDOBChanged();
-    partial void OnStudentQualificationChanging(string value);
-    partial void OnStudentQualificationChanged();
-    partial void OnCampusChanging(string value);
-    partial void OnCampusChanged();
-    #endregion
-		
-		public Student()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentNumber", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int StudentNumber
-		{
-			get
-			{
-				return this._StudentNumber;
-			}
-			set
-			{
-				if ((this._StudentNumber != value))
-				{
-					this.OnStudentNumberChanging(value);
-					this.SendPropertyChanging();
-					this._StudentNumber = value;
-					this.SendPropertyChanged("StudentNumber");
-					this.OnStudentNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string StudentName
-		{
-			get
-			{
-				return this._StudentName;
-			}
-			set
-			{
-				if ((this._StudentName != value))
-				{
-					this.OnStudentNameChanging(value);
-					this.SendPropertyChanging();
-					this._StudentName = value;
-					this.SendPropertyChanged("StudentName");
-					this.OnStudentNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentSurname", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string StudentSurname
-		{
-			get
-			{
-				return this._StudentSurname;
-			}
-			set
-			{
-				if ((this._StudentSurname != value))
-				{
-					this.OnStudentSurnameChanging(value);
-					this.SendPropertyChanging();
-					this._StudentSurname = value;
-					this.SendPropertyChanged("StudentSurname");
-					this.OnStudentSurnameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentEmail", DbType="VarChar(150)")]
-		public string StudentEmail
-		{
-			get
-			{
-				return this._StudentEmail;
-			}
-			set
-			{
-				if ((this._StudentEmail != value))
-				{
-					this.OnStudentEmailChanging(value);
-					this.SendPropertyChanging();
-					this._StudentEmail = value;
-					this.SendPropertyChanged("StudentEmail");
-					this.OnStudentEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentPassword", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
-		public string StudentPassword
-		{
-			get
-			{
-				return this._StudentPassword;
-			}
-			set
-			{
-				if ((this._StudentPassword != value))
-				{
-					this.OnStudentPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._StudentPassword = value;
-					this.SendPropertyChanged("StudentPassword");
-					this.OnStudentPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentGender", DbType="Char(1)")]
-		public System.Nullable<char> StudentGender
-		{
-			get
-			{
-				return this._StudentGender;
-			}
-			set
-			{
-				if ((this._StudentGender != value))
-				{
-					this.OnStudentGenderChanging(value);
-					this.SendPropertyChanging();
-					this._StudentGender = value;
-					this.SendPropertyChanged("StudentGender");
-					this.OnStudentGenderChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentDOB", DbType="Date")]
-		public System.Nullable<System.DateTime> StudentDOB
-		{
-			get
-			{
-				return this._StudentDOB;
-			}
-			set
-			{
-				if ((this._StudentDOB != value))
-				{
-					this.OnStudentDOBChanging(value);
-					this.SendPropertyChanging();
-					this._StudentDOB = value;
-					this.SendPropertyChanged("StudentDOB");
-					this.OnStudentDOBChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentQualification", DbType="VarChar(150)")]
-		public string StudentQualification
-		{
-			get
-			{
-				return this._StudentQualification;
-			}
-			set
-			{
-				if ((this._StudentQualification != value))
-				{
-					this.OnStudentQualificationChanging(value);
-					this.SendPropertyChanging();
-					this._StudentQualification = value;
-					this.SendPropertyChanged("StudentQualification");
-					this.OnStudentQualificationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Campus", DbType="VarChar(150)")]
-		public string Campus
-		{
-			get
-			{
-				return this._Campus;
-			}
-			set
-			{
-				if ((this._Campus != value))
-				{
-					this.OnCampusChanging(value);
-					this.SendPropertyChanging();
-					this._Campus = value;
-					this.SendPropertyChanged("Campus");
-					this.OnCampusChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MedicineTracker")]
 	public partial class MedicineTracker : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2812,6 +2183,538 @@ namespace MindOverMatterRestAPI
 					this._IsActive = value;
 					this.SendPropertyChanged("IsActive");
 					this.OnIsActiveChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Psychologist")]
+	public partial class Psychologist : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _PsychologistId;
+		
+		private string _PsychologistName;
+		
+		private string _PsychologistSurname;
+		
+		private string _PsychologistEmail;
+		
+		private string _PsychologistPassword;
+		
+		private int _NumStudentsLinked;
+		
+		private char _IsActive;
+		
+		private System.Nullable<int> _AdminId;
+		
+		private string _Campus;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPsychologistIdChanging(int value);
+    partial void OnPsychologistIdChanged();
+    partial void OnPsychologistNameChanging(string value);
+    partial void OnPsychologistNameChanged();
+    partial void OnPsychologistSurnameChanging(string value);
+    partial void OnPsychologistSurnameChanged();
+    partial void OnPsychologistEmailChanging(string value);
+    partial void OnPsychologistEmailChanged();
+    partial void OnPsychologistPasswordChanging(string value);
+    partial void OnPsychologistPasswordChanged();
+    partial void OnNumStudentsLinkedChanging(int value);
+    partial void OnNumStudentsLinkedChanged();
+    partial void OnIsActiveChanging(char value);
+    partial void OnIsActiveChanged();
+    partial void OnAdminIdChanging(System.Nullable<int> value);
+    partial void OnAdminIdChanged();
+    partial void OnCampusChanging(string value);
+    partial void OnCampusChanged();
+    #endregion
+		
+		public Psychologist()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PsychologistId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PsychologistId
+		{
+			get
+			{
+				return this._PsychologistId;
+			}
+			set
+			{
+				if ((this._PsychologistId != value))
+				{
+					this.OnPsychologistIdChanging(value);
+					this.SendPropertyChanging();
+					this._PsychologistId = value;
+					this.SendPropertyChanged("PsychologistId");
+					this.OnPsychologistIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PsychologistName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string PsychologistName
+		{
+			get
+			{
+				return this._PsychologistName;
+			}
+			set
+			{
+				if ((this._PsychologistName != value))
+				{
+					this.OnPsychologistNameChanging(value);
+					this.SendPropertyChanging();
+					this._PsychologistName = value;
+					this.SendPropertyChanged("PsychologistName");
+					this.OnPsychologistNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PsychologistSurname", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string PsychologistSurname
+		{
+			get
+			{
+				return this._PsychologistSurname;
+			}
+			set
+			{
+				if ((this._PsychologistSurname != value))
+				{
+					this.OnPsychologistSurnameChanging(value);
+					this.SendPropertyChanging();
+					this._PsychologistSurname = value;
+					this.SendPropertyChanged("PsychologistSurname");
+					this.OnPsychologistSurnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PsychologistEmail", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string PsychologistEmail
+		{
+			get
+			{
+				return this._PsychologistEmail;
+			}
+			set
+			{
+				if ((this._PsychologistEmail != value))
+				{
+					this.OnPsychologistEmailChanging(value);
+					this.SendPropertyChanging();
+					this._PsychologistEmail = value;
+					this.SendPropertyChanged("PsychologistEmail");
+					this.OnPsychologistEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PsychologistPassword", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string PsychologistPassword
+		{
+			get
+			{
+				return this._PsychologistPassword;
+			}
+			set
+			{
+				if ((this._PsychologistPassword != value))
+				{
+					this.OnPsychologistPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._PsychologistPassword = value;
+					this.SendPropertyChanged("PsychologistPassword");
+					this.OnPsychologistPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NumStudentsLinked", DbType="Int NOT NULL")]
+		public int NumStudentsLinked
+		{
+			get
+			{
+				return this._NumStudentsLinked;
+			}
+			set
+			{
+				if ((this._NumStudentsLinked != value))
+				{
+					this.OnNumStudentsLinkedChanging(value);
+					this.SendPropertyChanging();
+					this._NumStudentsLinked = value;
+					this.SendPropertyChanged("NumStudentsLinked");
+					this.OnNumStudentsLinkedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Char(1) NOT NULL")]
+		public char IsActive
+		{
+			get
+			{
+				return this._IsActive;
+			}
+			set
+			{
+				if ((this._IsActive != value))
+				{
+					this.OnIsActiveChanging(value);
+					this.SendPropertyChanging();
+					this._IsActive = value;
+					this.SendPropertyChanged("IsActive");
+					this.OnIsActiveChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdminId", DbType="Int")]
+		public System.Nullable<int> AdminId
+		{
+			get
+			{
+				return this._AdminId;
+			}
+			set
+			{
+				if ((this._AdminId != value))
+				{
+					this.OnAdminIdChanging(value);
+					this.SendPropertyChanging();
+					this._AdminId = value;
+					this.SendPropertyChanged("AdminId");
+					this.OnAdminIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Campus", DbType="VarChar(100)")]
+		public string Campus
+		{
+			get
+			{
+				return this._Campus;
+			}
+			set
+			{
+				if ((this._Campus != value))
+				{
+					this.OnCampusChanging(value);
+					this.SendPropertyChanging();
+					this._Campus = value;
+					this.SendPropertyChanged("Campus");
+					this.OnCampusChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Student")]
+	public partial class Student : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _StudentNumber;
+		
+		private string _StudentName;
+		
+		private string _StudentSurname;
+		
+		private string _StudentEmail;
+		
+		private string _StudentPassword;
+		
+		private System.Nullable<char> _StudentGender;
+		
+		private System.Nullable<System.DateTime> _StudentDOB;
+		
+		private string _StudentQualification;
+		
+		private string _Campus;
+		
+		private System.Nullable<int> _PsychologistId;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnStudentNumberChanging(int value);
+    partial void OnStudentNumberChanged();
+    partial void OnStudentNameChanging(string value);
+    partial void OnStudentNameChanged();
+    partial void OnStudentSurnameChanging(string value);
+    partial void OnStudentSurnameChanged();
+    partial void OnStudentEmailChanging(string value);
+    partial void OnStudentEmailChanged();
+    partial void OnStudentPasswordChanging(string value);
+    partial void OnStudentPasswordChanged();
+    partial void OnStudentGenderChanging(System.Nullable<char> value);
+    partial void OnStudentGenderChanged();
+    partial void OnStudentDOBChanging(System.Nullable<System.DateTime> value);
+    partial void OnStudentDOBChanged();
+    partial void OnStudentQualificationChanging(string value);
+    partial void OnStudentQualificationChanged();
+    partial void OnCampusChanging(string value);
+    partial void OnCampusChanged();
+    partial void OnPsychologistIdChanging(System.Nullable<int> value);
+    partial void OnPsychologistIdChanged();
+    #endregion
+		
+		public Student()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentNumber", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int StudentNumber
+		{
+			get
+			{
+				return this._StudentNumber;
+			}
+			set
+			{
+				if ((this._StudentNumber != value))
+				{
+					this.OnStudentNumberChanging(value);
+					this.SendPropertyChanging();
+					this._StudentNumber = value;
+					this.SendPropertyChanged("StudentNumber");
+					this.OnStudentNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentName", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string StudentName
+		{
+			get
+			{
+				return this._StudentName;
+			}
+			set
+			{
+				if ((this._StudentName != value))
+				{
+					this.OnStudentNameChanging(value);
+					this.SendPropertyChanging();
+					this._StudentName = value;
+					this.SendPropertyChanged("StudentName");
+					this.OnStudentNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentSurname", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string StudentSurname
+		{
+			get
+			{
+				return this._StudentSurname;
+			}
+			set
+			{
+				if ((this._StudentSurname != value))
+				{
+					this.OnStudentSurnameChanging(value);
+					this.SendPropertyChanging();
+					this._StudentSurname = value;
+					this.SendPropertyChanged("StudentSurname");
+					this.OnStudentSurnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentEmail", DbType="VarChar(150)")]
+		public string StudentEmail
+		{
+			get
+			{
+				return this._StudentEmail;
+			}
+			set
+			{
+				if ((this._StudentEmail != value))
+				{
+					this.OnStudentEmailChanging(value);
+					this.SendPropertyChanging();
+					this._StudentEmail = value;
+					this.SendPropertyChanged("StudentEmail");
+					this.OnStudentEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentPassword", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string StudentPassword
+		{
+			get
+			{
+				return this._StudentPassword;
+			}
+			set
+			{
+				if ((this._StudentPassword != value))
+				{
+					this.OnStudentPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._StudentPassword = value;
+					this.SendPropertyChanged("StudentPassword");
+					this.OnStudentPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentGender", DbType="Char(1)")]
+		public System.Nullable<char> StudentGender
+		{
+			get
+			{
+				return this._StudentGender;
+			}
+			set
+			{
+				if ((this._StudentGender != value))
+				{
+					this.OnStudentGenderChanging(value);
+					this.SendPropertyChanging();
+					this._StudentGender = value;
+					this.SendPropertyChanged("StudentGender");
+					this.OnStudentGenderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentDOB", DbType="Date")]
+		public System.Nullable<System.DateTime> StudentDOB
+		{
+			get
+			{
+				return this._StudentDOB;
+			}
+			set
+			{
+				if ((this._StudentDOB != value))
+				{
+					this.OnStudentDOBChanging(value);
+					this.SendPropertyChanging();
+					this._StudentDOB = value;
+					this.SendPropertyChanged("StudentDOB");
+					this.OnStudentDOBChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StudentQualification", DbType="VarChar(150)")]
+		public string StudentQualification
+		{
+			get
+			{
+				return this._StudentQualification;
+			}
+			set
+			{
+				if ((this._StudentQualification != value))
+				{
+					this.OnStudentQualificationChanging(value);
+					this.SendPropertyChanging();
+					this._StudentQualification = value;
+					this.SendPropertyChanged("StudentQualification");
+					this.OnStudentQualificationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Campus", DbType="VarChar(4)")]
+		public string Campus
+		{
+			get
+			{
+				return this._Campus;
+			}
+			set
+			{
+				if ((this._Campus != value))
+				{
+					this.OnCampusChanging(value);
+					this.SendPropertyChanging();
+					this._Campus = value;
+					this.SendPropertyChanged("Campus");
+					this.OnCampusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PsychologistId", DbType="Int")]
+		public System.Nullable<int> PsychologistId
+		{
+			get
+			{
+				return this._PsychologistId;
+			}
+			set
+			{
+				if ((this._PsychologistId != value))
+				{
+					this.OnPsychologistIdChanging(value);
+					this.SendPropertyChanging();
+					this._PsychologistId = value;
+					this.SendPropertyChanged("PsychologistId");
+					this.OnPsychologistIdChanged();
 				}
 			}
 		}

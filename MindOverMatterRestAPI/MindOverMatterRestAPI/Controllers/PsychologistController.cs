@@ -31,6 +31,7 @@ namespace MindOverMatterRestAPI.Controllers
             psych.PsychologistSurname = psychologist.PsychologistSurname.Trim();
             psych.PsychologistEmail = psychologist.PsychologistEmail.Trim();
             psych.IsActive = psychologist.IsActive;
+            psych.Campus = psychologist.Campus;
 
             try
             {
@@ -116,7 +117,7 @@ namespace MindOverMatterRestAPI.Controllers
                 //return false if the 
                 return Ok(false);
             }
-            PsychologistClass Psychologist = new PsychologistClass { PsychologistId = cons.PsychologistId, PsychologistName = cons.PsychologistName, PsychologistSurname = cons.PsychologistSurname, PsychologistEmail = cons.PsychologistEmail, NumStudentsLinked = Convert.ToInt32(cons.NumStudentsLinked),IsActive=cons.IsActive ,AdminId =Convert.ToInt32( cons.AdminId )};
+            PsychologistClass Psychologist = new PsychologistClass { PsychologistId = cons.PsychologistId, PsychologistName = cons.PsychologistName, PsychologistSurname = cons.PsychologistSurname, PsychologistEmail = cons.PsychologistEmail, Campus=cons.Campus  ,NumStudentsLinked = Convert.ToInt32(cons.NumStudentsLinked),IsActive=cons.IsActive ,AdminId =Convert.ToInt32( cons.AdminId )};
             return Ok(Psychologist);
         }
 
@@ -133,7 +134,7 @@ namespace MindOverMatterRestAPI.Controllers
             }
                 foreach (Psychologist cons in list)
                 {
-                    PsychologistClass Psychologist = new PsychologistClass { PsychologistId = cons.PsychologistId, PsychologistName = cons.PsychologistName, PsychologistSurname = cons.PsychologistName, PsychologistEmail = cons.PsychologistName, NumStudentsLinked = Convert.ToInt32(cons.NumStudentsLinked), IsActive = cons.IsActive, AdminId = Convert.ToInt32(cons.AdminId) };
+                    PsychologistClass Psychologist = new PsychologistClass { PsychologistId = cons.PsychologistId, PsychologistName = cons.PsychologistName, PsychologistSurname = cons.PsychologistSurname, PsychologistEmail = cons.PsychologistEmail, Campus = cons.Campus, NumStudentsLinked = Convert.ToInt32(cons.NumStudentsLinked), IsActive = cons.IsActive, AdminId = Convert.ToInt32(cons.AdminId) };
 
                     Psychologists.Add(Psychologist);
                 }
@@ -158,6 +159,7 @@ namespace MindOverMatterRestAPI.Controllers
                 PsychologistSurname = Psychologist.PsychologistSurname,
                 PsychologistEmail = Psychologist.PsychologistEmail,
                 PsychologistPassword = Secrecy.HashPassword(Psychologist.PsychologistPassword),
+                Campus=Psychologist.Campus,
                 IsActive='0'
             };
 
@@ -213,7 +215,7 @@ namespace MindOverMatterRestAPI.Controllers
         {
             List<StudentClass> linkedstudents = new List<StudentClass>();
 
-            var list = (from a in db.StudentPsychologistLinks
+            var list = (from a in db.Students
                         where a.PsychologistId.Equals(psychologistId)
                         select a);
 

@@ -51,18 +51,6 @@
       <Column Name="IsPrescribed" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Psychologist" Member="Psychologists">
-    <Type Name="Psychologist">
-      <Column Name="PsychologistId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PsychologistName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="PsychologistSurname" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="PsychologistEmail" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
-      <Column Name="PsychologistPassword" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
-      <Column Name="NumStudentsLinked" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="IsActive" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="AdminId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.SessionNote" Member="SessionNotes">
     <Type Name="SessionNote">
       <Column Name="SessionId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -80,14 +68,6 @@
       <Column Name="Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="Time" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="IsAvailable" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.StudentPsychologistLink" Member="StudentPsychologistLinks">
-    <Type Name="StudentPsychologistLink">
-      <Column Name="LinkID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PsychologistId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StudentNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="IsLinked" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Exercise" Member="Exercises">
@@ -119,6 +99,30 @@
       <Column Name="StudentNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Table Name="dbo.MedicineTracker" Member="MedicineTrackers">
+    <Type Name="MedicineTracker">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="NameOfMedication" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Category" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StudentNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NameOfDoctor" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Psychologist" Member="Psychologists">
+    <Type Name="Psychologist">
+      <Column Name="PsychologistId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PsychologistName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PsychologistSurname" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="PsychologistEmail" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="PsychologistPassword" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="NumStudentsLinked" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsActive" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="AdminId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Campus" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Student" Member="Students">
     <Type Name="Student">
       <Column Name="StudentNumber" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -129,18 +133,8 @@
       <Column Name="StudentGender" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
       <Column Name="StudentDOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="StudentQualification" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-      <Column Name="Campus" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.MedicineTracker" Member="MedicineTrackers">
-    <Type Name="MedicineTracker">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="NameOfMedication" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Category" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="StudentNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="NameOfDoctor" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="IsActive" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Campus" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="PsychologistId" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

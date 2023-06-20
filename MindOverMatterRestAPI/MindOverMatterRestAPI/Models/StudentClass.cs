@@ -24,5 +24,7 @@ namespace MindOverMatterRestAPI.Models
         public string StudentQualification { get; set; }
         public String Campus { get; set; }
 
+        public int PsychologistId { get; set; }
+
     }
 }

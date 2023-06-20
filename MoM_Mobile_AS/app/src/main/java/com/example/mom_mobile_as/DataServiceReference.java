@@ -1,6 +1,7 @@
 package com.example.mom_mobile_as;
 
 import android.content.Context;
+import android.view.Display;
 import android.widget.DatePicker;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class DataServiceReference {
     private Context context;
     Models.StudentModel student;
     private String APIURL="http://172.21.224.1/api/";
+
     public interface IMoMVolleyListener{
         public void OnResponse(Object response);
         public  void  OnError(String error);
@@ -273,8 +275,8 @@ public class DataServiceReference {
 
     //THis function will request to change the Campus the Student wants to book from.
 
-    public void ChangeCampus(String Campus, IMoMVolleyListener volleyListener){
-        String url=APIURL +"Student/ChangeCampus";
+    public void ChangePsychologist(String Campus, int PsychologistId,IMoMVolleyListener volleyListener){
+        String url=APIURL +"Student/ChangePsychologist";
 
         SessionManager sessionManager=new SessionManager(context);
         int StudentNumber=sessionManager.getSession();
@@ -299,6 +301,7 @@ public class DataServiceReference {
                 Map<String,String> params=new HashMap<>();
                 params.put("StudentNumber", String.valueOf(StudentNumber));
                 params.put("Campus",Campus);
+                params.put("PsychologistId",String.valueOf(PsychologistId));
                 return  params;
             }
         };
@@ -723,6 +726,45 @@ public class DataServiceReference {
 
         MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest); //add request to request Queue
     }
+
+    public void getPsychologists(IMoMVolleyListener volleyListener) {
+        String url=APIURL+"Psychologist/GetPsychologists";
+        JsonArrayRequest jsonArrayRequest=new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                ArrayList<Models.PsychologistModel> psychologists=new ArrayList<>();
+                for(int i=0;i<response.length();i++){
+                    //get individual objects
+                    try {
+                        JSONObject jsonObject=response.getJSONObject(i);
+
+                        //create a new psychologistmodel
+                        Models.PsychologistModel psychologistModel=new Models.PsychologistModel(
+                                Integer.parseInt(jsonObject.get("PsychologistId").toString()),
+                                jsonObject.getString("PsychologistName").toString(),
+                                jsonObject.getString("PsychologistSurname").toString(),
+                                jsonObject.getString("Campus").toString()
+                        );
+
+                        psychologists.add(psychologistModel);
+                    } catch (JSONException e) {
+                        Toast.makeText(context,e.toString(),Toast.LENGTH_LONG).show();
+                        e.printStackTrace();
+                    }
+                }
+
+                volleyListener.OnResponse(psychologists); //add to list of psychologists
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                volleyListener.OnError(error.toString());
+            }
+        });
+        MySingleton.getInstance(context).addToRequestQueue(jsonArrayRequest);
+    }
+
 
     //Function to send an email to the given email
 

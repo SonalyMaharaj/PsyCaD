@@ -81,9 +81,9 @@ namespace MindOverMatterRestAPI.Controllers
 
         }
 
-        [Route("api/Student/ChangeCampus")]
+        [Route("api/Student/ChangePsychologist")]
         [HttpPost]
-        public IHttpActionResult ChangeCampus(StudentClass studentClass)
+        public IHttpActionResult ChangePsychologist(StudentClass studentClass)
         {
             //
             if (studentClass == null)
@@ -95,6 +95,7 @@ namespace MindOverMatterRestAPI.Controllers
                            select s).FirstOrDefault();
 
             student.Campus = studentClass.Campus;
+            student.PsychologistId = studentClass.PsychologistId; //change psychologist ID
 
             try
             {
@@ -123,7 +124,7 @@ namespace MindOverMatterRestAPI.Controllers
             if (student==null) {
                 return Ok(false);
             }
-            StudentClass studentClass = new StudentClass { StudentNumber = student.StudentNumber, StudentName = student.StudentName, StudentSurname = student.StudentSurname, StudentEmail = student.StudentEmail,StudentGender=Convert.ToChar(student.StudentGender), StudentDOB=Convert.ToString(student.StudentDOB),StudentQualification=student.StudentQualification,Campus=student.Campus};
+            StudentClass studentClass = new StudentClass { StudentNumber = student.StudentNumber, StudentName = student.StudentName, StudentSurname = student.StudentSurname, StudentEmail = student.StudentEmail,StudentGender=Convert.ToChar(student.StudentGender), StudentDOB=Convert.ToString(student.StudentDOB),StudentQualification=student.StudentQualification,Campus=student.Campus, PsychologistId =Convert.ToInt32(student.PsychologistId) };
 
             return Ok(studentClass);
         }
@@ -142,7 +143,7 @@ namespace MindOverMatterRestAPI.Controllers
 
             foreach (var student in list)
             {
-                StudentClass studentClass = new StudentClass { StudentNumber = student.StudentNumber, StudentName = student.StudentName, StudentSurname = student.StudentSurname, StudentEmail = student.StudentEmail, StudentGender = Convert.ToChar(student.StudentGender), StudentDOB = Convert.ToString(student.StudentDOB), StudentQualification = student.StudentQualification, Campus = student.Campus };
+                StudentClass studentClass = new StudentClass { StudentNumber = student.StudentNumber, StudentName = student.StudentName, StudentSurname = student.StudentSurname, StudentEmail = student.StudentEmail, StudentGender = Convert.ToChar(student.StudentGender), StudentDOB = Convert.ToString(student.StudentDOB), StudentQualification = student.StudentQualification, Campus = student.Campus, PsychologistId= Convert.ToInt32(student.PsychologistId) };
 
                 students.Add(studentClass);
             }
@@ -169,7 +170,8 @@ namespace MindOverMatterRestAPI.Controllers
                 StudentGender=studentClass.StudentGender,
                 StudentDOB= Convert.ToDateTime(studentClass.StudentDOB),
                 StudentQualification=studentClass.StudentQualification,
-                Campus=studentClass.Campus
+                Campus=studentClass.Campus,
+                PsychologistId=studentClass.PsychologistId
             };
 
             db.Students.InsertOnSubmit(student);

@@ -338,4 +338,59 @@ public class Models {
         }
     }
 
+    public static class PsychologistModel{
+        private int PsychologistID;
+        private String PsychologistName;
+        private String PsychologistSurname;
+        private String Campus;
+
+        public PsychologistModel(){
+
+        }
+
+        public PsychologistModel(int psychologistID, String psychologistName, String psychologistSurname,String campus) {
+            PsychologistID = psychologistID;
+            PsychologistName = psychologistName;
+            PsychologistSurname = psychologistSurname;
+            Campus=campus;
+        }
+
+        public int getPsychologistID() {
+            return PsychologistID;
+        }
+
+        public void setPsychologistID(int psychologistID) {
+            PsychologistID = psychologistID;
+        }
+
+        public String getPsychologistName() {
+            return PsychologistName;
+        }
+
+        public void setPsychologistName(String psychologistName) {
+            PsychologistName = psychologistName;
+        }
+
+        public String getPsychologistSurname() {
+            return PsychologistSurname;
+        }
+
+        public void setPsychologistSurname(String psychologistSurname) {
+            PsychologistSurname = psychologistSurname;
+        }
+
+        public String getCampus() {
+            return Campus;
+        }
+
+        public void setCampus(String campus) {
+            Campus = campus;
+        }
+
+        @Override
+        public String toString(){
+            return PsychologistName+" "+PsychologistSurname;
+        }
+    }
+
 }

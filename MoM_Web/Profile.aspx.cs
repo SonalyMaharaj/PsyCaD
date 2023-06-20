@@ -15,8 +15,15 @@ namespace MoM_Web
             if (Request.QueryString["StudentNumber"]==null) {
                 return;
             }
+            int studentnumber = 0;
+            try {
+                studentnumber = Convert.ToInt32(Request.QueryString["StudentNumber"]);
 
-            int studentnumber = Convert.ToInt32(Request.QueryString["StudentNumber"]);
+            }
+            catch (Exception ex) { 
+                Console.WriteLine(ex.Message);
+            }
+           
             var student = client.GetStudent(studentnumber);
             if (student==null)
             {

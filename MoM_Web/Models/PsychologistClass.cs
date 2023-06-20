@@ -14,7 +14,7 @@ namespace MoM_Web.Models
         public string PsychologistEmail { get; set; }
 
         public string PsychologistPassword { get; set; }
-
+        public string Campus { get; set; }
         public int NumStudentsLinked { get; set; }
         public char IsActive { get; set; }
         public int AdminId { get; set; }

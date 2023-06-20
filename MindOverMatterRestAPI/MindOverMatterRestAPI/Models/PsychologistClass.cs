@@ -15,6 +15,7 @@ namespace MindOverMatterRestAPI.Models
 
         public string PsychologistPassword { get; set; }
 
+        public string Campus { get; set; }
         public int NumStudentsLinked { get; set; }
         public char IsActive { get; set; }
         public int AdminId { get; set; }
