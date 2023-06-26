@@ -129,5 +129,23 @@ namespace MoM_Web
 
             callsBody.InnerHtml = result;
         }
+
+        public void populateMedLogs()
+        {
+            var meds = client.GetMedicines(Convert.ToInt32(Request.QueryString["StudentNumber"]));
+            String result = "";
+
+            foreach (var med in meds)
+            {
+
+                result += "<tr>";
+                result += "<td>" + med.NameOfDoctor + "</td>";
+                result += "<td>" + med.Category + "</td>";
+                result += "<td>" + med.NameOfMedicine + "</td>";
+                result += "</tr>";
+            }
+
+            medBody.InnerHtml = result;
+        }
     }
 }

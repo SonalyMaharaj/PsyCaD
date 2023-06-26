@@ -103,6 +103,9 @@
             <label>
                 <input type="radio" name="colorRadio" value="Call"> Call Logs
             </label>
+            <label>
+                <input type="radio" name="colorRadio" value="Med"> Medication Tracker
+            </label>
         </div>
 
         <div class="Appointment selectt">
@@ -164,6 +167,23 @@
                     </thead>
                     <tbody id="callsBody" runat="server">
                         <!--Populated from code behin-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="Med selectt">
+            <div>
+                <table id="tblMed">
+                    <thead>
+                        <tr>
+                            <th>Dr Name</th>
+                            <th>Medicine Category</th>
+                            <th>Medication Name</th>
+                        </tr>
+                    </thead>
+                    <tbody id="medBody" runat="server">
+                        <!--Populated from Code Behind-->
                     </tbody>
                 </table>
             </div>

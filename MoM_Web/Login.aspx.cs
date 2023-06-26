@@ -18,7 +18,8 @@ namespace MoM_Web
 
         public void btnLogin_Clicked(object sender, EventArgs e)
         {
-            var user = client.loginUser(username.Value, Secrecy.HashPassword(password.Value));
+            //var user = client.loginUser(username.Value, Secrecy.HashPassword(password.Value));
+            var user = client.loginUser(username.Value, password.Value);
 
             if (user == null)
             {

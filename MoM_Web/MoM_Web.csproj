@@ -80,6 +80,14 @@
     <Content Include="App_Data\MoM_V1_db_log.ldf">
       <DependentUpon>MoM_V1_db.mdf</DependentUpon>
     </Content>
+    <Content Include="cssCal\bootstrap.min.css" />
+    <Content Include="cssCal\bootstrap\mixins\_border-radius.css" />
+    <Content Include="cssCal\bootstrap\mixins\_grid-framework.css" />
+    <Content Include="cssCal\bootstrap\mixins\_screen-reader.css" />
+    <Content Include="cssCal\bootstrap\mixins\_visibility.css" />
+    <Content Include="cssCal\bootstrap\utilities\_stretched-link.css" />
+    <Content Include="cssCal\bootstrap\_media.css" />
+    <Content Include="cssCal\style.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\bootstrap\mixins\_border-radius.css" />
     <Content Include="css\bootstrap\mixins\_screen-reader.css" />
@@ -87,6 +95,8 @@
     <Content Include="css\bootstrap\utilities\_stretched-link.css" />
     <Content Include="css\bootstrap\_media.css" />
     <Content Include="css\style.css" />
+    <Content Include="Event.aspx" />
+    <Content Include="EventCalendar.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="images\avatar.png" />
     <Content Include="images\gradient.png" />
@@ -94,6 +104,10 @@
     <Content Include="images\logo.png" />
     <Content Include="images\logocropped.png" />
     <Content Include="images\ujlogo.png" />
+    <Content Include="jsCal\bootstrap.min.js" />
+    <Content Include="jsCal\jquery.min.js" />
+    <Content Include="jsCal\main.js" />
+    <Content Include="jsCal\popper.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\main.js" />
@@ -175,6 +189,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Event.aspx.cs">
+      <DependentUpon>Event.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Event.aspx.designer.cs">
+      <DependentUpon>Event.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EventCalendar.aspx.cs">
+      <DependentUpon>EventCalendar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EventCalendar.aspx.designer.cs">
+      <DependentUpon>EventCalendar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -255,9 +283,13 @@
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="cssCal\.DS_Store" />
+    <Content Include="cssCal\bootstrap\.DS_Store" />
+    <Content Include="cssCal\bootstrap\mixins\.DS_Store" />
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
+    <Content Include="jsCal\.DS_Store" />
     <None Include="packages.config" />
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\.signature.p7s" />
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.Extensions.props" />
@@ -293,6 +325,98 @@
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\vbc.exe.config" />
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\vbc.rsp" />
     <Content Include="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\tools\RoslynLatest\VBCSCompiler.exe.config" />
+    <Content Include="scssCal\.DS_Store" />
+    <Content Include="scssCal\bootstrap\.DS_Store" />
+    <Content Include="scssCal\bootstrap\bootstrap-grid.scss" />
+    <Content Include="scssCal\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="scssCal\bootstrap\bootstrap.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_alert.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_badge.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_buttons.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_caret.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_deprecate.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_float.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_forms.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_gradients.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_grid.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_hover.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_image.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_list-group.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_lists.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_pagination.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_resize.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_screen-reader.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_size.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_table-row.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_text-hide.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_transition.scss" />
+    <Content Include="scssCal\bootstrap\mixins\_visibility.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_align.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_background.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_borders.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_clearfix.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_display.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_embed.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_flex.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_float.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_overflow.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_position.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_screenreaders.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_shadows.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_sizing.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_spacing.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_stretched-link.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_text.scss" />
+    <Content Include="scssCal\bootstrap\utilities\_visibility.scss" />
+    <Content Include="scssCal\bootstrap\vendor\_rfs.scss" />
+    <Content Include="scssCal\bootstrap\_alert.scss" />
+    <Content Include="scssCal\bootstrap\_badge.scss" />
+    <Content Include="scssCal\bootstrap\_breadcrumb.scss" />
+    <Content Include="scssCal\bootstrap\_button-group.scss" />
+    <Content Include="scssCal\bootstrap\_buttons.scss" />
+    <Content Include="scssCal\bootstrap\_card.scss" />
+    <Content Include="scssCal\bootstrap\_carousel.scss" />
+    <Content Include="scssCal\bootstrap\_close.scss" />
+    <Content Include="scssCal\bootstrap\_code.scss" />
+    <Content Include="scssCal\bootstrap\_custom-forms.scss" />
+    <Content Include="scssCal\bootstrap\_dropdown.scss" />
+    <Content Include="scssCal\bootstrap\_forms.scss" />
+    <Content Include="scssCal\bootstrap\_functions.scss" />
+    <Content Include="scssCal\bootstrap\_grid.scss" />
+    <Content Include="scssCal\bootstrap\_images.scss" />
+    <Content Include="scssCal\bootstrap\_input-group.scss" />
+    <Content Include="scssCal\bootstrap\_jumbotron.scss" />
+    <Content Include="scssCal\bootstrap\_list-group.scss" />
+    <Content Include="scssCal\bootstrap\_media.scss" />
+    <Content Include="scssCal\bootstrap\_mixins.scss" />
+    <Content Include="scssCal\bootstrap\_modal.scss" />
+    <Content Include="scssCal\bootstrap\_nav.scss" />
+    <Content Include="scssCal\bootstrap\_navbar.scss" />
+    <Content Include="scssCal\bootstrap\_pagination.scss" />
+    <Content Include="scssCal\bootstrap\_popover.scss" />
+    <Content Include="scssCal\bootstrap\_print.scss" />
+    <Content Include="scssCal\bootstrap\_progress.scss" />
+    <Content Include="scssCal\bootstrap\_reboot.scss" />
+    <Content Include="scssCal\bootstrap\_root.scss" />
+    <Content Include="scssCal\bootstrap\_spinners.scss" />
+    <Content Include="scssCal\bootstrap\_tables.scss" />
+    <Content Include="scssCal\bootstrap\_toasts.scss" />
+    <Content Include="scssCal\bootstrap\_tooltip.scss" />
+    <Content Include="scssCal\bootstrap\_transitions.scss" />
+    <Content Include="scssCal\bootstrap\_type.scss" />
+    <Content Include="scssCal\bootstrap\_utilities.scss" />
+    <Content Include="scssCal\bootstrap\_variables.scss" />
+    <Content Include="scssCal\style.scss" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

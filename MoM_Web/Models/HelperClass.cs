@@ -12,10 +12,11 @@ namespace MoM_Web.Models
         
         public static List<String> PrescribedExercisesStrings { get; set; } = new List<string>(); //Query strings for when prescribing exercises
 
-        public static string apiurl { get; set; } = "http://172.19.48.1/api/";
+        //Solomon
+        //public static string apiurl { get; set; } = "http://172.19.48.1/api/";
 
-
-       //public static string apiurl { get; set; } = "https://localhost:44358/api/";
+        //Sonaly
+       public static string apiurl { get; set; } = "https://localhost:44358/api/";
 
         public static List<ExerciseClass> AvailableExercises { get; set; }
 
